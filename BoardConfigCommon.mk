@@ -1,11 +1,27 @@
+# Copyright (C) 2012 The CyanogenMod Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 TARGET_SPECIFIC_HEADER_PATH := device/sony/blue-common/include
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 BOARD_HAS_NO_MISC_PARTITION := true
 
-#kernel properties
+# Kernel properties
 TARGET_KERNEL_SOURCE := kernel/sony/msm8960
+#BOARD_USES_UNCOMPRESSED_BOOT := true
+#TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := blue
@@ -13,6 +29,7 @@ TARGET_BOARD_PLATFORM := msm8960
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
 # Architecture
+TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
@@ -20,7 +37,6 @@ TARGET_ARCH_VARIANT_CPU := cortex-a9
 TARGET_CPU_SMP := true
 
 # Flags
-
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 
 # Krait optimizations
@@ -33,22 +49,10 @@ TARGET_KRAIT_BIONIC_PLDSIZE := 64
 
 # Kernel information
 BOARD_KERNEL_CMDLINE := # This is ignored by sony's bootloader
-BOARD_KERNEL_BASE := 0x40200000
-BOARD_RECOVERY_BASE := 0x40200000
+BOARD_KERNEL_BASE := 0x80200000
+BOARD_RECOVERY_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_FORCE_RAMDISK_ADDRESS := 0x41200000
-
-# Wifi related defines
-BOARD_WLAN_DEVICE                := bcmdhd
-WPA_SUPPLICANT_VERSION           := VER_0_8_X
-BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
-WIFI_DRIVER_FW_PATH_STA          := "/vendor/firmware/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_AP           := "/vendor/firmware/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P          := "/vendor/firmware/fw_bcmdhd_p2p.bin"
-WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
+BOARD_FORCE_RAMDISK_ADDRESS := 0x81500000
 
 # Graphics
 USE_OPENGL_RENDERER := true
@@ -74,7 +78,6 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
 TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
 TARGET_CUSTOM_BLUEDROID := ../../../device/sony/blue-common/bluedroid/bluetooth.c
 
@@ -93,10 +96,11 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Audio
-#COMMON_GLOBAL_CFLAGS += -DQCOM_ACDB_ENABLED -DQCOM_VOIP_ENABLED
-#BOARD_HAVE_SONY_AUDIO := true
-#BOARD_HAVE_BACK_MIC_CAMCORDER := true
-#BOARD_USE_QCOM_LPA := true
+BOARD_USES_ALSA_AUDIO := true
+
+# FM radio
+BOARD_HAVE_QCOM_FM := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED
 
 # Light Sensor
 #BOARD_SYSFS_LIGHT_SENSOR := /sys/class/leds/lcd-backlight/als/enable
