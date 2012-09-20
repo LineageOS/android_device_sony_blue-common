@@ -159,7 +159,7 @@ PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
     device/sony/blue-common/config/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
     device/sony/blue-common/config/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh \
-    device/sony/blue-common/config/init.qcom.postboot.sh:system/etc/init.qcom.postboot.sh \
+    device/sony/blue-common/config/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
     device/sony/blue-common/config/iddd.conf:system/etc/iddd.conf \
     device/sony/blue-common/config/sysmon.cfg:system/etc/sysmon.cfg
 
