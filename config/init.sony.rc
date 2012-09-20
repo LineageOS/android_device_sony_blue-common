@@ -139,7 +139,7 @@ on early-boot
     #recovery
     exec /sbin/bootrec
     # Touch firmware update
-    exec /system/bin/sh /system/etc/clearpad_fwloader.sh
+    exec /system/bin/sh /system/bin/clearpad_fwloader.sh
 
 on boot
     # Owner for the proximity sensor

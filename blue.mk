@@ -152,6 +152,17 @@ PRODUCT_COPY_FILES += \
     device/sony/blue-common/recovery/bootrec:root/sbin/bootrec \
     device/sony/blue-common/recovery/postrecoveryboot.sh:root/sbin/postrecoveryboot.sh
 
+# condigs
+PRODUCT_COPY_FILES += \
+    device/sony/blue-common/config/init.netconfig.sh:system/etc/init.netconfig.sh \
+    device/sony/blue-common/config/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
+    device/sony/blue-common/config/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
+    device/sony/blue-common/config/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
+    device/sony/blue-common/config/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh \
+    device/sony/blue-common/config/init.qcom.postboot.sh:system/etc/init.qcom.postboot.sh \
+    device/sony/blue-common/config/iddd.conf:system/etc/iddd.conf \
+    device/sony/blue-common/config/sysmon.cfg:system/etc/sysmon.cfg
+
 # Recovery resources
 PRODUCT_COPY_FILES += \
     bootable/recovery/res/images/icon_firmware_error.png:root/res/images/icon_firmware_error.png \
