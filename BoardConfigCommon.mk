@@ -89,7 +89,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := "BGRX_8888"
 TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;sync;"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/blue-common/custombootimg.mk
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/sony/blue-common/releasetools/sony_ota_from_target_files
-#BOARD_CUSTOM_GRAPHICS := ../../../device/sony/blue-common/recovery/recovery-gfx.c
+BOARD_CUSTOM_GRAPHICS := ../../../device/sony/blue-common/recovery/recovery.c
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/sony/blue-common/recovery/recovery-keys.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
