@@ -188,13 +188,13 @@ on boot
     setprop persist.radio.add_power_save 1
     exec /system/bin/cal_data_manager
 
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+
 # User 2800: sdcardd
 service sdcardd /system/bin/sdcard /mnt/int_storage 2800 2800
     user root
     group sdcard_rw
     disabled
-
-    mount debugfs /sys/kernel/debug /sys/kernel/debug
 
 service iddd /system/bin/iddd
     class main
