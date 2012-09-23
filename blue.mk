@@ -27,7 +27,7 @@ PRODUCT_COPY_FILES += \
 
 # Configuration scripts
 PRODUCT_COPY_FILES += \
-   device/sony/blue-common/prebuilt/logo_X.rle:root/logo.rle \
+   device/sony/blue-common/prebuilt/logo_X.rle:root/logo.rle
 
 #Offline charging animation
 PRODUCT_COPY_FILES += \
@@ -155,6 +155,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/sony/blue-common/recovery/bootrec:root/sbin/bootrec \
     device/sony/blue-common/recovery/postrecoveryboot.sh:root/sbin/postrecoveryboot.sh
+
+# Additional sbin stuff
+PRODUCT_COPY_FILES += \
+    device/sony/blue-common/prebuilt/mr:root/sbin/mr
+
+# CNE config
+PRODUCT_COPY_FILES += \
+   device/sony/blue-common/config/OperatorPolicy.xml:system/etc/OperatorPolicy.xml \
+   device/sony/blue-common/config/UserPolicy.xml:system/etc/UserPolicy.xml
 
 # condigs
 PRODUCT_COPY_FILES += \

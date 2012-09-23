@@ -2,6 +2,22 @@ import init.qcom-root.rc
 import init.qcom-etc.rc
 import init.sony.usb.rc
 
+on early-init
+    mkdir /storage 0050 system sdcard_r
+    mkdir /storage/sdcard0 0000 system system
+    mkdir /storage/sdcard1 0000 system system
+
+    # for backwards compatibility
+    symlink /storage/sdcard0 /mnt/sdcard
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard1 /external_sd
+    symlink /storage/sdcard1 /mnt/external_sd
+
+    mkdir /mnt/usbdisk 0755 system system
+
+    export EXTERNAL_STORAGE /storage/sdcard0
+    export SECONDARY_STORAGE /storage/sdcard1
+
 # This section is used when running with QCT boot (or VB+)
 on emmc-fs
     # mount mmc partitions
@@ -30,12 +46,10 @@ on emmc-fs
     exec /sbin/mr
     exec /system/bin/taimport
     start ta_qmi_service
-    exec /sbin/checkabortedflash
 
     # SEMC: Remote storage service should be started after master reset
     # due to that the modem file system is formatted in the master reset
     start rmt_storage
-
 
 # This section is used when running on S1boot
 on fs
@@ -54,7 +68,7 @@ on fs
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/Cache /cache nosuid nodev noatime barrier=1
     # Mount internal SDcard partition
     exec /system/bin/e2fsck -p /dev/block/platform/msm_sdcc.1/by-name/SDCard
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/SDCard /mnt/int_storage nosuid nodev barrier=1 noauto_da_alloc
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/SDCard /storage/sdcard0 nosuid nodev barrier=1 noauto_da_alloc
 
     mkdir /tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
@@ -69,18 +83,12 @@ on fs
     exec /sbin/mr
     exec /system/bin/taimport
     start ta_qmi_service
-    exec /sbin/checkabortedflash
 
     # SEMC: Remote storage service should be started after master reset
     # due to that the modem file system is formatted in the master reset
     start rmt_storage
 
-
 on post-fs
-    chmod 0770 /mnt/int_storage
-    chown root sdcardd /mnt/int_storage
-    mkdir /mnt/int_storage/.android_secure 0700 root root
-
     # Touch firmware update
     write /data/etc/touch_default_module_id 32
 
@@ -108,22 +116,6 @@ on post-fs-data
 
     # Camera
     mkdir /data/camera 0771 root camera
-
-on init
-    export SECONDARY_STORAGE /mnt/usbdisk:/mnt/ext_card
-    symlink /mnt/ext_card /ext_card
-    # External USB mass storage support
-    export EXTERNAL_STORAGE_USB /mnt/usbdisk
-    mkdir /mnt/usbdisk 0000 system system
-    symlink /mnt/usbdisk /usbdisk
-
-    # Internal SDcard partition mount points.
-    mkdir /mnt/int_storage 0000 system system
-
-    # create mountpoint
-    symlink /dev/socket /tmp
-    mkdir /mnt/sdcard 0000 system system
-    mkdir /mnt/ext_card 0000 system system
 
 on early-boot
 # Permissions for AKM897x sensor
@@ -196,12 +188,13 @@ on boot
     setprop persist.radio.add_power_save 1
     exec /system/bin/cal_data_manager
 
-
 # User 2800: sdcardd
 service sdcardd /system/bin/sdcard /mnt/int_storage 2800 2800
     user root
     group sdcard_rw
     disabled
+
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
 
 service iddd /system/bin/iddd
     class main
@@ -282,4 +275,3 @@ service system_monitor /system/bin/system_monitor
 
 service illumination /system/bin/illumination_service
     class main
-

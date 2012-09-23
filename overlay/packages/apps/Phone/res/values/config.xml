@@ -25,4 +25,10 @@
     <!-- This device implements a noise suppression device for in call audio-->
     <bool name="has_in_call_noise_suppression">true</bool>
 
+    <!-- Flag indicating whether the Phone app should ignore
+                  EVENT_SIM_NETWORK_LOCKED events from the Sim.  If true, this will
+         prevent the IccNetworkDepersonalizationPanel from being shown,
+         and effectively disable the "Sim network lock" feature. -->
+    <bool name="ignore_sim_network_locked_events">true</bool>
+
 </resources>
