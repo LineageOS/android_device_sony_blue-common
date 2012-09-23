@@ -146,6 +146,9 @@ PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/init.sony.rc:root/init.sony.rc \
     device/sony/blue-common/config/init.qcom-etc.rc:root/init.qcom-etc.rc \
     device/sony/blue-common/config/init.qcom-root.rc:root/init.qcom-root.rc \
+    device/sony/blue-common/config/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
+    device/sony/blue-common/config/init.qcom.class_main.sh:root/init.qcom.class_main.sh \
+    device/sony/blue-common/config/init.qcom.sh:root/init.qcom.sh \
     device/sony/blue-common/config/ueventd.sony.rc:root/ueventd.sony.rc
 
 # Recovery bootstrap script
