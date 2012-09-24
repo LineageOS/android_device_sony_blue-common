@@ -181,3 +181,11 @@ PRODUCT_COPY_FILES += \
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
+
+#QCOM Display overrides
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.hw=1 \
+    debug.egl.hw=1 \
+    debug.composition.type=dyn \
+    debug.mdpcomp.maxlayer=3 \
+    debug.mdpcomp.logs=0
