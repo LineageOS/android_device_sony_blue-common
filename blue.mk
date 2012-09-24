@@ -43,11 +43,8 @@ PRODUCT_PACKAGES += \
     gralloc.msm8960 \
     hwcomposer.msm8960 \
     libgenlock \
-    libhwcexternal.so \
-    libhwcservice.so \
     libmemalloc \
     liboverlay \
-    libqdMetaData.so \
     libqdutils \
     libtilerenderer
 
@@ -73,7 +70,7 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    alsa.msm8960.so \
+    alsa.msm8960 \
     audio.a2dp.default \
     audio_policy.msm8960 \
     audio.primary.msm8960 \
