@@ -198,10 +198,8 @@ on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
 # User 2800: sdcardd
-service sdcardd /system/bin/sdcard /mnt/int_storage 2800 2800
-    user root
-    group sdcard_rw
-    disabled
+service sdcardd /system/bin/sdcard /data/media 1023 1023
+    class late_start
 
 #service iddd /system/bin/iddd
 #    class main
