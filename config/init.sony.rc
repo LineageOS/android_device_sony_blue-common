@@ -95,13 +95,13 @@ on post-fs
     # Touch firmware update
     write /data/etc/touch_default_module_id 32
 
-    mkdir /data/idd 0755 idd idd
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/apps /data/idd nosuid nodev noatime barrier=0
-    chown idd idd /data/idd
-    chmod 0755 /data/idd
-    mkdir /data/tombstones 0755 system system
-    mkdir /data/crashsms 0711 system system
-    mkdir /data/crashsms/crashes 0755 system system
+#    mkdir /data/idd 0755 idd idd
+#    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/apps /data/idd nosuid nodev noatime barrier=0
+#    chown idd idd /data/idd
+#    chmod 0755 /data/idd
+#    mkdir /data/tombstones 0755 system system
+#    mkdir /data/crashsms 0711 system system
+#    mkdir /data/crashsms/crashes 0755 system system
     mkdir /data/mediaserver 0740 media media
     mkdir /data/pc 700 radio radio
     # Change to socket location on libkeyctrl/suntory for /data encryption
@@ -203,10 +203,10 @@ service sdcardd /system/bin/sdcard /mnt/int_storage 2800 2800
     group sdcard_rw
     disabled
 
-service iddd /system/bin/iddd
-    class main
-    user idd
-    group idd log
+#service iddd /system/bin/iddd
+#    class main
+#    user idd
+#    group idd log
 
 # Start suntrold
 service suntrold /system/bin/suntrold
@@ -233,10 +233,10 @@ service secchan /system/bin/secchand
     group system
     class core
 
-on property:vold.decrypt=trigger_post_fs_data
-    mkdir /data/idd 0755 idd idd
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/apps /data/idd nosuid nodev barrier=0
-    chown idd idd /data/idd
+#on property:vold.decrypt=trigger_post_fs_data
+#    mkdir /data/idd 0755 idd idd
+#    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/apps /data/idd nosuid nodev barrier=0
+#    chown idd idd /data/idd
 
 
 service usbeng /system/bin/usbeng
