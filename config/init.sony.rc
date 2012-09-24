@@ -154,6 +154,10 @@ on boot
 
     # AS3676/Ambient Light Sensor
     chown system system /sys/devices/i2c-10/10-0040/als_on
+    chmod 666 /sys/devices/i2c-10/10-0040/als_on
+
+    chown media system /sys/devices/virtual/graphics/fb1/hpd
+    chmod 666 /sys/devices/virtual/graphics/fb1/hpd
 
     # Disable C_A_D
     exec system/bin/ctrlaltdel soft
