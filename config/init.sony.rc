@@ -18,6 +18,9 @@ on early-init
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
 
+on init
+    symlink /dev/socket /tmp
+
 # This section is used when running with QCT boot (or VB+)
 on emmc-fs
     # mount mmc partitions
