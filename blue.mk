@@ -70,6 +70,10 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    snd_soc_msm \
+    snd_soc_msm_2x \
+    snd_soc_msm_2x_Fusion3 \
+    snd_soc_msm_Sitar \
     alsa.msm8960 \
     audio.a2dp.default \
     audio_policy.msm8960 \
@@ -88,6 +92,10 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libOmxVdec \
     libOmxVenc \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
     libstagefrighthw \
     libstagefright_client
 
