@@ -264,11 +264,11 @@ service hw_config /system/bin/sh /system/etc/hw_config.sh
     user root
     oneshot
 
-service media /system/bin/mediaserver
-    class main
-    user media
-    group system audio camera inet net_bt net_bt_admin net_bw_acct drmrpc
-    ioprio rt 4
+#service media /system/bin/mediaserver
+#    class main
+#    user media
+#    group system audio camera inet net_bt net_bt_admin net_bw_acct drmrpc
+#    ioprio rt 4
 
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
     user root
