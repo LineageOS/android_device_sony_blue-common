@@ -5,8 +5,6 @@ on early-init
     write /proc/1/oom_adj -16
 
 on init
-    export EXTERNAL_STORAGE /mnt/sdcard
-
 # create mountpoints
     mkdir /mnt 0775 root system
 
