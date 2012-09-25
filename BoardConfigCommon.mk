@@ -83,8 +83,8 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
-TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
-TARGET_CUSTOM_BLUEDROID := ../../../device/sony/blue-common/bluedroid/bluetooth.c
+#TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
+#TARGET_CUSTOM_BLUEDROID := ../../../device/sony/blue-common/bluedroid/bluetooth.c
 
 # Webkit
 ENABLE_WEBGL := true

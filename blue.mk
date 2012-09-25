@@ -189,3 +189,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.composition.type=dyn \
     debug.mdpcomp.maxlayer=3 \
     debug.mdpcomp.logs=0
+
+# Audio overrides
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.audio.fluence.mode=endfire \
+    persist.audio.vr.enable=false \
+    persist.audio.handset.mic=analog \
+    persist.audio.hp=true 
+
+#system prop for Bluetooth hci transport
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.bt.hci_transport=smd \
+    ro.bluetooth.request.master=true \
+    ro.bluetooth.remote.autoconnect=true
