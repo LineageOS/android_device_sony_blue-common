@@ -73,10 +73,6 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    snd_soc_msm \
-    snd_soc_msm_2x \
-    snd_soc_msm_2x_Fusion3 \
-    snd_soc_msm_Sitar \
     alsa.msm8960 \
     audio.a2dp.default \
     audio_policy.msm8960 \
@@ -173,6 +169,17 @@ PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
     device/sony/blue-common/config/iddd.conf:system/etc/iddd.conf \
     device/sony/blue-common/config/sysmon.cfg:system/etc/sysmon.cfg
+
+# ALSA configuration
+PRODUCT_COPY_FILES += \
+    device/sony/blue-common/config/DL_REC_blue:system/etc/snd_soc_msm/DL_REC_blue \
+    device/sony/blue-common/config/FM_REC_blue:system/etc/snd_soc_msm/FM_REC_blue \
+    device/sony/blue-common/config/HiFi_REC_blue:system/etc/snd_soc_msm/HiFi_REC_blue \
+    device/sony/blue-common/config/HiFi_blue:system/etc/snd_soc_msm/HiFi_blue \
+    device/sony/blue-common/config/UL_DL_REC_blue:system/etc/snd_soc_msm/UL_DL_REC_blue \
+    device/sony/blue-common/config/Voice_Call_IP_blue:system/etc/snd_soc_msm/Voice_Call_IP_blue \
+    device/sony/blue-common/config/Voice_Call_blue:system/etc/snd_soc_msm/Voice_Call_blue \
+    device/sony/blue-common/config/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x
 
 # Thermal monitor configuration
 PRODUCT_COPY_FILES += \
