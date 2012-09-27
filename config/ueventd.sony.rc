@@ -46,8 +46,6 @@
 /dev/kgsl-2d0             0666   root       root
 /dev/kgsl-2d1             0666   root       root
 # TODO: Remove from system/core/rootdir/ueventd.rc
-/dev/diag                 0666   root       root
-# TODO: Remove from system/core/rootdir/ueventd.rc
 /dev/oncrpc/*             0660   root       qcom_oncrpc
 /dev/sdioctl8             0640   radio      radio
 /dev/rmnet_ctrl           0640   radio      radio

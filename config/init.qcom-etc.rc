@@ -61,6 +61,13 @@ on boot
     chmod 2770 /dev/socket/qmux_audio
     mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
     chmod 2770 /dev/socket/qmux_bluetooth
+    mkdir /dev/socket/qmux_gps 0770 gps gps
+    chmod 2770 /dev/socket/qmux_gps
+
+    # Allow QMUX daemon to assign port open wait time
+    chown radio radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
+
+    setprop ro.telephony.call_ring.multiple false
 
     setprop wifi.interface wlan0
     setprop ro.wifi.eap_sim_enabled true
@@ -237,20 +244,20 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
 service bridgemgrd /system/bin/bridgemgrd
     class late_start
     user radio
-    group radio
+    group radio qcom_diag
     disabled
 
 service qmiproxy /system/bin/qmiproxy
     class main
     user radio
-    group radio
+    group radio qcom_diag
     disabled
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
     class main
     user radio
-    group radio audio bluetooth
+    group radio audio bluetooth gps qcom_diag
     disabled
 
 service netmgrd /system/bin/netmgrd
@@ -443,7 +450,7 @@ service ril-daemon1 /system/bin/rild -c 1
     socket rild-debug1 stream 660 radio system
     user root
     disabled
-    group radio cache inet misc audio sdcard_rw qcom_oncrpc diag
+    group radio cache inet misc audio sdcard_r sdcard_rw qcom_oncrpc diag qcom_diag log
 
 service profiler_daemon /system/bin/profiler_daemon
     class late_start
