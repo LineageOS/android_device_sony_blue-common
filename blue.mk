@@ -40,6 +40,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/init.qcom.efs.sync.sh:system/etc/init.qcom.efs.sync.sh
 
+PRODUCT_COPY_FILES += \
+   device/sony/blue-common/config/fstab.sony:root/fstab.sony \
+   device/sony/blue-common/config/fstab_sd.sony:root/fstab_sd.sony
+
 # QCOM Display
 PRODUCT_PACKAGES += \
     copybit.msm8960 \

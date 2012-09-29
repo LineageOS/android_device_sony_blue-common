@@ -56,22 +56,14 @@ on emmc-fs
 
 # This section is used when running on S1boot
 on fs
-    # SEMC: If you change anything here, make sure to update
-    # <root>/vendor/semc/system/bootstrap/masterreset/fstab.blue
-    # accordingly.
+    # Mount partition
+    mount_all /fstab.sony
 
-    # Mount system partition
-    wait /dev/block/platform/msm_sdcc.1/by-name/System
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/System /system ro barrier=1
-    # Mount data partition
-    wait /dev/block/platform/msm_sdcc.1/by-name/Userdata
-    exec /system/bin/e2fsck -p /dev/block/platform/msm_sdcc.1/by-name/Userdata
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/Userdata /data nosuid nodev noatime barrier=1 noauto_da_alloc
-    # Mount cache partition
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/Cache /cache nosuid nodev noatime barrier=1
-    # Mount internal SDcard partition
-    exec /system/bin/e2fsck -p /dev/block/platform/msm_sdcc.1/by-name/SDCard
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/SDCard /storage/sdcard0 nosuid nodev barrier=1 noauto_da_alloc
+    # we will remap this as /storage/sdcard0 with the sdcard fuse tool
+    mkdir /data/media 0770 media_rw media_rw
+    mount_all /fstab_sd.sony
+    chown media_rw media_rw /data/media
+    setprop ro.crypto.fuse_sdcard true
 
     mkdir /tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
@@ -197,9 +189,11 @@ on boot
 
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
-# User 2800: sdcardd
-service sdcardd /system/bin/sdcard /data/media 1023 1023
-    class late_start
+# create virtual SD card at /storage/sdcard0, based on the /data/media directory
+# daemon will drop to user/group system/media_rw after initializing
+# underlying files in /data/media will be created with user and group media_rw (1023)
+service sdcard /system/bin/sdcard /data/media 1023 1023
+        class late_start
 
 #service iddd /system/bin/iddd
 #    class main
