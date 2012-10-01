@@ -144,6 +144,10 @@ on boot
     chown system system /sys/devices/i2c-10/10-0053/flash_current
     chown system system /sys/devices/i2c-10/10-0053/status
 
+    # Panel backlight
+    chown system system /sys/class/leds/led_1-lcd/brightness
+    chmod 660 /sys/class/leds/led_1-lcd/brightness
+
     # AS3676/Ambient Light Sensor
     chown system system /sys/devices/i2c-10/10-0040/als_on
     chmod 666 /sys/devices/i2c-10/10-0040/als_on
