@@ -105,15 +105,15 @@ on boot
 
     # Change owner and group for media server and surface flinger
     chown system system /sys/devices/virtual/graphics/fb1/format_3d
-    chown media system /sys/devices/virtual/graphics/fb1/hpd
-    chown media system /sys/devices/virtual/graphics/fb1/video_mode
-    chown media system /sys/devices/virtual/graphics/fb1/edid_3d_modes
-    chown media system /sys/devices/virtual/graphics/fb1/underscan
-    chown media system /sys/devices/virtual/graphics/fb1/hdmi_mode
-    chown media system /sys/devices/virtual/graphics/fb1/pa
-    chown media system /sys/devices/virtual/graphics/fb1/format_3d
-    chown media system /sys/devices/virtual/graphics/fb1/product_description
-    chown media system /sys/devices/virtual/graphics/fb1/vendor_name
+    chown system graphics /sys/devices/virtual/graphics/fb1/hpd
+    chown system graphics /sys/devices/virtual/graphics/fb1/video_mode
+    chown system graphics /sys/devices/virtual/graphics/fb1/edid_3d_modes
+    chown system graphics /sys/devices/virtual/graphics/fb1/underscan
+    chown system graphics /sys/devices/virtual/graphics/fb1/hdmi_mode
+    chown system graphics /sys/devices/virtual/graphics/fb1/pa
+    chown system graphics /sys/devices/virtual/graphics/fb1/format_3d
+    chown system graphics /sys/devices/virtual/graphics/fb1/product_description
+    chown system graphics /sys/devices/virtual/graphics/fb1/vendor_name
 
     #For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
