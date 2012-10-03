@@ -433,7 +433,7 @@ SectionVerb
 EndSection
 
 SectionDevice
-	Name "Earpiece"
+	Name "Voice Earpiece"
 	Comment "Handset Rx device"
 
 	EnableSequence
@@ -453,7 +453,7 @@ SectionDevice
 EndSection
 
 SectionDevice
-	Name "Earpiece hac Rx"
+	Name "Voice Earpiece hac Rx"
 	Comment "Handset Rx device"
 
 	EnableSequence
