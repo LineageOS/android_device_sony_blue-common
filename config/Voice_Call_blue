@@ -433,7 +433,7 @@ SectionVerb
 EndSection
 
 SectionDevice
-	Name "Earpiece"
+	Name "Voice Earpiece"
 	Comment "Handset Rx device"
 
 	EnableSequence
@@ -453,7 +453,7 @@ SectionDevice
 EndSection
 
 SectionDevice
-	Name "Earpiece hac Rx"
+	Name "Voice Earpiece hac Rx"
 	Comment "Handset Rx device"
 
 	EnableSequence
@@ -474,6 +474,29 @@ EndSection
 
 SectionDevice
 	Name "Speaker"
+	Comment "Speaker Rx device"
+
+	EnableSequence
+		'SLIM_0_RX Channels':0:Two
+		'RX3 MIX1 INP1':0:RX1
+		'RX3 MIX1 INP2':0:RX2
+		'LINEOUT1 DAC Switch':1:1
+                'LINEOUT1 Volume':1:100
+	EndSequence
+
+	DisableSequence
+		'RX3 MIX1 INP1':0:ZERO
+		'RX3 MIX1 INP2':0:ZERO
+		'LINEOUT1 DAC Switch':1:0
+                'LINEOUT1 Volume':1:0
+	EndSequence
+
+	ACDBID	263:1
+
+EndSection
+
+SectionDevice
+	Name "Voice Speaker"
 	Comment "Speaker Rx device"
 
 	EnableSequence
@@ -765,7 +788,7 @@ SectionDevice
 EndSection
 
 SectionDevice
-	Name "Handset 2nd"
+	Name "Sub Mic"
 	Comment "Handset Tx Secondary Mic"
 
 	EnableSequence
