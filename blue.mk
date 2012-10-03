@@ -81,7 +81,6 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio_policy.msm8960 \
     audio.primary.msm8960 \
-    audio_policy.conf \
     libaudioutils
 
 PRODUCT_COPY_FILES += \
