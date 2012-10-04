@@ -176,13 +176,6 @@ PRODUCT_COPY_FILES += \
 
 # ALSA configuration
 PRODUCT_COPY_FILES += \
-    device/sony/blue-common/config/DL_REC_blue:system/etc/snd_soc_msm/DL_REC_blue \
-    device/sony/blue-common/config/FM_REC_blue:system/etc/snd_soc_msm/FM_REC_blue \
-    device/sony/blue-common/config/HiFi_REC_blue:system/etc/snd_soc_msm/HiFi_REC_blue \
-    device/sony/blue-common/config/HiFi_blue:system/etc/snd_soc_msm/HiFi_blue \
-    device/sony/blue-common/config/UL_DL_REC_blue:system/etc/snd_soc_msm/UL_DL_REC_blue \
-    device/sony/blue-common/config/Voice_Call_IP_blue:system/etc/snd_soc_msm/Voice_Call_IP_blue \
-    device/sony/blue-common/config/Voice_Call_blue:system/etc/snd_soc_msm/Voice_Call_blue \
     device/sony/blue-common/config/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x
 
 # Thermal monitor configuration
