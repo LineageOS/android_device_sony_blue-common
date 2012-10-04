@@ -170,6 +170,10 @@ on boot
     # Configurate TCP/IP kernel settings
     exec /system/bin/sh /system/etc/init.netconfig.sh
 
+    # Bluetooth mac address
+    setprop ro.bt.bdaddr_path "/data/etc/bluetooth_bdaddr"
+    chown bluetooth bluetooth ro.bt.bdaddr_path
+
     # Change owner and group to get adopter/device ids from MHL driver
     chown system system /sys/class/mhl/sii8334/adopter_id
     chown system system /sys/class/mhl/sii8334/device_id
