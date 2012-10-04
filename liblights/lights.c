@@ -106,6 +106,11 @@ static int set_light_backlight (struct light_device_t *dev, struct light_state_t
 	int err = 0;
 	int brightness = rgb_to_brightness(state);
 
+	if (state->brightnessMode == BRIGHTNESS_MODE_SENSOR)
+		write_int (ALS_FILE, 1);
+	else
+		write_int (ALS_FILE, 0);
+
 	ALOGV("%s brightness=%d", __func__, brightness);
 	pthread_mutex_lock(&g_lock);
 	err = write_int (LCD_BACKLIGHT_FILE, brightness);

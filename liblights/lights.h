@@ -16,4 +16,4 @@ char const*const BLUE_LED_FILE_DELAYOFF		= "/sys/class/leds/led_9-rgb3-blue/dela
 
 char const*const LCD_BACKLIGHT_FILE		= "/sys/class/leds/led_1-lcd/brightness";
 
-char const*const ALS_FILE			= "/sys/class/leds/led_1-lcd/als_group";
+char const*const ALS_FILE			= "/sys/devices/i2c-10/10-0040/als_on";
