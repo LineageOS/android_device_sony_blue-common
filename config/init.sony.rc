@@ -63,6 +63,11 @@ on fs
     mkdir /data/media 0770 media_rw media_rw
     mount_all /fstab_sd.sony
     chown media_rw media_rw /data/media
+    
+    # Fix wrong permissions set on /data/media/Android from stock rom
+    chown media_rw media_rw /data/media/Android
+    chmod 0755 /data/media/Android
+
     setprop ro.crypto.fuse_sdcard true
 
     mkdir /tombstones 0771 system system
