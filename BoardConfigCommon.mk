@@ -107,6 +107,3 @@ BOARD_USES_ALSA_AUDIO := true
 # FM radio
 #BOARD_HAVE_QCOM_FM := true
 #COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED
-
-# Light Sensor
-BOARD_SYSFS_LIGHT_SENSOR := /sys/devices/i2c-10/10-0040/als_on
