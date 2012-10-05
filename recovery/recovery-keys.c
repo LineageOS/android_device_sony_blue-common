@@ -52,7 +52,6 @@ int device_handle_key(int key_code, int visible) {
             case KEY_LEFTBRACE:
             case KEY_ENTER:
             case BTN_MOUSE:
-            case KEY_CAMERA:
             case KEY_F21:
             case KEY_SEND:
                 return SELECT_ITEM;
@@ -65,6 +64,7 @@ int device_handle_key(int key_code, int visible) {
                 if (!get_allow_toggle_display() && !ui_root_menu) {
                     return GO_BACK;
                 }
+            case KEY_CAMERA:
             case KEY_BACK:
                 if (!ui_root_menu) {
                     return GO_BACK;
