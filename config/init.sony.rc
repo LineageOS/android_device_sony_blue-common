@@ -3,6 +3,9 @@ import init.qcom-etc.rc
 import init.sony.usb.rc
 
 on early-init
+    export EXTERNAL_STORAGE /storage/sdcard0
+    export SECONDARY_STORAGE /storage/sdcard1
+
     mkdir /storage 0050 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
     mkdir /storage/sdcard1 0000 system system
@@ -14,9 +17,6 @@ on early-init
     symlink /storage/sdcard1 /mnt/external_sd
 
     mkdir /mnt/usbdisk 0755 system system
-
-    export EXTERNAL_STORAGE /storage/sdcard0
-    export SECONDARY_STORAGE /storage/sdcard1
 
 on init
     symlink /dev/socket /tmp
@@ -100,13 +100,6 @@ on post-fs
     # Touch firmware update
     write /data/etc/touch_default_module_id 32
 
-#    mkdir /data/idd 0755 idd idd
-#    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/apps /data/idd nosuid nodev noatime barrier=0
-#    chown idd idd /data/idd
-#    chmod 0755 /data/idd
-#    mkdir /data/tombstones 0755 system system
-#    mkdir /data/crashsms 0711 system system
-#    mkdir /data/crashsms/crashes 0755 system system
     mkdir /data/mediaserver 0740 media media
     mkdir /data/pc 700 radio radio
     # Change to socket location on libkeyctrl/suntory for /data encryption
@@ -134,12 +127,16 @@ on early-boot
     chown system system /sys/class/compass/akm8972/single
     chown system system /sys/class/compass/akm8972/registers
     exec /sbin/fota-ua c
+
     #Run pre_hw_config.sh before entering charge only mode.
     exec /system/bin/sh /system/etc/pre_hw_config.sh
+
     # Start the offline charging (This blocks booting further in some cases)
     exec /system/bin/chargemon
+
     #recovery
     exec /sbin/bootrec
+
     # Touch firmware update
     exec /system/bin/sh /system/bin/clearpad_fwloader.sh
 
@@ -215,11 +212,6 @@ on boot
 service sdcard /system/bin/sdcard /data/media 1023 1023
         class late_start
 
-#service iddd /system/bin/iddd
-#    class main
-#    user idd
-#    group idd log
-
 # Start suntrold
 service suntrold /system/bin/suntrold
     user system
@@ -252,17 +244,11 @@ service secchan /system/bin/secchand
     group system
     class core
 
-#on property:vold.decrypt=trigger_post_fs_data
-#    mkdir /data/idd 0755 idd idd
-#    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/apps /data/idd nosuid nodev barrier=0
-#    chown idd idd /data/idd
-
-
 service usbeng /system/bin/usbeng
     class late_start
     oneshot
 
-#SEMC: TrimArea Daemon
+# SEMC: TrimArea Daemon
 # last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb) /128(kb))
 service tad /system/bin/tad /dev/block/mmcblk0 1,16
     user root
@@ -284,12 +270,6 @@ service hw_config /system/bin/sh /system/etc/hw_config.sh
     class main
     user root
     oneshot
-
-#service media /system/bin/mediaserver
-#    class main
-#    user media
-#    group system audio camera inet net_bt net_bt_admin net_bw_acct drmrpc
-#    ioprio rt 4
 
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
     user root
