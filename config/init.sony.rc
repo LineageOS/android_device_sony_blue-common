@@ -177,9 +177,6 @@ on boot
     # Turn on WCNSS subsystem
     write /dev/wcnss_wlan 1
 
-    #update WIFI MAC address
-    exec /system/bin/mac-update
-
     # insmod the cfg80211 module
     insmod /system/lib/modules/cfg80211.ko
 
@@ -236,6 +233,13 @@ service fast-dormancy /system/bin/fast-dormancy
 
 on property:ro.semc.enable.fast_dormancy=false
 stop fast-dormancy
+
+# Update WIFI MAC address
+service mac-update /system/bin/mac-update
+    user root
+    group root
+    oneshot
+    class main
 
 # Start ric
 service ric /system/bin/ric
