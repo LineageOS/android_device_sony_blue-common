@@ -118,6 +118,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     qrngd
 
+# WIFI MAC update
+PRODUCT_PACKAGES += \
+    mac-update
+
 # Misc
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
