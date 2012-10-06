@@ -122,6 +122,8 @@ on post-fs-data
     write /data/system/sensors/settings 0
     chmod 0664 /data/system/sensors/settings
 
+    mkdir /data/misc/wifi/prima 0775 wifi wifi
+
     # Camera
     mkdir /data/camera 0771 root camera
 
@@ -174,6 +176,9 @@ on boot
 
     # Turn on WCNSS subsystem
     write /dev/wcnss_wlan 1
+
+    #update WIFI MAC address
+    exec /system/bin/mac-update
 
     # insmod the cfg80211 module
     insmod /system/lib/modules/cfg80211.ko
