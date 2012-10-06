@@ -165,6 +165,10 @@ on boot
     chown system system /sys/devices/i2c-10/10-0040/als_on
     chmod 666 /sys/devices/i2c-10/10-0040/als_on
 
+    # Vibrator
+    chown system system /sys/devices/i2c-12/12-0049/intensity
+    chmod 666 /sys/devices/i2c-12/12-0049/intensity
+
     # Disable C_A_D
     exec system/bin/ctrlaltdel soft
 
