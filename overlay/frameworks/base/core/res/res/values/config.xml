@@ -88,9 +88,11 @@
         <item>10</item>
         <item>12</item>
         <item>16</item>
+        <item>18</item>
         <item>20</item>
         <item>25</item>
         <item>30</item>
+        <item>35</item>
         <item>40</item>
         <item>50</item>
         <item>60</item>
@@ -101,9 +103,7 @@
         <item>160</item>
         <item>180</item>
         <item>200</item>
-        <item>210</item>
         <item>220</item>
-        <item>230</item>
         <item>240</item>
         <item>245</item>
         <item>250</item>
@@ -172,7 +172,7 @@
     </integer-array>
 
     <!-- Minimum screen brightness allowed by the power manager. -->
-    <integer name="config_screenBrightnessDim">10</integer>
+    <integer name="config_screenBrightnessDim">1</integer>
 
     <!-- Boolean indicating if current platform supports quick switch-on/off of
                   Bluetooth Module -->
