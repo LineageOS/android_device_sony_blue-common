@@ -110,3 +110,6 @@
 /dev/rfkill               0660   wifi       wifi
 /dev/cpu_dma_latency      0660   system     system
 /dev/rmnet_mux_ctrl       0640   radio      radio
+
+/sys/class/leds/led_* delay_on   0660  system  system
+/sys/class/leds/led_* delay_off  0660  system  system
