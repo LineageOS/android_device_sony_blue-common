@@ -104,20 +104,16 @@ static int rgb_to_brightness (struct light_state_t const* state) {
 /* The actual lights controlling section */
 static int set_light_backlight (struct light_device_t *dev, struct light_state_t const *state) {
 	int err = 0;
+	int enable = 0;
 	int brightness = rgb_to_brightness(state);
 
-	if (state->brightnessMode == BRIGHTNESS_MODE_SENSOR) {
-		if (brightness > 0)
-			write_int (ALS_FILE, 1);
-		else
-			write_int (ALS_FILE, 0);
-	} else {
-		write_int (ALS_FILE, 0);
-	}
+	if ((state->brightnessMode == BRIGHTNESS_MODE_SENSOR) && (brightness > 0))
+		enable = 1;
 
 	ALOGV("%s brightness=%d", __func__, brightness);
 	pthread_mutex_lock(&g_lock);
-	err = write_int (LCD_BACKLIGHT_FILE, brightness);
+	err = write_int (ALS_FILE, enable);
+	err |= write_int (LCD_BACKLIGHT_FILE, brightness);
 	pthread_mutex_unlock(&g_lock);
 
 	return err;
@@ -146,6 +142,7 @@ static void set_shared_light_locked (struct light_device_t *dev, struct light_st
 	delayOn = state->flashOnMS;
 	delayOff = state->flashOffMS;
 
+	pthread_mutex_lock(&g_lock);
 	switch (state->flashMode) {
 	case LIGHT_FLASH_TIMED:
 	case LIGHT_FLASH_HARDWARE:
@@ -172,6 +169,7 @@ static void set_shared_light_locked (struct light_device_t *dev, struct light_st
 	write_int (RED_LED_FILE, r);
 	write_int (GREEN_LED_FILE, g);
 	write_int (BLUE_LED_FILE, b);
+	pthread_mutex_unlock (&g_lock);
 }
 
 static void handle_shared_battery_locked (struct light_device_t *dev) {
