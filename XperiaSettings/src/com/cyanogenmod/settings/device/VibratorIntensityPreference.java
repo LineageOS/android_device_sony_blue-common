@@ -49,7 +49,7 @@ public class VibratorIntensityPreference extends DialogPreference {
     };
 
     private vibratorSeekBar mSeekBars[] = new vibratorSeekBar[1];
-    private static final int MAX_VALUE = 15;
+    private static final int MAX_VALUE = 8;
     private static final int OFFSET_VALUE = 0;
 
     // Track instances to know when to restore original color
@@ -113,7 +113,7 @@ public class VibratorIntensityPreference extends DialogPreference {
             String sDefaultValue = Utils.readOneLine(filePath);
             int iValue = sharedPrefs.getInt(filePath, Integer.valueOf(sDefaultValue));
             if (bFirstTime)
-                Utils.writeValue(filePath, "10");
+                Utils.writeValue(filePath, "4");
             else
                 Utils.writeValue(filePath, String.valueOf((long) iValue));
         }
