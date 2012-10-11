@@ -146,12 +146,18 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Custom init / uevent
 PRODUCT_COPY_FILES += \
-    device/sony/blue-common/config/init.sony.rc:root/init.sony.rc \
+    device/sony/blue-common/config/init.netconfig.sh:system/etc/init.netconfig.sh \
     device/sony/blue-common/config/init.qcom-etc.rc:root/init.qcom-etc.rc \
-    device/sony/blue-common/config/init.qcom-root.rc:root/init.qcom-root.rc \
+    device/sony/blue-common/config/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
     device/sony/blue-common/config/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
     device/sony/blue-common/config/init.qcom.class_main.sh:root/init.qcom.class_main.sh \
-    device/sony/blue-common/config/init.qcom.sh:root/init.qcom.sh \
+    device/sony/blue-common/config/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
+    device/sony/blue-common/config/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
+    device/sony/blue-common/config/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh \
+    device/sony/blue-common/config/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
+    device/sony/blue-common/config/init.qcom.usb.rc:root/init.qcom.usb.rc \
+    device/sony/blue-common/config/init.qcom.usb.sh:root/init.qcom.usb.sh \
+    device/sony/blue-common/config/init.sony.rc:root/init.sony.rc \
     device/sony/blue-common/config/ueventd.sony.rc:root/ueventd.sony.rc
 
 # Recovery bootstrap script
@@ -168,15 +174,8 @@ PRODUCT_COPY_FILES += \
    device/sony/blue-common/config/OperatorPolicy.xml:system/etc/OperatorPolicy.xml \
    device/sony/blue-common/config/UserPolicy.xml:system/etc/UserPolicy.xml
 
-# condigs
+# sysmon conf
 PRODUCT_COPY_FILES += \
-    device/sony/blue-common/config/init.netconfig.sh:system/etc/init.netconfig.sh \
-    device/sony/blue-common/config/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
-    device/sony/blue-common/config/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
-    device/sony/blue-common/config/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
-    device/sony/blue-common/config/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh \
-    device/sony/blue-common/config/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
-    device/sony/blue-common/config/iddd.conf:system/etc/iddd.conf \
     device/sony/blue-common/config/sysmon.cfg:system/etc/sysmon.cfg
 
 # ALSA configuration

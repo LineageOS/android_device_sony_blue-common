@@ -1,5 +1,5 @@
-import init.qcom-root.rc
 import init.qcom-etc.rc
+import init.qcom.usb.rc
 import init.sony.usb.rc
 
 on early-init
@@ -99,11 +99,7 @@ on fs
 on post-fs
     # Touch firmware update
     write /data/etc/touch_default_module_id 32
-
-    mkdir /data/mediaserver 0740 media media
     mkdir /data/pc 700 radio radio
-    # Change to socket location on libkeyctrl/suntory for /data encryption
-    mkdir /dev/socket/suntory 0755 system system
 
 on post-fs-data
     chown system system /sys/devices/platform/msm_otg/msm_hsusb/gadget/lun1/file
@@ -214,9 +210,6 @@ on boot
     setprop ro.gps.agps_provider customized
     write /sys/devices/i2c-3/3-0024/cyttsp_update_fw 1
 
-    # Default tcp buffersizes for lte
-    setprop net.tcp.buffersize.lte 4094,87380,2560000,4096,16384,1220608
-
     # Do not power down SIM in flight mode (required for Wi-Fi EAP-SIM)
     setprop persist.radio.apm_sim_not_pwdn 1
 
@@ -230,14 +223,7 @@ on boot
 # daemon will drop to user/group system/media_rw after initializing
 # underlying files in /data/media will be created with user and group media_rw (1023)
 service sdcard /system/bin/sdcard /data/media 1023 1023
-        class late_start
-
-# Start suntrold
-service suntrold /system/bin/suntrold
-    user system
-    group system
-    oneshot
-    class main
+    class late_start
 
 # Fast Dormancy
 service fast-dormancy /system/bin/fast-dormancy
