@@ -3586,14 +3586,14 @@ SectionDevice
 
 	EnableSequence
 		'SLIM_0_TX Channels':0:One
-		'SLIM TX7 MUX':0:DEC8
-		'DEC8 MUX':0:ADC2
+		'SLIM TX7 MUX':0:DEC5
+		'DEC5 MUX':0:ADC2
 		'ADC2 Volume':1:100
 	EndSequence
 
 	DisableSequence
 		'SLIM TX7 MUX':0:ZERO
-		'DEC8 MUX':0:ZERO
+		'DEC5 MUX':0:ZERO
 		'ADC2 Volume':1:0
 	EndSequence
 
