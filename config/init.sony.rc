@@ -297,3 +297,13 @@ service system_monitor /system/bin/system_monitor
 
 service illumination /system/bin/illumination_service
     class main
+
+# zram
+    service szram /sbin/init.zram
+    class main
+    user root
+    oneshot
+    disabled
+
+on property:sys.boot_completed=1
+    start szram
