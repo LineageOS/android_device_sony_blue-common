@@ -190,23 +190,74 @@ PRODUCT_COPY_FILES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
-#QCOM Display overrides
+# QCOM
+PRODUCT_PROPERTY_OVERRIDES += \
+    com.qc.hardware=true \
+    dev.pm.dyn_samplingrate=1
+
+# Radio and Telephony
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.ril_class=SonyQualcommRIL \
+    rild.libpath=/system/lib/libril-qc-qmi-1.so \
+    rild.libargs=-d /dev/smd0 \
+    persist.rild.nitz_plmn= \
+    persist.rild.nitz_long_ons_0= \
+    persist.rild.nitz_long_ons_1= \
+    persist.rild.nitz_long_ons_2= \
+    persist.rild.nitz_long_ons_3= \
+    persist.rild.nitz_short_ons_0= \
+    persist.rild.nitz_short_ons_1= \
+    persist.rild.nitz_short_ons_2= \
+    persist.rild.nitz_short_ons_3= \
+    ril.subscription.types=NV,RUIM \
+    DEVICE_PROVISIONED=1 \
+    keyguard.no_require_sim=1 \
+    ro.use_data_netmgrd=true \
+    ro.ril.transmitpower=true \
+    ro.telephony.call_ring.multiple=false \
+    persist.cne.UseCne=vendor \
+    persist.cne.UseSwim=false \
+    persist.cne.bat.range.low.med=30 \
+    persist.cne.bat.range.med.high=60 \
+    persist.cne.loc.policy.op=/system/etc/OperatorPolicy.xml \
+    persist.cne.loc.policy.user=/system/etc/UserPolicy.xml \
+    persist.cne.bwbased.rat.sel=false \
+    persist.cne.snsr.based.rat.mgt=false \
+    persist.cne.bat.based.rat.mgt=false \
+    persist.cne.rat.acq.time.out=30000 \
+    persist.cne.rat.acq.retry.tout=0 \
+    persist.cne.nsrm.mode=false \
+    persist.gps.qmienabled=true
+
+# QCOM Display
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=1 \
     debug.egl.hw=1 \
+    debug.enabletr=true \
     debug.composition.type=dyn \
     debug.mdpcomp.maxlayer=3 \
-    debug.mdpcomp.logs=0
+    debug.mdpcomp.logs=0 \
+    ro.hwui.text_cache_width=2048
 
-# Audio overrides
+# Audio
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.mode=endfire \
     persist.audio.vr.enable=false \
     persist.audio.handset.mic=analog \
     persist.audio.hp=true 
 
-#system prop for Bluetooth hci transport
+# Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.bluetooth.sap=true \
     ro.qualcomm.bt.hci_transport=smd \
     ro.bluetooth.request.master=true \
     ro.bluetooth.remote.autoconnect=true
+
+# OpenglES
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=131072
+
+# Wifi
+PRODUCT_PROPERTY_OVERRIDES += \
+    wifi.interface=wlan0 \
+    wifi.supplicant_scan_interval=30
