@@ -30,7 +30,8 @@ PRODUCT_COPY_FILES += \
 
 # Configuration scripts
 PRODUCT_COPY_FILES += \
-   device/sony/blue-common/prebuilt/logo_X.rle:root/logo.rle
+   device/sony/blue-common/prebuilt/logo_X.rle:root/logo.rle \
+   device/sony/blue-common/prebuilt/gps.conf:system/etc/gps.conf
 
 # EGL config
 PRODUCT_COPY_FILES += \
