@@ -175,10 +175,6 @@ PRODUCT_COPY_FILES += \
    device/sony/blue-common/config/OperatorPolicy.xml:system/etc/OperatorPolicy.xml \
    device/sony/blue-common/config/UserPolicy.xml:system/etc/UserPolicy.xml
 
-# sysmon conf
-PRODUCT_COPY_FILES += \
-    device/sony/blue-common/config/sysmon.cfg:system/etc/sysmon.cfg
-
 # ALSA configuration
 PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x
