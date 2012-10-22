@@ -23,14 +23,11 @@ on init
 
 # This section is used when running with QCT boot (or VB+)
 on emmc-fs
-    # mount mmc partitions
-    wait /dev/block/mmcblk0p12
-    mount ext4 /dev/block/mmcblk0p12 /system rw barrier=1
-    wait /dev/block/mmcblk0p13
-    exec /system/bin/e2fsck -p /dev/block/mmcblk0p13
-    mount ext4 /dev/block/mmcblk0p13 /data nosuid nodev barrier=1 noauto_da_alloc
+
+    # Mount partition
+    mount_all /fstab.sony
+
     mount ext4 /dev/block/mmcblk0p14 /persist nosuid nodev barrier=1
-    mount ext4 /dev/block/mmcblk0p15 /cache nosuid nodev barrier=1
 
     mkdir /tombstones 0771 system system
     mount ext4 /dev/block/mmcblk0p16 /tombstones nosuid nodev barrier=1
@@ -56,9 +53,6 @@ on emmc-fs
 
 # This section is used when running on S1boot
 on fs
-    # Mount partition
-    mount_all /fstab.sony
-
     # we will remap this as /storage/sdcard0 with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
     mount_all /fstab_sd.sony
