@@ -244,7 +244,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.mode=endfire \
     persist.audio.vr.enable=false \
     persist.audio.handset.mic=analog \
-    persist.audio.hp=true 
+    persist.audio.hp=true
+
+# Audio LPA
+PRODUCT_PROPERTY_OVERRIDES += \
+    lpa.decode=true \
+    lpa.use-stagefright=true
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
