@@ -92,13 +92,13 @@ case "$usb_config" in
             "msm8960" | "msm8974")
                 case "$baseband" in
                     "mdm")
-                         setprop persist.sys.usb.config diag,diag_mdm,serial_hsic,serial_tty,rmnet_hsic,mass_storage,adb
+                         setprop persist.sys.usb.config diag,diag_mdm,serial_hsic,serial_tty,rmnet_hsic,mtp,adb
                     ;;
                     "sglte")
-                         setprop persist.sys.usb.config diag,diag_mdm,serial_smd,serial_tty,serial_hsuart,rmnet_hsuart,mass_storage,adb
+                         setprop persist.sys.usb.config diag,diag_mdm,serial_smd,serial_tty,serial_hsuart,rmnet_hsuart,mtp,adb
                     ;;
                     *)
-                         setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
+                         setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_bam,mtp,adb
                     ;;
                 esac
             ;;
@@ -114,7 +114,7 @@ case "$usb_config" in
                          setprop persist.sys.usb.config diag,diag_mdm,serial_sdio,serial_tty,rmnet_sdio,mass_storage,adb
                     ;;
                     *)
-                         setprop persist.sys.usb.config diag,serial_tty,serial_tty,rmnet_smd,mass_storage,adb
+                         setprop persist.sys.usb.config diag,serial_tty,serial_tty,rmnet_smd,mtp,adb
                     ;;
                 esac
             ;;
