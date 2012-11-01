@@ -103,6 +103,7 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Audio
+COMMON_GLOBAL_CFLAGS += -DQCOM_TUNNEL_LPA_ENABLED
 BOARD_USES_ALSA_AUDIO := true
 
 # FM radio
