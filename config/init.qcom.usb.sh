@@ -92,29 +92,29 @@ case "$usb_config" in
             "msm8960" | "msm8974")
                 case "$baseband" in
                     "mdm")
-                         setprop persist.sys.usb.config diag,diag_mdm,serial_hsic,serial_tty,rmnet_hsic,mass_storage,adb
+                         setprop persist.sys.usb.config diag,diag_mdm,serial_hsic,serial_tty,rmnet_hsic,mtp,adb
                     ;;
                     "sglte")
-                         setprop persist.sys.usb.config diag,diag_mdm,serial_smd,serial_tty,serial_hsuart,rmnet_hsuart,mass_storage,adb
+                         setprop persist.sys.usb.config diag,diag_mdm,serial_smd,serial_tty,serial_hsuart,rmnet_hsuart,mtp,adb
                     ;;
                     *)
-                         setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
+                         setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_bam,mtp,adb
                     ;;
                 esac
             ;;
             "msm7627a")
-                setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_smd,mass_storage,adb
+                setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_smd,mtp,adb
             ;;
             * )
                 case "$baseband" in
                     "svlte2a")
-                         setprop persist.sys.usb.config diag,diag_mdm,serial_sdio,serial_smd,rmnet_smd_sdio,mass_storage,adb
+                         setprop persist.sys.usb.config diag,diag_mdm,serial_sdio,serial_smd,rmnet_smd_sdio,mtp,adb
                     ;;
                     "csfb")
-                         setprop persist.sys.usb.config diag,diag_mdm,serial_sdio,serial_tty,rmnet_sdio,mass_storage,adb
+                         setprop persist.sys.usb.config diag,diag_mdm,serial_sdio,serial_tty,rmnet_sdio,mtp,adb
                     ;;
                     *)
-                         setprop persist.sys.usb.config diag,serial_tty,serial_tty,rmnet_smd,mass_storage,adb
+                         setprop persist.sys.usb.config diag,serial_tty,serial_tty,rmnet_smd,mtp,adb
                     ;;
                 esac
             ;;
