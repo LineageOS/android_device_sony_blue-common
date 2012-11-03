@@ -21,39 +21,6 @@ on early-init
 on init
     symlink /dev/socket /tmp
 
-# This section is used when running with QCT boot (or VB+)
-on emmc-fs
-    # mount mmc partitions
-    wait /dev/block/mmcblk0p12
-    mount ext4 /dev/block/mmcblk0p12 /system rw barrier=1
-    wait /dev/block/mmcblk0p13
-    exec /system/bin/e2fsck -p /dev/block/mmcblk0p13
-    mount ext4 /dev/block/mmcblk0p13 /data nosuid nodev barrier=1 noauto_da_alloc
-    mount ext4 /dev/block/mmcblk0p14 /persist nosuid nodev barrier=1
-    mount ext4 /dev/block/mmcblk0p15 /cache nosuid nodev barrier=1
-
-    mkdir /tombstones 0771 system system
-    mount ext4 /dev/block/mmcblk0p16 /tombstones nosuid nodev barrier=1
-    mkdir /tombstones/modem 0771 system system
-    mkdir /tombstones/lpass 0771 system system
-    mkdir /tombstones/wcnss 0771 system system
-    mkdir /tombstones/dsps 0771 system system
-    mkdir /firmware 0771 system system
-    wait /dev/block/mmcblk0p1
-    mount vfat /dev/block/mmcblk0p1 /firmware ro shortname=lower
-    exec /system/bin/sh /system/etc/init.qcom.modem_links.sh
-
-    # SEMC: Start the TrimArea Daemon and early TA-users
-    class_start trimarea
-    exec /system/bin/wait4tad
-    exec /sbin/mr
-    exec /system/bin/taimport
-    start ta_qmi_service
-
-    # SEMC: Remote storage service should be started after master reset
-    # due to that the modem file system is formatted in the master reset
-    start rmt_storage
-
 # This section is used when running on S1boot
 on fs
     # Mount partition
