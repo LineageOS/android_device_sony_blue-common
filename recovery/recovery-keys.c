@@ -64,7 +64,7 @@ int device_handle_key(int key_code, int visible) {
                 if (!get_allow_toggle_display() && !ui_root_menu) {
                     return GO_BACK;
                 }
-            case KEY_CAMERA:
+            case 528: // Camera short press
             case KEY_BACK:
                 if (!ui_root_menu) {
                     return GO_BACK;
