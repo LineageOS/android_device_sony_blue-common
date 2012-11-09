@@ -1,0 +1,9 @@
+#!/system/bin/sh
+
+# For WifiConfigStore
+if [ ! -f /data/misc/wifi/ipconfig.txt ];
+then
+	touch /data/misc/wifi/ipconfig.txt
+	chown system /data/misc/wifi/ipconfig.txt
+	chgrp system /data/misc/wifi/ipconfig.txt
+fi
