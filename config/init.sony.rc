@@ -107,9 +107,6 @@ on early-boot
     # Start the offline charging (This blocks booting further in some cases)
     exec /system/bin/chargemon
 
-    #recovery
-    exec /sbin/bootrec
-
     # Touch firmware update
     exec /system/bin/sh /system/etc/clearpad_fwloader.sh
 
