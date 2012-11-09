@@ -3,9 +3,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
-# Recovery resources
-$(call inherit-product, device/sony/blue-common/recovery/recovery.mk)
-
 DEVICE_PACKAGE_OVERLAYS += device/sony/blue-common/overlay
 
 # Permissions
@@ -161,9 +158,8 @@ PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/init.sony.rc:root/init.sony.rc \
     device/sony/blue-common/config/ueventd.sony.rc:root/ueventd.sony.rc
 
-# Recovery bootstrap script
+# Post recovery script
 PRODUCT_COPY_FILES += \
-    device/sony/blue-common/recovery/bootrec:root/sbin/bootrec \
     device/sony/blue-common/recovery/postrecoveryboot.sh:root/sbin/postrecoveryboot.sh
 
 # Additional sbin stuff
