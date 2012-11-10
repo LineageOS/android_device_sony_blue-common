@@ -261,6 +261,3 @@ service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
 service system_monitor /system/bin/system_monitor
     class core
     user root
-
-service illumination /system/bin/illumination_service
-    class main
