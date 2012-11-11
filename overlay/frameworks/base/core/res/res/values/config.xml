@@ -34,7 +34,7 @@
     <bool name="config_unplugTurnsOnScreen">true</bool>
 
     <!-- NOTE: Set to true for now so electron beam isn't used. This causes a screen lockup on our QCOM's right now. -->
-    <bool name="config_animateScreenLights">true</bool>
+    <bool name="config_animateScreenLights">false</bool>
 
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
                   autodetected from the Configuration. -->
