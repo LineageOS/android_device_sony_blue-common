@@ -1,3 +1,4 @@
+import init.device.rc
 import init.qcom-etc.rc
 import init.qcom.usb.rc
 import init.sony.usb.rc
