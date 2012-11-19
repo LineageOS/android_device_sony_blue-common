@@ -1,4 +1,5 @@
 # Copyright (C) 2008 The Android Open Source Project
+# Copyright (C) 2012 The CyanogenMod Project <http://www.cyanogenmod.org>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,6 +16,12 @@ LOCAL_PATH:= $(call my-dir)
 # HAL module implemenation, not prelinked and stored in
 # hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.board.platform>.so
 include $(CLEAR_VARS)
+
+ifeq ($(TARGET_DEVICE),tsubasa)
+LOCAL_CFLAGS += -DTSUBASA
+LOCAL_CFLAGS += -DNO_DELAY
+LOCAL_CFLAGS += -DDUAL_BACKLIGHT
+endif
 
 LOCAL_SRC_FILES := lights.c
 LOCAL_C_INCLUDES += $(LOCAL_PATH)

@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2008 The Android Open Source Project
  * Copyright (C) 2011 Diogo Ferreira <defer@cyanogenmod.com>
- * Copyright (C) 2011 The CyanogenMod Project <http://www.cyanogenmod.com>
+ * Copyright (C) 2012 The CyanogenMod Project <http://www.cyanogenmod.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -114,6 +114,9 @@ static int set_light_backlight (struct light_device_t *dev, struct light_state_t
 	pthread_mutex_lock(&g_lock);
 	err = write_int (ALS_FILE, enable);
 	err |= write_int (LCD_BACKLIGHT_FILE, brightness);
+#ifdef DUAL_BACKLIGHT
+    err |= write_int (LCD_BACKLIGHT2_FILE, brightness);
+#endif
 	pthread_mutex_unlock(&g_lock);
 
 	return err;
@@ -148,7 +151,7 @@ static void set_shared_light_locked (struct light_device_t *dev, struct light_st
 		write_string (RED_LED_FILE_TRIGGER, "timer");
 		write_string (GREEN_LED_FILE_TRIGGER, "timer");
 		write_string (BLUE_LED_FILE_TRIGGER, "timer");
-
+#ifndef NO_DELAY
 		write_int (RED_LED_FILE_DELAYON, delayOn);
 		write_int (GREEN_LED_FILE_DELAYON, delayOn);
 		write_int (BLUE_LED_FILE_DELAYON, delayOn);
@@ -156,6 +159,7 @@ static void set_shared_light_locked (struct light_device_t *dev, struct light_st
 		write_int (RED_LED_FILE_DELAYOFF, delayOff);
 		write_int (GREEN_LED_FILE_DELAYOFF, delayOff);
 		write_int (BLUE_LED_FILE_DELAYOFF, delayOff);
+#endif
 		break;
 
 	case LIGHT_FLASH_NONE:
