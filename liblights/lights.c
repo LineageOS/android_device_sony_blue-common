@@ -30,7 +30,7 @@
 #include <sys/types.h>
 
 #include <hardware/lights.h>
-#include "lights.h"
+#include "sony_lights.h"
 
 /* Synchronization primities */
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
@@ -127,7 +127,7 @@ static int set_light_buttons (struct light_device_t *dev, struct light_state_t c
 }
 
 static void set_shared_light_locked (struct light_device_t *dev, struct light_state_t *state) {
-	int r, g, b;
+	int r, g, b, i;
 	int delayOn, delayOff;
 
         /* fix some color */
@@ -148,24 +148,18 @@ static void set_shared_light_locked (struct light_device_t *dev, struct light_st
 	switch (state->flashMode) {
 	case LIGHT_FLASH_TIMED:
 	case LIGHT_FLASH_HARDWARE:
-		write_string (RED_LED_FILE_TRIGGER, "timer");
-		write_string (GREEN_LED_FILE_TRIGGER, "timer");
-		write_string (BLUE_LED_FILE_TRIGGER, "timer");
-#ifndef NO_DELAY
-		write_int (RED_LED_FILE_DELAYON, delayOn);
-		write_int (GREEN_LED_FILE_DELAYON, delayOn);
-		write_int (BLUE_LED_FILE_DELAYON, delayOn);
-
-		write_int (RED_LED_FILE_DELAYOFF, delayOff);
-		write_int (GREEN_LED_FILE_DELAYOFF, delayOff);
-		write_int (BLUE_LED_FILE_DELAYOFF, delayOff);
-#endif
+		for (i = 0; i < sizeof(LED_FILE_TRIGGER)/sizeof(LED_FILE_TRIGGER[0]); i++) {
+		write_string (LED_FILE_TRIGGER, ON);
+		}
+		write_string (LED_FILE_PATTERN, PATTERN);
+		write_string (LED_FILE_DELAYON, DELAYON);
+		write_string (LED_FILE_DELAYOFF, DELAYOFF);
 		break;
 
 	case LIGHT_FLASH_NONE:
-		write_string (RED_LED_FILE_TRIGGER, "none");
-		write_string (GREEN_LED_FILE_TRIGGER, "none");
-		write_string (BLUE_LED_FILE_TRIGGER, "none");
+		for (i = 0; i < sizeof(LED_FILE_TRIGGER)/sizeof(LED_FILE_TRIGGER[0]); i++) {
+		write_string (LED_FILE_TRIGGER, ON);
+		}
 		break;
 	}
 
