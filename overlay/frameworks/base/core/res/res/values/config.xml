@@ -193,7 +193,7 @@
     </integer-array>
 
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
-    <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
+    <bool translatable="false" name="config_wifi_background_scan_support">false</bool>
 
     <string-array translatable="false" name="config_tether_wifi_regexs">
         <item>"wlan\\d"</item>
@@ -239,9 +239,6 @@
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
-
-    <!-- Boolean indicating whether the wifi chipset has background scan support -->
-    <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
 
     <!-- We dont have different firmware for wifi modes, prevent reloading it -->
     <bool name="config_wifiApFirmwareReload">false</bool>
