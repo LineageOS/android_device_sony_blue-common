@@ -37,6 +37,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/egl.cfg:system/lib/egl/egl.cfg
 
+# WPA supplicant config
+PRODUCT_COPY_FILES += \
+    device/sony/blue-common/config/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+
 # Common Qualcomm scripts
 PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/init.qcom.efs.sync.sh:system/etc/init.qcom.efs.sync.sh
