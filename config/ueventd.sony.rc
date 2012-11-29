@@ -3,7 +3,7 @@
 /dev/msm_aac_in           0660   system     audio
 /dev/msm_rtac             0660   system     audio
 /dev/tzcom                0660   system     drmrpc
-/dev/qseecom              0660   system     drmrpc
+/dev/qseecom              0666   system     drmrpc
 /dev/qce                  0660   system     drmrpc
 /dev/msm_a2dp_in          0640   system     audio
 /dev/msm_pcm_lp_dec       0660   system     audio
@@ -37,7 +37,7 @@
 /dev/ttyHSL1              0660   system     system
 /dev/tty_sdio_00          0660   system     system
 /dev/graphics/*           0660   system     graphics
-/dev/gemini0              0660   system     camera
+/dev/gemini*              0660   system     camera
 /dev/i2c-0                0664   root       system
 /dev/i2c-1                0664   root       system
 /dev/i2c-2                0664   root       system
@@ -97,7 +97,7 @@
 /dev/msm_mvs              0660   system     audio
 /dev/qemu_trace           0666   system     system
 # the genlock client device node is world writable/readable.
-/dev/genlock              0666   root      root
+/dev/genlock              0666   system    system
 /dev/pmem_tz              0660   system    system
 #permissions for sensors
 /dev/msm_dsps             0660  system       system
