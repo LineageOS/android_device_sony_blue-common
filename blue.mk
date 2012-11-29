@@ -46,19 +46,16 @@ PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/init.qcom.efs.sync.sh:system/etc/init.qcom.efs.sync.sh
 
 PRODUCT_COPY_FILES += \
-   device/sony/blue-common/config/fstab.sony:root/fstab.sony \
-   device/sony/blue-common/config/fstab_sd.sony:root/fstab_sd.sony
+    device/sony/blue-common/config/fstab.sony:root/fstab.sony \
+    device/sony/blue-common/config/fstab_sd.sony:root/fstab_sd.sony
 
 # QCOM Display
 PRODUCT_PACKAGES += \
-    copybit.msm8960 \
-    gralloc.msm8960 \
-    hwcomposer.msm8960 \
     libgenlock \
-    libmemalloc \
     liboverlay \
-    libqdutils \
-    libtilerenderer
+    hwcomposer.msm8960 \
+    gralloc.msm8960 \
+    copybit.msm8960
 
 # NFC Support
 PRODUCT_PACKAGES += \
@@ -82,10 +79,17 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio.a2dp.default \
+    alsa.msm8960 \
     audio_policy.msm8960 \
     audio.primary.msm8960 \
-    libaudioutils
+    audio.a2dp.default \
+    audio.usb.default \
+    audio.r_submix.default \
+    libaudio-resampler
+
+# BT
+PRODUCT_PACKAGES += \
+    hci_qcomm_init
 
 PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/audio_policy.conf:system/etc/audio_policy.conf \
@@ -93,18 +97,14 @@ PRODUCT_COPY_FILES += \
 
 # Omx
 PRODUCT_PACKAGES += \
+    mm-vdec-omx-test \
+    mm-venc-omx-test720p \
     libdivxdrmdecrypt \
-    libI420colorconvert \
-    libmm-omxcore \
-    libOmxCore \
     libOmxVdec \
     libOmxVenc \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libOmxEvrcEnc \
-    libOmxQcelp13Enc \
+    libOmxCore \
     libstagefrighthw \
-    libstagefright_client
+    libc2dcolorconvert
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -128,6 +128,7 @@ PRODUCT_PACKAGES += \
 
 # Misc
 PRODUCT_PACKAGES += \
+    librs_jni \
     com.android.future.usb.accessory \
     XperiaSettings
 
@@ -136,17 +137,13 @@ PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
     VisualizationWallpapers \
-    librs_jni
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
-    make_ext4fs \
-    setup_fs
+    e2fsck
 
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
-
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Custom init / uevent
 PRODUCT_COPY_FILES += \
@@ -256,16 +253,30 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.bluetooth.sap=true \
-    ro.qualcomm.bt.hci_transport=smd \
-    ro.bluetooth.request.master=true \
-    ro.bluetooth.remote.autoconnect=true
+    ro.qualcomm.bluetooth.sap=true
 
 # OpenglES
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    telephony.lteOnCdmaDevice=0
+
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=30
+    wifi.supplicant_scan_interval=15
+
+# Do not power down SIM card when modem is sent to Low Power Mode.
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.apm_sim_not_pwdn=1
+
+# Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.call_ring.multiple=0
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.prerotation.disable=1
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.egl.recordable.rgba8888=1
