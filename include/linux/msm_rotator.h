@@ -57,20 +57,20 @@ struct msm_rotator_data_info {
  struct msmfb_data src_chroma;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  struct msmfb_data dst_chroma;
+ struct mdp_buf_fence buf_fence;
 };
 struct msm_rot_clocks {
- const char *clk_name;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ const char *clk_name;
  enum rotator_clk_type clk_type;
  unsigned int clk_rate;
 };
-struct msm_rotator_platform_data {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct msm_rotator_platform_data {
  unsigned int number_of_clocks;
  unsigned int hardware_version_number;
  struct msm_rot_clocks *rotator_clks;
- const char *regulator_name;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- char rot_iommu_split_domain;
+ const char *regulator_name;
 };
 #endif
