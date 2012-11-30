@@ -58,7 +58,8 @@ PRODUCT_PACKAGES += \
     libmemalloc \
     liboverlay \
     libqdutils \
-    libtilerenderer
+    libtilerenderer \
+    tinymix
 
 # NFC Support
 PRODUCT_PACKAGES += \
