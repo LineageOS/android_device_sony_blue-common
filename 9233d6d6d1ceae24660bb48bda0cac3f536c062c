@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAa3//5S0\u003d",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1084
+      },
+      "writtenOn": "2012-11-30T00:19:15Z",
+      "side": 1,
+      "message": "Should this still not be TARGET_USES_C2D_COMPOSITION rather than changing to TARGET_USES_C2D_COMPOSITON? Is this a mistype?",
+      "revId": "9233d6d6d1ceae24660bb48bda0cac3f536c062c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
