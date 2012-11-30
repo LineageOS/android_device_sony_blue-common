@@ -85,7 +85,8 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio_policy.msm8960 \
     audio.primary.msm8960 \
-    libaudioutils
+    libaudioutils \
+    tinymix
 
 PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/audio_policy.conf:system/etc/audio_policy.conf \
