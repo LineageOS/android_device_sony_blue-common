@@ -67,6 +67,9 @@ TARGET_USES_SF_BYPASS := true
 TARGET_USES_C2D_COMPOSITION := true
 BOARD_EGL_CFG := device/sony/blue-common/config/egl.cfg
 
+# We still have the old ION API
+BOARD_HAVE_OLD_ION_API := true
+
 TARGET_PROVIDES_LIBLIGHT := true
 TARGET_PROVIDES_POWERHAL := true
 
