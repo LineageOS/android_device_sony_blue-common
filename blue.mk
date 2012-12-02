@@ -93,7 +93,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/audio_policy.conf:system/etc/audio_policy.conf \
-    device/sony/blue-common/config/media_codecs.xml:system/etc/media_codecs.xml
+    device/sony/blue-common/config/media_codecs.xml:system/etc/media_codecs.xml \
+    device/sony/blue-common/config/audio_effects.conf:system/etc/audio_effects.conf
 
 # Omx
 PRODUCT_PACKAGES += \
@@ -197,7 +198,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SonyQualcommRIL \
     rild.libpath=/system/lib/libril-qc-qmi-1.so \
     rild.libargs=-d /dev/smd0 \
     persist.rild.nitz_plmn= \
@@ -228,6 +228,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.cne.rat.acq.retry.tout=0 \
     persist.cne.nsrm.mode=false \
     persist.gps.qmienabled=true
+#    ro.telephony.ril_class=SonyQualcommRIL \
 
 # QCOM Display
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -337,11 +337,11 @@ service iprenew_bnep0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service wiperiface /system/bin/wiperiface
-    class late_start
-    user gps
-    group gps qcom_oncrpc
-    oneshot
+#service wiperiface /system/bin/wiperiface
+#    class late_start
+#    user gps
+#    group gps qcom_oncrpc
+#    oneshot
 
 service gpsone_daemon /system/bin/gpsone_daemon
     class late_start
@@ -401,11 +401,11 @@ service qcom-wifi /system/bin/sh /system/etc/init.qcom.wifi.sh
 on property:sys.boot_completed=1
     start qcom-post-boot
 
-service atfwd /system/bin/ATFWD-daemon
-    class late_start
-    user system
-    group system radio
-    onrestart /system/bin/log -t RIL-ATFWD -p w "ATFWD daemon restarted"
+#service atfwd /system/bin/ATFWD-daemon
+#    class late_start
+#    user system
+#    group system radio
+#    onrestart /system/bin/log -t RIL-ATFWD -p w "ATFWD daemon restarted"
 
 service hdmid /system/bin/hdmid
     class late_start
