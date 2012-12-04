@@ -396,12 +396,6 @@ service ppd /system/bin/mm-pp-daemon
     socket pps stream 0660 system system graphics
     group system graphics
 
-service wiperiface /system/bin/wiperiface
-    class late_start
-    user gps
-    group gps qcom_oncrpc
-    oneshot
-
 # Trim Area QMI service
 service ta_qmi_service /system/bin/ta_qmi_service
     user system
