@@ -198,6 +198,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.ril_class=SonyQualcomm8x60RIL \
     rild.libpath=/system/lib/libril-qc-qmi-1.so \
     rild.libargs=-d /dev/smd0 \
     persist.rild.nitz_plmn= \
@@ -228,7 +229,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.cne.rat.acq.retry.tout=0 \
     persist.cne.nsrm.mode=false \
     persist.gps.qmienabled=true
-#    ro.telephony.ril_class=SonyQualcommRIL \
 
 # QCOM Display
 PRODUCT_PROPERTY_OVERRIDES += \
