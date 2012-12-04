@@ -30,6 +30,13 @@ on init
     symlink /storage/usbdisk /usbdisk
     symlink /storage/usbdisk /mnt/usbdisk
 
+    mkdir /storage/sdcard1 0770 root sdcard_rw
+    chown root sdcard_rw /storage/sdcard1
+    chmod 0770 /storage/sdcard1
+    mkdir /storage/usbdisk 0770 root sdcard_rw
+    chown root sdcard_rw /storage/usbdisk
+    chmod 0770 /storage/usbdisk
+
 on fs
     # Mount partition
     mount_all ./fstab.sony
