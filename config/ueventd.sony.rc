@@ -26,8 +26,9 @@
 /dev/video*               0660   system     camera
 
 /dev/qseecom              0666   system     drmrpc
-/dev/block/mmcblk0p17     0660   system     system
-/dev/block/mmcblk0p18     0660   system     system
+/dev/block/mmcblk0p12     0660   system     system
+/dev/block/mmcblk0p13     0660   system     system
+/dev/block/mmcblk0p15     0660   system     system
 /dev/oncrpc/*             0660   root       qcom_oncrpc
 /dev/smd4                 0660   system     system
 
