@@ -170,6 +170,9 @@ on boot
     setprop persist.radio.add_power_save 1
     exec /system/bin/cal_data_manager
 
+    # Enable DEBUG_SUSPEND, DEBUG_EXIT_SUSPEND, and DEBUG_WAKEUP
+    write /sys/module/wakelock/parameters/debug_mask 7
+
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
 # create virtual SD card at /storage/sdcard0, based on the /data/media directory
