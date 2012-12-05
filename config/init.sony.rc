@@ -36,20 +36,16 @@ on init
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
 
     # create directory for mounting usb drives
-    mkdir /storage/usbdisk 0666 system system
+    mkdir /storage/usbdisk 0555 root root
     symlink /storage/usbdisk /mnt/usbdisk
-    symlink /mnt/usbdisk /usbdisk
+    symlink /storage/usbdisk /usbdisk
 
     # create directory for mounting real SD Card
-    mkdir /storage/sdcard1 0666 system system
-    symlink /storage/sdcard1 /mnt/external_sd
-    symlink /storage/sdcard1 /external_sd
+    mkdir /storage/sdcard1 0555 root root
 
     # create directory for mounting internal 2GB Partition
     # which was /data on < 4.2
-    mkdir /storage/sdcard2 0666 system system
-    symlink /storage/sdcard2 /mnt/internal_sd
-    symlink /storage/sdcard2 /internal_sd
+    mkdir /storage/sdcard2 0555 root root
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -60,12 +56,8 @@ on fs
     mount_all ./fstab.sony
     setprop ro.crypto.fuse_sdcard true
 
-    chmod 0075 /storage/sdcard2
-    chown system sdcard_rw /storage/sdcard2
-
     start tad
     exec /system/bin/wait4tad
-    exec /sbin/mr
     exec /system/bin/taimport
     start ta_qmi_service
     start rmt_storage
