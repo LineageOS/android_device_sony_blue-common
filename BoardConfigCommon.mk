@@ -55,6 +55,7 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/prima_wlan.ko"
 WIFI_DRIVER_MODULE_NAME := "prima_wlan"
+WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/prima_wlan/parameters/fwpath"
 
 BOARD_USES_QCOM_HARDWARE := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
