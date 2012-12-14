@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-TARGET_SPECIFIC_HEADER_PATH := device/sony/blue-common/include
+#TARGET_SPECIFIC_HEADER_PATH := device/sony/blue-common/include
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
