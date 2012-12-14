@@ -46,10 +46,10 @@ if [ -s /dev/keycheck -o -e /cache/recovery/boot ]
 then
 	busybox echo 'RECOVERY BOOT' >>boot.txt
 	busybox rm -fr /cache/recovery/boot
-	# trigger blue led
-	busybox echo 0 > ${BOOTREC_LED_RED}
-	busybox echo 0 > ${BOOTREC_LED_GREEN}
-	busybox echo 255 > ${BOOTREC_LED_BLUE}
+	# orange led for recoveryboot
+	busybox echo 255 > ${BOOTREC_LED_RED}
+	busybox echo 100 > ${BOOTREC_LED_GREEN}
+	busybox echo 0 > ${BOOTREC_LED_BLUE}
 	# recovery ramdisk
 	load_image=/sbin/ramdisk-recovery.cpio
 else
