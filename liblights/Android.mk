@@ -17,12 +17,6 @@ LOCAL_PATH:= $(call my-dir)
 # hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.board.platform>.so
 include $(CLEAR_VARS)
 
-ifeq ($(TARGET_DEVICE),tsubasa)
-LOCAL_CFLAGS += -DTSUBASA
-LOCAL_CFLAGS += -DNO_DELAY
-LOCAL_CFLAGS += -DDUAL_BACKLIGHT
-endif
-
 LOCAL_SRC_FILES := lights.c
 LOCAL_C_INCLUDES += $(LOCAL_PATH)
 
