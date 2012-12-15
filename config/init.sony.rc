@@ -333,12 +333,6 @@ service mac-update /system/bin/mac-update
     user wifi
     oneshot
 
-# Start ric
-service ric /system/bin/ric
-    class main
-    user root
-    group root
-
 service hciattach /system/bin/sh /system/etc/init.sony.bt.sh
     class late_start
     user bluetooth
