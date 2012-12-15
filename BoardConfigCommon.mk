@@ -69,7 +69,6 @@ BOARD_EGL_CFG := device/sony/blue-common/config/egl.cfg
 BOARD_HAVE_OLD_ION_API := true
 
 TARGET_PROVIDES_LIBLIGHT := true
-TARGET_PROVIDES_POWERHAL := true
 
 # Camera
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
