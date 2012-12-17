@@ -357,8 +357,7 @@ service tad /system/bin/tad /dev/block/mmcblk0 1,16
 
 service secchand /system/bin/secchand
     class core
-    user system
-    group system
+    user root
 
 service netmgrd /system/bin/netmgrd
     class main
@@ -375,7 +374,7 @@ service ppd /system/bin/mm-pp-daemon
 
 # Trim Area QMI service
 service ta_qmi_service /system/bin/ta_qmi_service
-    user system
+    user root
     disabled
 
 service updatemiscta /system/bin/updatemiscta
