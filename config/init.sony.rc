@@ -323,6 +323,7 @@ service rmt_storage /system/bin/rmt_storage
 # Fast Dormancy
 service fast-dormancy /system/bin/fast-dormancy
     class late_start
+    disabled
 
 on property:ro.semc.enable.fast_dormancy=false
     stop fast-dormancy
