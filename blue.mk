@@ -27,11 +27,11 @@ PRODUCT_COPY_FILES += \
 
 # Bootsplash
 PRODUCT_COPY_FILES += \
-   device/sony/blue-common/prebuilt/logo_X.rle:root/logo.rle
+    device/sony/blue-common/prebuilt/logo_X.rle:root/logo.rle
 
 # GPS
 PRODUCT_COPY_FILES += \
-   device/sony/blue-common/prebuilt/gps.conf:system/etc/gps.conf
+    device/sony/blue-common/prebuilt/gps.conf:system/etc/gps.conf
 
 # EGL config
 PRODUCT_COPY_FILES += \
@@ -45,9 +45,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/init.qcom.efs.sync.sh:system/etc/init.qcom.efs.sync.sh
 
+# Permissions mess fix
 PRODUCT_COPY_FILES += \
-   device/sony/blue-common/config/fstab.sony:root/fstab.sony \
-   device/sony/blue-common/config/fstab_sd.sony:root/fstab_sd.sony
+    device/sony/blue-common/prebuilt/data_media_perm.sh:system/bin/data_media_perm.sh
+
+PRODUCT_COPY_FILES += \
+    device/sony/blue-common/config/fstab.sony:root/fstab.sony
 
 # QCOM Display
 PRODUCT_PACKAGES += \
@@ -175,8 +178,8 @@ PRODUCT_COPY_FILES += \
 
 # CNE config
 PRODUCT_COPY_FILES += \
-   device/sony/blue-common/config/OperatorPolicy.xml:system/etc/OperatorPolicy.xml \
-   device/sony/blue-common/config/UserPolicy.xml:system/etc/UserPolicy.xml
+    device/sony/blue-common/config/OperatorPolicy.xml:system/etc/OperatorPolicy.xml \
+    device/sony/blue-common/config/UserPolicy.xml:system/etc/UserPolicy.xml
 
 # ALSA configuration
 PRODUCT_COPY_FILES += \
