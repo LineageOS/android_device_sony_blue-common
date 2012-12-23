@@ -43,15 +43,14 @@ on init
     # create directory for mounting real SD Card
     mkdir /storage/sdcard1 0555 root root
 
-    # create directory for mounting internal 2GB Partition
-    # which was /data on < 4.2
-    mkdir /storage/sdcard2 0555 root root
-
     symlink /dev/socket /tmp
 
 on fs
     mount_all ./fstab.sony
     setprop ro.crypto.fuse_sdcard true
+
+    chown 2800 2800 /mnt/int_storage
+    chmod 0770 /mnt/int_storage
 
     start tad
     exec /system/bin/wait4tad
@@ -441,7 +440,7 @@ on property:ro.data.large_tcp_window_size=true
     write /proc/sys/net/ipv4/tcp_adv_win_scale  1
 
 # virtual sdcard daemon running as media_rw (1023)
-service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
+service sdcard /system/bin/sdcard /mnt/int_storage /mnt/shell/emulated 2800 2800
     class late_start
 
 service thermald /system/bin/thermald
