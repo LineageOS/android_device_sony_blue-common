@@ -25,6 +25,9 @@ TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
 TARGET_BOOTLOADER_BOARD_NAME := blue
 TARGET_BOARD_PLATFORM := msm8960
 
+# QCOM - required
+BOARD_USES_QCOM_HARDWARE := true
+
 # Architecture
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
