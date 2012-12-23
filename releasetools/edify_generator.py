@@ -116,6 +116,11 @@ class EdifyGenerator(object):
     self.script.append('set_perm(0, 0, 0777, "/tmp/modelid_cfg.sh");')
     self.script.append(('run_program("/tmp/modelid_cfg.sh", "%s");' % command))
 
+    def RunFixPerm(self):
+    self.script.append('package_extract_file("system/bin/data_media_perm.sh", "/tmp/data_media_perm.sh");')
+    self.script.append('set_perm(0, 0, 0777, "/tmp/data_media_perm.sh");')
+    self.script.append('run_program("/tmp/data_media_perm.sh");')
+
   def ShowProgress(self, frac, dur):
     """Update the progress bar, advancing it over 'frac' over the next
     'dur' seconds.  'dur' may be zero to advance it via SetProgress
