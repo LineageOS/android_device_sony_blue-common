@@ -44,6 +44,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/fstab.sony:root/fstab.sony
 
+# Permissions mess fix
+PRODUCT_COPY_FILES += \
+    device/sony/blue-common/prebuilt/data_media_perm.sh:system/bin/data_media_perm.sh
+
 # QCOM Display
 PRODUCT_PACKAGES += \
     libgenlock \
