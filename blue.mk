@@ -177,11 +177,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
-# QCOM
-PRODUCT_PROPERTY_OVERRIDES += \
-    com.qc.hardware=true \
-    dev.pm.dyn_samplingrate=1
-
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/system/lib/libqc-opt.so
@@ -205,7 +200,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=1 \
     ro.use_data_netmgrd=true \
     ro.ril.transmitpower=true \
-    ro.telephony.call_ring.multiple=false \
     persist.cne.UseCne=vendor \
     persist.cne.UseSwim=false \
     persist.cne.bat.range.low.med=30 \
@@ -222,13 +216,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # QCOM Display
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.hw=1 \
-    debug.egl.hw=1 \
-    debug.enabletr=true \
-    debug.composition.type=dyn \
-    debug.mdpcomp.maxlayer=3 \
-    debug.mdpcomp.logs=0 \
-    ro.hwui.text_cache_width=2048
+    debug.mdpcomp.maxlayer=3
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -236,11 +224,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.vr.enable=false \
     persist.audio.handset.mic=analog \
     persist.audio.hp=true
-
-# Audio LPA
-PRODUCT_PROPERTY_OVERRIDES += \
-    lpa.decode=true \
-    lpa.use-stagefright=true
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -271,3 +254,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.recordable.rgba8888=1
+
+# for bugmailer
+PRODUCT_PACKAGES += send_bug
+PRODUCT_COPY_FILES += \
+    system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
+    system/extras/bugmailer/send_bug:system/bin/send_bug
