@@ -32,28 +32,6 @@ on fs
     mount_all /fstab_sd.sony
     chown media_rw media_rw /data/media
 
-    # Fix wrong permissions set on /data/media from stock rom
-    chown media_rw media_rw /data/media/Android
-    chmod 0775 /data/media/Android
-    chown media_rw media_rw /data/media/Android/data
-    chmod 0775 /data/media/Android/data
-    chown media_rw media_rw /data/media/Alarms
-    chmod 0775 /data/media/Alarms
-    chown media_rw media_rw /data/media/DCIM
-    chmod 0775 /data/media/DCIM
-    chown media_rw media_rw /data/media/DCIM/.thumbnails
-    chmod 0775 /data/media/DCIM/.thumbnails
-    chown media_rw media_rw /data/media/DCIM/100ANDRO
-    chmod 0775 /data/media/DCIM/100ANDRO
-    chown media_rw media_rw /data/media/DCIM/Camera
-    chmod 0775 /data/media/DCIM/Camera
-    chown media_rw media_rw /data/media/Notifications
-    chmod 0775 /data/media/Notifications
-    chown media_rw media_rw /data/media/Pictures
-    chmod 0775 /data/media/Pictures
-    chown media_rw media_rw /data/media/Ringtones
-    chmod 0775 /data/media/Ringtones
-
     setprop ro.crypto.fuse_sdcard true
 
     mkdir /tombstones 0771 system system
