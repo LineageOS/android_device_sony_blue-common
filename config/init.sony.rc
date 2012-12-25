@@ -94,6 +94,10 @@ on post-fs-data
     # Camera
     mkdir /data/camera 0771 root camera
 
+    # communicate with mpdecision and thermald
+    mkdir /dev/socket/mpdecision 0770 system system
+    chmod 2770 /dev/socket/mpdecision
+
 on early-boot
 # Permissions for AKM897x sensor
     chown system system /data/misc/akm_set.txt
@@ -232,6 +236,10 @@ service hw_config /system/bin/sh /system/etc/hw_config.sh
     class main
     user root
     oneshot
+
+service thermald /system/bin/thermald
+    user root
+    disabled
 
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
     user root
