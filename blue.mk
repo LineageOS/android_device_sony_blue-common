@@ -3,7 +3,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/sony/blue-common/overlay
+COMMON_PATH := device/sony/blue-common
+
+DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -25,32 +27,54 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
-# Bootsplash
+# Ramdisk
 PRODUCT_COPY_FILES += \
-   device/sony/blue-common/prebuilt/logo_X.rle:root/logo.rle
+    $(COMMON_PATH)/prebuilt/mr:root/sbin/mr \
+    $(COMMON_PATH)/prebuilt/logo_X.rle:root/logo.rle \
+    $(COMMON_PATH)/config/init.sony.rc:root/init.sony.rc \
+    $(COMMON_PATH)/config/fstab.sony:root/fstab.sony \
+    $(COMMON_PATH)/config/init.sony.bt.sh:system/etc/init.sony.bt.sh \
+    $(COMMON_PATH)/config/ueventd.sony.rc:root/ueventd.sony.rc
+
+# Audio
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/config/audio_policy.conf:system/etc/audio_policy.conf \
+    $(COMMON_PATH)/config/audio_effects.conf:system/etc/audio_effects.conf \
+    $(COMMON_PATH)/config/media_codecs.xml:system/etc/media_codecs.xml \
+    $(COMMON_PATH)/config/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x
 
 # GPS
 PRODUCT_COPY_FILES += \
-   device/sony/blue-common/prebuilt/gps.conf:system/etc/gps.conf
+   $(COMMON_PATH)/prebuilt/gps.conf:system/etc/gps.conf
 
 # EGL config
 PRODUCT_COPY_FILES += \
-    device/sony/blue-common/config/egl.cfg:system/lib/egl/egl.cfg
+    $(COMMON_PATH)/config/egl.cfg:system/lib/egl/egl.cfg
 
 # WPA supplicant config
 PRODUCT_COPY_FILES += \
-    device/sony/blue-common/config/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+    $(COMMON_PATH)/config/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
+# Vold
 PRODUCT_COPY_FILES += \
-    device/sony/blue-common/config/fstab.sony:root/fstab.sony
+    $(COMMON_PATH)/config/vold.fstab:system/etc/vold.fstab
 
-# QCOM Display
-PRODUCT_PACKAGES += \
-    libgenlock \
-    liboverlay \
-    hwcomposer.msm8960 \
-    gralloc.msm8960 \
-    copybit.msm8960
+# Script for fixing perms on internal sdcard
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/prebuilt/fix_storage_permissions.sh:system/bin/fix_storage_permissions.sh
+
+# Post recovery script
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
+
+# CNE config
+PRODUCT_COPY_FILES += \
+   $(COMMON_PATH)/config/OperatorPolicy.xml:system/etc/OperatorPolicy.xml \
+   $(COMMON_PATH)/config/UserPolicy.xml:system/etc/UserPolicy.xml
+
+# Thermal monitor configuration
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/config/thermald.conf:system/etc/thermald.conf
 
 # NFC Support
 PRODUCT_PACKAGES += \
@@ -65,12 +89,20 @@ PRODUCT_COPY_FILES += \
 
 # NFCEE access control
 ifeq ($(TARGET_BUILD_VARIANT),user)
-    NFCEE_ACCESS_PATH := device/sony/blue-common/config/nfcee_access.xml
+    NFCEE_ACCESS_PATH := $(COMMON_PATH)/config/nfcee_access.xml
 else
-    NFCEE_ACCESS_PATH := device/sony/blue-common/config/nfcee_access_debug.xml
+    NFCEE_ACCESS_PATH := $(COMMON_PATH)/config/nfcee_access_debug.xml
 endif
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+
+# QCOM Display
+PRODUCT_PACKAGES += \
+    libgenlock \
+    liboverlay \
+    hwcomposer.msm8960 \
+    gralloc.msm8960 \
+    copybit.msm8960
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -86,11 +118,6 @@ PRODUCT_PACKAGES += \
 # BT
 PRODUCT_PACKAGES += \
     hci_qcomm_init
-
-PRODUCT_COPY_FILES += \
-    device/sony/blue-common/config/audio_policy.conf:system/etc/audio_policy.conf \
-    device/sony/blue-common/config/media_codecs.xml:system/etc/media_codecs.xml \
-    device/sony/blue-common/config/audio_effects.conf:system/etc/audio_effects.conf
 
 # Omx
 PRODUCT_PACKAGES += \
@@ -145,33 +172,6 @@ PRODUCT_PACKAGES += \
 
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
-
-# Custom init / uevent
-PRODUCT_COPY_FILES += \
-    device/sony/blue-common/config/init.sony.rc:root/init.sony.rc \
-    device/sony/blue-common/config/init.sony.bt.sh:system/etc/init.sony.bt.sh \
-    device/sony/blue-common/config/ueventd.sony.rc:root/ueventd.sony.rc
-
-# Post recovery script
-PRODUCT_COPY_FILES += \
-    device/sony/blue-common/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
-
-# Additional sbin stuff
-PRODUCT_COPY_FILES += \
-    device/sony/blue-common/prebuilt/mr:root/sbin/mr
-
-# CNE config
-PRODUCT_COPY_FILES += \
-   device/sony/blue-common/config/OperatorPolicy.xml:system/etc/OperatorPolicy.xml \
-   device/sony/blue-common/config/UserPolicy.xml:system/etc/UserPolicy.xml
-
-# ALSA configuration
-PRODUCT_COPY_FILES += \
-    device/sony/blue-common/config/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x
-
-# Thermal monitor configuration
-PRODUCT_COPY_FILES += \
-    device/sony/blue-common/config/thermald.conf:system/etc/thermald.conf
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
