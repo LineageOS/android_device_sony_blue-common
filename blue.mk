@@ -44,6 +44,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/sony/blue-common/config/fstab.sony:root/fstab.sony
 
+# Script for fixing perms on internal sdcard
+PRODUCT_COPY_FILES += \
+	device/sony/blue-common/prebuilt/fix_storage_permissions.sh:system/bin/fix_storage_permissions.sh
+
 # QCOM Display
 PRODUCT_PACKAGES += \
     libgenlock \
