@@ -19,20 +19,22 @@ package com.cyanogenmod.settings.device;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Vibrator;
 import android.preference.DialogPreference;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Button;
 import android.util.Log;
 
 /**
  * Special preference type that allows configuration of both the ring volume and
  * notification volume.
  */
-public class VibratorIntensityPreference extends DialogPreference {
+public class VibratorIntensityPreference extends DialogPreference implements OnClickListener {
 
     private static final String TAG = "XperiaSettings_Vibrator";
 
@@ -77,6 +79,16 @@ public class VibratorIntensityPreference extends DialogPreference {
             else
                 mSeekBars[i] = new vibratorSeekBar(seekBar, valueDisplay, FILE_PATH[i], 0, 6);
         }
+
+        SetupButtonClickListener(view);
+    }
+
+    private void SetupButtonClickListener(View view) {
+        Button mTestButton = (Button)view.findViewById(R.id.vibrator_test);
+        mTestButton.setOnClickListener(this);
+
+        Button mResetButton = (Button)view.findViewById(R.id.vibrator_reset);
+        mResetButton.setOnClickListener(this);
     }
 
     @Override
@@ -97,7 +109,7 @@ public class VibratorIntensityPreference extends DialogPreference {
     }
 
     /**
-     * Restore screen color tuning from SharedPreferences. (Write to kernel.)
+     * Restore vibrator intensity from SharedPreferences. (Write to kernel.)
      *
      * @param context The context to read the SharedPreferences from
      */
@@ -225,5 +237,27 @@ public class VibratorIntensityPreference extends DialogPreference {
             mOriginal = iValue;
             reset();
         }
+
+        public void resetDefault() {
+            mSeekBar.setProgress(MAX_VALUE);
+            updateValue(MAX_VALUE);
+            Utils.writeValue(mFilePath, String.valueOf(MAX_VALUE));
+        }
+    }
+
+    public void onClick(View v) {
+        switch(v.getId()) {
+            case R.id.vibrator_test:
+                testVibrator();
+                break;
+            case R.id.vibrator_reset:
+                mSeekBars[1].resetDefault();
+                break;
+        }
+    }
+
+    public void testVibrator() {
+        Vibrator vib = (Vibrator) this.getContext().getSystemService(Context.VIBRATOR_SERVICE);
+        vib.vibrate(1000);
     }
 }

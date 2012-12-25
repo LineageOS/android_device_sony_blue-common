@@ -3,11 +3,14 @@
     <string name="app_name">Xperia Settings</string>
 
     <!-- Haptic Preference -->
-    <string name="category_haptic_title">Haptic</string>
+    <string name="category_haptic_title">Haptic Feedback</string>
     
     <!-- Subcategory Vibrator -->
     <string name="vibrator_subcat_title">Vibrator</string>
     <string name="vibrator_title">Vibrator Intensity</string>
     <string name="vibrator_text">Intensity</string>
+    <string name="vibrator_test_title">Test</string>
+
+    <string name="button_reset_title">Reset</string>
 
 </resources>
