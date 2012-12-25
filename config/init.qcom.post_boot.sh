@@ -265,6 +265,7 @@ esac
 case "$target" in
     "msm8660" | "msm8960" | "msm8974")
         start mpdecision
+        start thermald
     ;;
     "msm7627a")
         soc_id=`cat /sys/devices/system/soc/soc0/id`
