@@ -168,10 +168,6 @@ on boot
     chown system system /sys/devices/i2c-10/10-0040/als_on
     chmod 666 /sys/devices/i2c-10/10-0040/als_on
 
-    # Bluetooth mac address
-    setprop ro.bt.bdaddr_path "/data/etc/bluetooth_bdaddr"
-    chown bluetooth bluetooth ro.bt.bdaddr_path
-
     # WTF
     chmod 666 /proc/cmdline
 

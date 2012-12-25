@@ -227,7 +227,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.bluetooth.sap=true
+    ro.qualcomm.bt.hci_transport=smd
 
 # OpenglES
 PRODUCT_PROPERTY_OVERRIDES += \

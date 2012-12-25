@@ -25,19 +25,12 @@ failed ()
 
 POWER_CLASS=`getprop qcom.bt.dev_power_class`
 TRANSPORT=`getprop ro.qualcomm.bt.hci_transport`
-DUTADDR=`getprop net.btdut.address`
 
 #find the transport type
 logi "Transport : $TRANSPORT"
-logi "DUTADDR : $DUTADDR"
 
 #load bd addr
-if [$DUTADDR == ""]
-then
-BDADDR=`/system/bin/bdAddrLoader -f /persist/bluetooth/.bdaddr -h -x`
-else
-BDADDR=`/system/bin/bdAddrLoader -p net.btdut.address -s -x`
-fi
+BDADDR=`/system/bin/cat /data/etc/bluetooth_bdaddr`
 
 setprop bluetooth.status off
 
