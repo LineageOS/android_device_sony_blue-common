@@ -94,3 +94,6 @@ BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_FLUENCE_INCALL := true
 BOARD_USES_SEPERATED_AUDIO_INPUT := true
 BOARD_AUDIO_EXPECTS_MIN_BUFFERSIZE := true
+
+# inherit from the proprietary version
+-include vendor/sony/blue-common/BoardConfigVendor.mk
