@@ -154,8 +154,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     qrngd
 
-# WIFI MAC update
+# WLAN
 PRODUCT_PACKAGES += \
+	conn_init \
+	libwfcu \
     mac-update
 
 # Misc
