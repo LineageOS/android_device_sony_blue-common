@@ -213,8 +213,6 @@ on post-fs-data
     # to observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp system /data/misc/dhcp
 
-    mkdir /data/misc/wifi/prima 0775 wifi wifi
-
     write /dev/wcnss_wlan 1
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
 
@@ -321,12 +319,6 @@ service fast-dormancy /system/bin/fast-dormancy
 
 on property:ro.semc.enable.fast_dormancy=false
     stop fast-dormancy
-
-# Update WIFI MAC address
-service mac-update /system/bin/mac-update
-    class main
-    user wifi
-    oneshot
 
 service hciattach /system/bin/sh /system/etc/init.sony.bt.sh
     class late_start

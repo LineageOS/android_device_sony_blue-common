@@ -156,9 +156,8 @@ PRODUCT_PACKAGES += \
 
 # WLAN
 PRODUCT_PACKAGES += \
-	conn_init \
-	libwfcu \
-    mac-update
+    conn_init \
+    libwfcu
 
 # Misc
 PRODUCT_PACKAGES += \
