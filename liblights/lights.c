@@ -126,7 +126,12 @@ static int set_light_buttons (struct light_device_t *dev, struct light_state_t c
 
 static void set_shared_light_locked (struct light_device_t *dev, struct light_state_t *state) {
 	int r, g, b, i;
-	int delayOn, delayOff;
+
+	uint32_t pattern = 0;
+	uint32_t patbits = 0;
+	uint32_t numbits, delayshift;
+
+	char patternstr[11];
 
         /* fix some color */
         ALOGV("color 0x%x", state->color);
@@ -140,8 +145,39 @@ static void set_shared_light_locked (struct light_device_t *dev, struct light_st
 	g = (state->color >> 8) & 0xFF;
 	b = (state->color) & 0xFF;
 
-	delayOn = state->flashOnMS;
-	delayOff = state->flashOffMS;
+	ALOGD("flashOn = %d, flashOff = %d",state->flashOnMS,state->flashOffMS);
+
+	if(state->flashOnMS == 1) {
+	  state->flashMode = LIGHT_FLASH_NONE;
+	}
+	else {
+	  numbits = state->flashOnMS/250;
+	  delayshift = state->flashOffMS/250;
+
+	  //Make sure we never do 0 on time
+	  if(numbits == 0)
+	    numbits = 1;
+
+	  //Always make sure period is >2x the on time, we don't support
+	  //more than 50% duty cycle
+	  if(delayshift < numbits * 2)
+	    delayshift = numbits * 2;
+	  
+	  ALOGD("numbits = %d, delayshift = %d",numbits,delayshift);
+	  
+	  patbits = ((uint32_t)1 << numbits) - 1;
+	  ALOGD("patbits = 0x%x",patbits);
+
+	  for(i = 0; i < 32; i += delayshift) {
+	    pattern = pattern | (patbits << i);
+	  }
+	  
+	  ALOGD("pattern = 0x%x",pattern);
+
+	  snprintf(patternstr,11,"0x%x",pattern);
+
+	  ALOGD("patternstr = %s",patternstr);
+	}
 
 	switch (state->flashMode) {
 	case LIGHT_FLASH_TIMED:
@@ -149,15 +185,18 @@ static void set_shared_light_locked (struct light_device_t *dev, struct light_st
 		for (i = 0; i < sizeof(LED_FILE_TRIGGER)/sizeof(LED_FILE_TRIGGER[0]); i++) {
 			write_string (LED_FILE_TRIGGER[i], ON);
 		}
-		write_string (LED_FILE_PATTERN, PATTERN);
-		write_string (LED_FILE_DELAYON, DELAYON);
-		write_string (LED_FILE_DELAYOFF, DELAYOFF);
+		write_string (LED_FILE_DIMONOFF, ON);
+		write_int (LED_FILE_DIMTIME, numbits*125);
+		write_string (LED_FILE_PATTERN, patternstr);
+		write_int (LED_FILE_PATTERNLEN, 8);
+		write_int (LED_FILE_REPEATDELAY, 0);
 		break;
 
 	case LIGHT_FLASH_NONE:
 		for (i = 0; i < sizeof(LED_FILE_TRIGGER)/sizeof(LED_FILE_TRIGGER[0]); i++) {
 			write_string (LED_FILE_TRIGGER[i], OFF);
 		}
+		write_string (LED_FILE_DIMONOFF, OFF);
 		break;
 	}
 
