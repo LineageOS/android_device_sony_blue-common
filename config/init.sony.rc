@@ -48,11 +48,11 @@ on fs
     mount_all ./fstab.sony
 
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
-    mkdir /data/media 0775 media_rw media_rw
+    mkdir /data/media 0775 2800 2800
 
     # mount the internal sdcard to /data/media
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/SDCard /data/media noatime nosuid nodev barrier=1 data=ordered noauto_da_alloc wait
-    chown media_rw media_rw /data/media
+    chown 2800 2800 /data/media
     start migration
 
     setprop ro.crypto.fuse_sdcard true
@@ -484,8 +484,9 @@ service migration /system/bin/storage_migration.sh
 
 # create virtual SD card at /mnt/sdcard, based on the /data/media directory
 # daemon will drop to user/group system/media_rw after initializing
-# underlying files in /data/media wil be created with user and group media_rw (1023)
-service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
+# underlying files in /data/media wil be created with user and group 2800
+# to maintain compatibility with Sony firmware
+service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 2800 2800
     class late_start
 
 service thermald /system/bin/thermald
