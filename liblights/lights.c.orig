@@ -114,7 +114,9 @@ static int set_light_backlight (struct light_device_t *dev, struct light_state_t
 	pthread_mutex_lock(&g_lock);
 	err = write_int (ALS_FILE, enable);
 	err |= write_int (LCD_BACKLIGHT_FILE, brightness);
-	err |= write_int (LCD_BACKLIGHT2_FILE, brightness);
+#ifdef DUAL_BACKLIGHT
+    err |= write_int (LCD_BACKLIGHT2_FILE, brightness);
+#endif
 	pthread_mutex_unlock(&g_lock);
 
 	return err;
@@ -133,50 +135,50 @@ static void set_shared_light_locked (struct light_device_t *dev, struct light_st
 
 	char patternstr[11];
 
-		/* fix some color */
-		ALOGV("color 0x%x", state->color);
+        /* fix some color */
+        ALOGV("color 0x%x", state->color);
 
-		if (state->color == 0xffffff)        // white (default)
-			state->color = 0x80ff80;      // make it less purple
-		else if (state->color == 0xffffff00) // orange (charge)
-			state->color = 0xff3000;      // make it like stock rom
+        if (state->color == 0xffffff)        // white (default)
+               state->color = 0x80ff80;      // make it less purple
+        else if (state->color == 0xffffff00) // orange (charge)
+               state->color = 0xff3000;      // make it like stock rom
 
 	r = (state->color >> 16) & 0xFF;
 	g = (state->color >> 8) & 0xFF;
 	b = (state->color) & 0xFF;
 
-	ALOGV("flashOn = %d, flashOff = %d",state->flashOnMS,state->flashOffMS);
+	ALOGD("flashOn = %d, flashOff = %d",state->flashOnMS,state->flashOffMS);
 
 	if(state->flashOnMS == 1) {
-		state->flashMode = LIGHT_FLASH_NONE;
+	  state->flashMode = LIGHT_FLASH_NONE;
 	}
 	else {
-		numbits = state->flashOnMS/250;
-		delayshift = state->flashOffMS/250;
+	  numbits = state->flashOnMS/250;
+	  delayshift = state->flashOffMS/250;
 
-		/* Make sure we never do 0 on time */
-		if(numbits == 0)
-		numbits = 1;
+	  //Make sure we never do 0 on time
+	  if(numbits == 0)
+	    numbits = 1;
 
-		/* Always make sure period is >2x the on time, we don't support
-		more than 50% duty cycle */
-		if(delayshift < numbits * 2)
-			delayshift = numbits * 2;
+	  //Always make sure period is >2x the on time, we don't support
+	  //more than 50% duty cycle
+	  if(delayshift < numbits * 2)
+	    delayshift = numbits * 2;
+	  
+	  ALOGD("numbits = %d, delayshift = %d",numbits,delayshift);
+	  
+	  patbits = ((uint32_t)1 << numbits) - 1;
+	  ALOGD("patbits = 0x%x",patbits);
 
-		ALOGV("numbits = %d, delayshift = %d",numbits,delayshift);
+	  for(i = 0; i < 32; i += delayshift) {
+	    pattern = pattern | (patbits << i);
+	  }
+	  
+	  ALOGD("pattern = 0x%x",pattern);
 
-		patbits = ((uint32_t)1 << numbits) - 1;
-		ALOGV("patbits = 0x%x",patbits);
+	  snprintf(patternstr,11,"0x%x",pattern);
 
-		for(i = 0; i < 32; i += delayshift) {
-			pattern = pattern | (patbits << i);
-		}
-
-		ALOGV("pattern = 0x%x",pattern);
-
-		snprintf(patternstr,11,"0x%x",pattern);
-
-		ALOGV("patternstr = %s",patternstr);
+	  ALOGD("patternstr = %s",patternstr);
 	}
 
 	switch (state->flashMode) {
