@@ -147,14 +147,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm8960
 
-# QRNGD
-PRODUCT_PACKAGES += \
-    qrngd
-
 # WLAN
 PRODUCT_PACKAGES += \
-	conn_init \
-	libwfcu \
+    conn_init \
+    libwfcu \
     mac-update
 
 # Misc
@@ -187,35 +183,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=SonyQualcomm8x60RIL \
-    rild.libpath=/system/lib/libril-qc-qmi-1.so \
-    rild.libargs=-d /dev/smd0 \
-    persist.rild.nitz_plmn= \
-    persist.rild.nitz_long_ons_0= \
-    persist.rild.nitz_long_ons_1= \
-    persist.rild.nitz_long_ons_2= \
-    persist.rild.nitz_long_ons_3= \
-    persist.rild.nitz_short_ons_0= \
-    persist.rild.nitz_short_ons_1= \
-    persist.rild.nitz_short_ons_2= \
-    persist.rild.nitz_short_ons_3= \
-    ril.subscription.types=NV,RUIM \
-    DEVICE_PROVISIONED=1 \
-    keyguard.no_require_sim=1 \
-    ro.use_data_netmgrd=true \
-    ro.ril.transmitpower=true \
-    persist.cne.UseCne=vendor \
-    persist.cne.UseSwim=false \
-    persist.cne.bat.range.low.med=30 \
-    persist.cne.bat.range.med.high=60 \
-    persist.cne.loc.policy.op=/system/etc/OperatorPolicy.xml \
-    persist.cne.loc.policy.user=/system/etc/UserPolicy.xml \
-    persist.cne.bwbased.rat.sel=false \
-    persist.cne.snsr.based.rat.mgt=false \
-    persist.cne.bat.based.rat.mgt=false \
-    persist.cne.rat.acq.time.out=30000 \
-    persist.cne.rat.acq.retry.tout=0 \
-    persist.cne.nsrm.mode=false \
-    persist.gps.qmienabled=true
+    telephony.lteOnCdmaDevice=0
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    rild.libpath=/system/lib/libril-qc-qmi-1.so
 
 # QCOM Display
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -226,7 +197,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.mode=endfire \
     persist.audio.vr.enable=false \
     persist.audio.handset.mic=analog \
-    persist.audio.hp=true
+    persist.audio.hp=true \
+    af.resampler.quality=4
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -235,9 +207,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # OpenglES
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    telephony.lteOnCdmaDevice=0
 
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
