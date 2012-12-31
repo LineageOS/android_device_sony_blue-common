@@ -1,8 +1,5 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_eu_supl.mk)
-
 COMMON_PATH := device/sony/blue-common
 
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
@@ -73,7 +70,7 @@ PRODUCT_COPY_FILES += \
 
 # GPS
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/prebuilt/gps.conf:system/etc/gps.conf
+    $(COMMON_PATH)/config/gps.conf:system/etc/gps.conf
 
 # EGL config
 PRODUCT_COPY_FILES += \
