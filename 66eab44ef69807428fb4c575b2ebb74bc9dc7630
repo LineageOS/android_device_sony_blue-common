@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcH///pQ\u003d",
+        "filename": "config/init.sony.rc",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 523
+      },
+      "writtenOn": "2013-01-03T15:57:44Z",
+      "side": 1,
+      "message": "does it wanna have that \".\" between uid and gid?",
+      "revId": "66eab44ef69807428fb4c575b2ebb74bc9dc7630",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
