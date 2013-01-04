@@ -120,6 +120,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     hci_qcomm_init
 
+# Camera
+PRODUCT_PACKAGES += \
+    camera.sony \
+    camera.msm8960 \
+    libmmcamera_interface2 \
+    libmmcamera_interface
+
 # Omx
 PRODUCT_PACKAGES += \
     mm-vdec-omx-test \

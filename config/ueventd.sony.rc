@@ -24,6 +24,8 @@
 /dev/msm_camera/*         0660   system     camera
 /dev/gemini*              0660   system     camera
 /dev/video*               0660   system     camera
+/dev/v4l-subdev*          0660   system     camera
+/dev/media*               0660   system     camera
 
 /dev/qseecom              0666   system     drmrpc
 /dev/block/mmcblk0p12     0660   system     system
