@@ -16,6 +16,24 @@
       "revId": "66eab44ef69807428fb4c575b2ebb74bc9dc7630",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX///ms\u003d",
+        "filename": "config/init.sony.rc",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 2793
+      },
+      "writtenOn": "2013-01-07T04:40:40Z",
+      "side": 1,
+      "message": "Bah, typed it the way I normally type chown.\n\nOdd that it didn\u0027t break anything...  but should be fixed anyway.",
+      "parentUuid": "AAAAcH///pQ\u003d",
+      "revId": "66eab44ef69807428fb4c575b2ebb74bc9dc7630",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
