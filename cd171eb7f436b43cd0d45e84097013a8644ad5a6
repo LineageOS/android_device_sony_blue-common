@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcn///uI\u003d",
+        "filename": "liblights/lights.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 19
+      },
+      "writtenOn": "2013-01-09T05:19:12Z",
+      "side": 1,
+      "message": "this comment make no sense now, it may be removed with the rest of the older color fix",
+      "revId": "cd171eb7f436b43cd0d45e84097013a8644ad5a6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
