@@ -67,7 +67,7 @@
 
 /dev/rfkill               0660   wifi       wifi
 
-/dev/radio0               0644   fm_radio   fm_radio
+/dev/radio0               0644   system     system
 
 /dev/rtc0                 0600   system     system
 /dev/mpu                  0600   system     system

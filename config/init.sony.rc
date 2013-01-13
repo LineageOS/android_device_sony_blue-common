@@ -507,3 +507,10 @@ service diag_mdlog /system/bin/logwrapper /system/bin/diag_mdlog -s 100
 
 # on property:gsm.sim.state=READY
 #    start diag_mdlog
+
+service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
+    class late_start
+    user root
+    group system qcom_oncrpc
+    disabled
+    oneshot

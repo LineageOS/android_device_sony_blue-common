@@ -33,6 +33,14 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/config/init.sony.bt.sh:system/etc/init.sony.bt.sh \
     $(COMMON_PATH)/config/ueventd.sony.rc:root/ueventd.sony.rc
 
+# FM Radio
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/config/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
+    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml
+
+PRODUCT_PACKAGES += \
+    FmRadioReceiver
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/config/audio_policy.conf:system/etc/audio_policy.conf \
