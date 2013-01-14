@@ -83,7 +83,8 @@ PRODUCT_PACKAGES += \
     libnfc_jni \
     Nfc \
     Tag \
-    com.android.nfc_extras
+    com.android.nfc_extras \
+    extract_elf_ramdisk
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
