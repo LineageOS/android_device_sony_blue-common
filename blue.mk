@@ -88,10 +88,6 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
-# Recovery
-PRODUCT_PACKAGES += \
-    extract_elf_ramdisk
-
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
 
@@ -103,6 +99,17 @@ else
 endif
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+
+# FM
+PRODUCT_PACKAGES += \
+    FmRadioReceiver
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml
+
+# Recovery
+PRODUCT_PACKAGES += \
+    extract_elf_ramdisk
 
 # QCOM Display
 PRODUCT_PACKAGES += \
