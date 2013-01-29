@@ -94,5 +94,10 @@ BOARD_USES_FLUENCE_INCALL := true
 BOARD_USES_SEPERATED_AUDIO_INPUT := true
 BOARD_AUDIO_EXPECTS_MIN_BUFFERSIZE := true
 
+#FM Radio
+BOARD_USES_STE_FMRADIO := true
+COMMON_GLOBAL_CFLAGS += -DSTE_FM
+
+
 # inherit from the proprietary version
 -include vendor/sony/blue-common/BoardConfigVendor.mk
