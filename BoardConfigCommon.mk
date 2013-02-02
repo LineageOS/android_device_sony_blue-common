@@ -94,5 +94,9 @@ BOARD_USES_FLUENCE_INCALL := true
 BOARD_USES_SEPERATED_AUDIO_INPUT := true
 BOARD_AUDIO_EXPECTS_MIN_BUFFERSIZE := true
 
+# Internal storage fuse daemon permissions
+TARGET_FUSE_SDCARD_UID := 2800
+TARGET_FUSE_SDCARD_GID := 2800
+
 # inherit from the proprietary version
 -include vendor/sony/blue-common/BoardConfigVendor.mk
