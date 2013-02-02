@@ -79,10 +79,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/prebuilt/fix_storage_permissions.sh:system/bin/fix_storage_permissions.sh
 
-# Script for /data/media migration
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/prebuilt/storage_migration.sh:system/bin/storage_migration.sh
-
 # Post recovery script
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
