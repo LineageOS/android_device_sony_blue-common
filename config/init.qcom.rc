@@ -32,10 +32,10 @@ on init
     # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
-    symlink /storage/sdcard1 /extSdCard
-    symlink /storage/sdcard1 /mnt/extSdCard
-    symlink /storage/usbdisk0 /usbdisk0
-    symlink /storage/usbdisk0 /mnt/usbdisk0
+    symlink /storage/sdcard1 /ext_card
+    symlink /storage/sdcard1 /mnt/ext_card
+    symlink /storage/usbdisk /usbdisk
+    symlink /storage/usbdisk /mnt/usbdisk
 
     symlink /dev/socket /tmp
 
