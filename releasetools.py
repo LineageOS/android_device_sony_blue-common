@@ -1,5 +1,5 @@
 # Copyright (C) 2012 The Android Open Source Project
-# Copyright (C) 2012 The CyanogenMod Project
+# Copyright (C) 2012-2013 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,18 +17,21 @@
 
 import common
 import os
-import shutil
 
+LOCAL_DIR = os.path.dirname(os.path.abspath(__file__))
 TARGET_DIR = os.getenv('OUT')
+TARGET_DEVICE = os.getenv('CM_BUILD')
 
-def FullOTA_Assertions(self):
-
-  # Make common releasetools copy boot.img verbatim
-  bootimage_path = os.path.join(TARGET_DIR, "boot.elf")
-  prebuilt_dir = os.path.join(self.input_tmp, "BOOTABLE_IMAGES")
-  prebuilt_path = os.path.join(prebuilt_dir, "boot.img")
-  os.mkdir(prebuilt_dir)
-  shutil.copyfile(bootimage_path, prebuilt_path)
+def FullOTA_Assertions(info):
+  if TARGET_DEVICE == "mint":
+    info.output_zip.write(os.path.join(TARGET_DIR, "lk.elf"), "lk.elf")
+    info.output_zip.write(os.path.join(TARGET_DIR, "partition.sh"), "partition.sh")
+    info.script.AppendExtra(
+          ('package_extract_file("partition.sh", "/tmp/partition.sh");\n'
+           'set_perm(0, 0, 0777, "/tmp/partition.sh");'))
+    info.script.AppendExtra('package_extract_file("lk.elf", "/tmp/lk.elf");')
+    info.script.AppendExtra('assert(run_program("/tmp/partition.sh") == 0);')
+    info.script.AppendExtra('run_program("/sbin/dd", "if=/tmp/lk.elf", "of=/dev/block/mmcblk0p4");')
 
 def FullOTA_InstallEnd(self):
   self.script.AppendExtra('package_extract_file("system/bin/fix_storage_permissions.sh", "/tmp/fix_storage_permissions.sh");')
