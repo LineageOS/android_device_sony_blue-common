@@ -36,12 +36,13 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 # Kernel information
-BOARD_KERNEL_CMDLINE := # This is ignored by sony's bootloader
+BOARD_KERNEL_CMDLINE := user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=2 kgsl.mmutype=gpummu
 BOARD_KERNEL_BASE := 0x80200000
-BOARD_RECOVERY_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
-SONY_FORCE_RAMDISK_ADDRESS := 0x81700000
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01500000
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x81400000
+
+# Little Kernel
+TARGET_LK_BOOTLOADER_MK := device/sony/blue-common/lk.mk
 
 # Wifi
 BOARD_HAS_QCOM_WLAN                 := true
@@ -86,7 +87,6 @@ TARGET_FORCE_CPU_UPLOAD := true
 # Custom boot
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;sync;"
-BOARD_CUSTOM_BOOTIMG_MK := device/sony/blue-common/custombootimg.mk
 TARGET_RELEASETOOLS_EXTENSIONS := device/sony/blue-common
 BOARD_CUSTOM_GRAPHICS := ../../../device/sony/blue-common/recovery/recovery.c
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/sony/blue-common/recovery/recovery-keys.c

@@ -16,19 +16,6 @@
 """Custom OTA Package commands for blue"""
 
 import common
-import os
-import shutil
-
-TARGET_DIR = os.getenv('OUT')
-
-def FullOTA_Assertions(self):
-
-  # Make common releasetools copy boot.img verbatim
-  bootimage_path = os.path.join(TARGET_DIR, "boot.elf")
-  prebuilt_dir = os.path.join(self.input_tmp, "BOOTABLE_IMAGES")
-  prebuilt_path = os.path.join(prebuilt_dir, "boot.img")
-  os.mkdir(prebuilt_dir)
-  shutil.copyfile(bootimage_path, prebuilt_path)
 
 def FullOTA_InstallEnd(self):
   self.script.AppendExtra('package_extract_file("system/bin/fix_storage_permissions.sh", "/tmp/fix_storage_permissions.sh");')
