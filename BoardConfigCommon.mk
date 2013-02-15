@@ -98,5 +98,7 @@ BOARD_USES_FLUENCE_INCALL := true
 BOARD_USES_SEPERATED_AUDIO_INPUT := true
 BOARD_AUDIO_EXPECTS_MIN_BUFFERSIZE := true
 
+TARGET_QCOM_DISPLAY_VARIANT := caf
+
 # inherit from the proprietary version
 -include vendor/sony/blue-common/BoardConfigVendor.mk
