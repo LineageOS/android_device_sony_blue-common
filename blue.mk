@@ -28,10 +28,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/prebuilt/mr:root/sbin/mr \
     $(COMMON_PATH)/prebuilt/logo_X.rle:root/logo.rle \
-    $(COMMON_PATH)/config/init.sony.rc:root/init.sony.rc \
+    $(COMMON_PATH)/config/init.qcom.rc:root/init.qcom.rc \
     $(COMMON_PATH)/config/fstab.sony:root/fstab.sony \
     $(COMMON_PATH)/config/init.sony.bt.sh:system/etc/init.sony.bt.sh \
-    $(COMMON_PATH)/config/ueventd.sony.rc:root/ueventd.sony.rc
+    $(COMMON_PATH)/config/ueventd.qcom.rc:root/ueventd.qcom.rc
 
 # FM Radio
 PRODUCT_COPY_FILES += \
@@ -51,10 +51,6 @@ PRODUCT_COPY_FILES += \
 # GPS
 PRODUCT_COPY_FILES += \
    $(COMMON_PATH)/config/gps.conf:system/etc/gps.conf
-
-# EGL config
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/config/egl.cfg:system/lib/egl/egl.cfg
 
 # WPA supplicant config
 PRODUCT_COPY_FILES += \
@@ -200,8 +196,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SonyQualcomm8x60RIL \
-    telephony.lteOnCdmaDevice=0
+    telephony.lteOnCdmaDevice=0 \
+    ro.ril.transmitpower=true \
+    persist.radio.add_power_save=1
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/lib/libril-qc-qmi-1.so
