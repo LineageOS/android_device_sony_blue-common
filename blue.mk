@@ -52,10 +52,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
    $(COMMON_PATH)/config/gps.conf:system/etc/gps.conf
 
-# EGL config
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/config/egl.cfg:system/lib/egl/egl.cfg
-
 # WPA supplicant config
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/config/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
@@ -200,7 +196,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SonyQualcomm8x60RIL \
     telephony.lteOnCdmaDevice=0
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
