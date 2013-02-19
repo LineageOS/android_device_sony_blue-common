@@ -168,7 +168,6 @@ PRODUCT_PACKAGES += \
 
 # WLAN
 PRODUCT_PACKAGES += \
-    conn_init \
     libwfcu \
     mac-update
 
