@@ -52,10 +52,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
    $(COMMON_PATH)/config/gps.conf:system/etc/gps.conf
 
-# EGL config
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/config/egl.cfg:system/lib/egl/egl.cfg
-
 # WPA supplicant config
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/config/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf

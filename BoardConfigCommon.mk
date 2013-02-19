@@ -12,7 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#TARGET_SPECIFIC_HEADER_PATH := device/sony/blue-common/include
+TARGET_SPECIFIC_HEADER_PATH := device/sony/blue-common/include
+
+TARGET_BOARD_CM := blue
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
@@ -22,23 +24,34 @@ BOARD_HAS_NO_MISC_PARTITION := true
 TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
 
 # Platform
-TARGET_BOOTLOADER_BOARD_NAME := blue
+TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 TARGET_BOARD_PLATFORM := msm8960
 
 # Architecture
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_SMP := true
-TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_ARCH_VARIANT_CPU := cortex-a9
+TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
+
+# Flags
+TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
+COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
+
+# Krait optimizations
+TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
+TARGET_USE_KRAIT_PLD_SET      := true
+TARGET_KRAIT_BIONIC_PLDOFFS   := 10
+TARGET_KRAIT_BIONIC_PLDTHRESH := 10
+TARGET_KRAIT_BIONIC_BBTHRESH  := 64
+TARGET_KRAIT_BIONIC_PLDSIZE   := 64
 
 # Kernel information
 BOARD_KERNEL_CMDLINE := # This is ignored by sony's bootloader
 BOARD_KERNEL_BASE := 0x80200000
-BOARD_RECOVERY_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
 SONY_FORCE_RAMDISK_ADDRESS := 0x81700000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01500000
@@ -57,10 +70,9 @@ WIFI_DRIVER_FW_PATH_STA             := "sta"
 WIFI_DRIVER_FW_PATH_AP              := "ap"
 
 # Graphics
+TARGET_QCOM_DISPLAY_VARIANT := caf
 USE_OPENGL_RENDERER := true
 TARGET_USES_ION := true
-TARGET_USES_OVERLAY := true
-TARGET_USES_SF_BYPASS := true
 TARGET_USES_C2D_COMPOSITION := true
 BOARD_EGL_CFG := device/sony/blue-common/config/egl.cfg
 
@@ -83,6 +95,9 @@ COMMON_GLOBAL_CFLAGS += -DSTE_FM
 ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
 
+# Vold
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+
 # Custom boot
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;sync;"
@@ -97,6 +112,9 @@ BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_FLUENCE_INCALL := true
 BOARD_USES_SEPERATED_AUDIO_INPUT := true
 BOARD_AUDIO_EXPECTS_MIN_BUFFERSIZE := true
+
+# Kernel time optimization
+KERNEL_HAS_GETTIMEOFDAY_HELPER := true
 
 # inherit from the proprietary version
 -include vendor/sony/blue-common/BoardConfigVendor.mk
