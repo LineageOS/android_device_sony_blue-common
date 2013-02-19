@@ -246,10 +246,6 @@ on post-fs-data
     write /dev/wcnss_wlan 1
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
 
-    # Workaround for conn_init not copying the updated firmware
-    rm /data/misc/wifi/WCNSS_qcom_cfg.ini
-    rm /data/misc/wifi/WCNSS_qcom_wlan_nv.bin
-
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
 
@@ -413,12 +409,6 @@ service updatemiscta /system/bin/updatemiscta
 service hw_config /system/bin/sh /system/etc/hw_config.sh
     class main
     user root
-    oneshot
-
-service conn_init /system/bin/logwrapper /system/bin/conn_init
-    class late_start
-    user system
-    group system wifi
     oneshot
 
 service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
