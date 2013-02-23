@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# inherit from the proprietary version
+-include vendor/sony/blue-common/BoardConfigVendor.mk
+
 TARGET_SPECIFIC_HEADER_PATH := device/sony/blue-common/include
 
 TARGET_NO_BOOTLOADER := true

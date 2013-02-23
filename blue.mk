@@ -273,4 +273,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=30
 
-$(call inherit-product, vendor/sony/qcom-common/common-vendor.mk)
+$(call inherit-product-if-exists, vendor/sony/qcom-common/common-vendor.mk)
+$(call inherit-product-if-exists, vendor/sony/blue-common/common-vendor.mk)
