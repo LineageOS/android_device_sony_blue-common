@@ -219,3 +219,8 @@ service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
 service system_monitor /system/bin/system_monitor
     class core
     user root
+
+service thermald /system/bin/thermald -c /system/etc/thermald.conf
+    class main
+    socket thermald stream 0666 root root
+    user root
