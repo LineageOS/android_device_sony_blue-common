@@ -235,7 +235,4 @@ PRODUCT_COPY_FILES += \
     system/extras/bugmailer/send_bug:system/bin/send_bug
 
 # Include non-opensource parts if available
-$(call inherit-product-if-exists, vendor/sony/qcom-common/common-vendor.mk)
-
-# Include non-opensource parts if available
 $(call inherit-product-if-exists, vendor/sony/blue-common/common-vendor.mk)
