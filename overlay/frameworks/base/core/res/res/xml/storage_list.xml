@@ -20,18 +20,23 @@
 <!-- See storage config details at http://source.android.com/tech/storage/ -->
 
 <StorageList xmlns:android="http://schemas.android.com/apk/res/android">
+
     <!-- internal emulated storage -->
-    <storage android:storageDescription="@string/storage_internal"
+    <storage
+             android:storageDescription="@string/storage_internal"
              android:emulated="true"
              android:mtpReserve="100" />
-    <!-- external sdcard -->
+
+    <!-- external sd card -->
     <storage android:mountPoint="/storage/sdcard1"
              android:storageDescription="@string/storage_sd_card"
              android:primary="false"
              android:removable="true" />
-    <!-- usb storage -->
-    <storage android:mountPoint="/storage/usbdisk0"
+
+    <!-- external usb storage -->
+    <storage android:mountPoint="/storage/usbdisk"
              android:storageDescription="@string/storage_usb"
              android:primary="false"
              android:removable="true" />
+
 </StorageList>
