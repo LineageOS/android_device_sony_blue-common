@@ -1,4 +1,21 @@
+# Copyright (C) 2013 The CyanogenMod Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
+# qcom common
+$(call inherit-product, device/sony/qcom-common/qcom-common.mk)
 
 COMMON_PATH := device/sony/blue-common
 
@@ -27,10 +44,10 @@ PRODUCT_COPY_FILES += \
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/prebuilt/mr:root/sbin/mr \
-    $(COMMON_PATH)/config/init.sony.rc:root/init.sony.rc \
+    $(COMMON_PATH)/config/init.qcom.rc:root/init.qcom.rc \
     $(COMMON_PATH)/config/fstab.sony:root/fstab.sony \
     $(COMMON_PATH)/config/init.sony.bt.sh:system/etc/init.sony.bt.sh \
-    $(COMMON_PATH)/config/ueventd.sony.rc:root/ueventd.sony.rc
+    $(COMMON_PATH)/config/ueventd.qcom.rc:root/ueventd.qcom.rc
 
 # FM Radio
 PRODUCT_COPY_FILES += \
@@ -50,10 +67,6 @@ PRODUCT_COPY_FILES += \
 # GPS
 PRODUCT_COPY_FILES += \
    $(COMMON_PATH)/config/gps.conf:system/etc/gps.conf
-
-# EGL config
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/config/egl.cfg:system/lib/egl/egl.cfg
 
 # WPA supplicant config
 PRODUCT_COPY_FILES += \
@@ -110,8 +123,6 @@ PRODUCT_COPY_FILES += \
 
 # QCOM Display
 PRODUCT_PACKAGES += \
-    libgenlock \
-    liboverlay \
     hwcomposer.msm8960 \
     gralloc.msm8960 \
     copybit.msm8960
@@ -138,17 +149,6 @@ PRODUCT_PACKAGES += \
     libmmcamera_interface2 \
     libmmcamera_interface
 
-# Omx
-PRODUCT_PACKAGES += \
-    mm-vdec-omx-test \
-    mm-venc-omx-test720p \
-    libdivxdrmdecrypt \
-    libOmxVdec \
-    libOmxVenc \
-    libOmxCore \
-    libstagefrighthw \
-    libc2dcolorconvert
-
 # GPS
 PRODUCT_PACKAGES += \
     libloc_adapter \
@@ -164,10 +164,6 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.default
-
-# Power
-PRODUCT_PACKAGES += \
-    power.msm8960
 
 # WLAN
 PRODUCT_PACKAGES += \
@@ -197,21 +193,14 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
-# QC Perf
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=/system/lib/libqc-opt.so
-
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SonyQualcomm8x60RIL \
-    telephony.lteOnCdmaDevice=0
+    telephony.lteOnCdmaDevice=0 \
+    ro.ril.transmitpower=true \
+    persist.radio.add_power_save=1
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/lib/libril-qc-qmi-1.so
-
-# QCOM Display
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.mdpcomp.maxlayer=3
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -224,15 +213,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd
-
-# OpenglES
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=131072
-
-# Wifi
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \
