@@ -162,6 +162,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.msm8960
 
+# Sensors
+PRODUCT_PACKAGES += \
+    sensors.default
+
 # Power
 PRODUCT_PACKAGES += \
     power.msm8960
