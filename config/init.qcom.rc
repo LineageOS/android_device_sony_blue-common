@@ -57,6 +57,7 @@ on fs
 
     setprop ro.crypto.fuse_sdcard true
 
+    chmod 0775 /data/etc
     start tad
     exec /system/bin/wait4tad
     exec /system/bin/taimport
