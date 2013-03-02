@@ -27,7 +27,6 @@ PRODUCT_COPY_FILES += \
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/prebuilt/mr:root/sbin/mr \
-    $(COMMON_PATH)/prebuilt/logo_X.rle:root/logo.rle \
     $(COMMON_PATH)/config/init.sony.rc:root/init.sony.rc \
     $(COMMON_PATH)/config/fstab.sony:root/fstab.sony \
     $(COMMON_PATH)/config/init.sony.bt.sh:system/etc/init.sony.bt.sh \
