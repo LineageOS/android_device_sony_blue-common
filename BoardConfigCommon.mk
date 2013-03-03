@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-TARGET_SPECIFIC_HEADER_PATH := device/sony/blue-common/include
-
 # inherit from Sony common
 -include device/sony/common/BoardConfigCommon.mk
 
@@ -32,13 +30,7 @@ BOARD_VENDOR := sony
 BOARD_VENDOR_PLATFORM := blue
 
 # Architecture
-TARGET_ARCH := arm
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a9
-TARGET_CPU_SMP := true
-ARCH_ARM_HAVE_TLS_REGISTER := true
 
 # Flags
 TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
@@ -88,9 +80,6 @@ BLUETOOTH_HCI_USE_MCT := true
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
-# Vold
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
-
 # Custom boot
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;sync;"
@@ -120,9 +109,6 @@ SOMC_CFG_SENSORS_GYRO_MPU3050 = yes
 SOMC_CFG_SENSORS_PROXIMITY_APDS9702 = yes
 SOMC_CFG_SENSORS_ACCEL_BMA250NA_INPUT = yes
 SOMC_CFG_SENSORS_COMPASS_AK8972 = yes
-
-# Kernel time optimization
-KERNEL_HAS_GETTIMEOFDAY_HELPER := true
 
 # inherit from the proprietary version
 -include vendor/sony/blue-common/BoardConfigVendor.mk
