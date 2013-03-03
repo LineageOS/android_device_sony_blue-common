@@ -250,6 +250,8 @@ on post-fs-data
 
     write /dev/wcnss_wlan 1
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
+    write /sys/module/subsystem_restart/parameters/max_restarts 8
+    write /sys/module/subsystem_restart/parameters/max_history_time 1000
 
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
@@ -288,8 +290,6 @@ on post-fs-data
     # Camera
     mkdir /data/camera 0771 root camera
 
-    # Enable Power save functionality for modem
-    setprop persist.radio.add_power_save 1
     exec /system/bin/cal_data_manager
 
     setprop vold.post_fs_data_done 1
@@ -369,11 +369,6 @@ on property:bluetooth.hciattach=true
 
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
-
-service bridgemgrd /system/bin/bridgemgrd
-    class main
-    user radio
-    group radio qcom_diag
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
