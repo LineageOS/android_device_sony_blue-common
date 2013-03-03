@@ -73,16 +73,6 @@ WIFI_DRIVER_MODULE_NAME             := "wlan"
 WIFI_DRIVER_FW_PATH_STA             := "sta"
 WIFI_DRIVER_FW_PATH_AP              := "ap"
 
-# QCOM hardware
-BOARD_USES_QCOM_HARDWARE := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
-
-# Graphics
-TARGET_QCOM_DISPLAY_VARIANT := caf
-USE_OPENGL_RENDERER := true
-TARGET_USES_ION := true
-TARGET_USES_C2D_COMPOSITION := true
-BOARD_EGL_CFG := device/sony/blue-common/config/egl.cfg
 
 TARGET_PROVIDES_LIBLIGHT := true
 
@@ -111,7 +101,6 @@ BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/sony/blue-common/recovery/recov
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
 # Audio
-TARGET_QCOM_AUDIO_VARIANT := caf
 BOARD_USES_ALSA_AUDIO := true
 TARGET_USES_QCOM_MM_AUDIO := true
 BOARD_USES_FLUENCE_INCALL := true
