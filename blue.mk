@@ -61,7 +61,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/config/audio_policy.conf:system/etc/audio_policy.conf \
     $(COMMON_PATH)/config/audio_effects.conf:system/etc/audio_effects.conf \
-    $(COMMON_PATH)/config/media_codecs.xml:system/etc/media_codecs.xml \
     $(COMMON_PATH)/config/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x
 
 # GPS
