@@ -51,6 +51,8 @@ char const*const LED_FILE_PATTERNLEN	= "/sys/devices/i2c-10/10-0040/pattern_dura
 char const*const LED_FILE_DIMONOFF	= "/sys/devices/i2c-10/10-0040/pattern_use_softdim";
 char const*const LED_FILE_DIMTIME	= "/sys/devices/i2c-10/10-0040/dim_time";
 
+char const*const LCD_BRIGHTNESS_MIN	= "10";
+
 char const*const ON	= "1";
 char const*const OFF	= "0";
 
@@ -131,8 +133,8 @@ static int brightness_apply_gamma (int brightness) {
 	ALOGV("%s: gamma corrected floatbrt = %f", __func__, floatbrt);
 	floatbrt *= 255.0;
 	brightness = (int) floatbrt;
-	if(brightness < 1)
-		brightness = 1;
+	if(brightness < LCD_BRIGHTNESS_MIN)
+		brightness = LCD_BRIGHTNESS_MIN;
 	ALOGV("%s: gamma corrected brightness = %d", __func__, brightness);
 	return brightness;
 }
@@ -140,14 +142,14 @@ static int brightness_apply_gamma (int brightness) {
 /* The actual lights controlling section */
 static int set_light_backlight (struct light_device_t *dev, struct light_state_t const *state) {
 	int err = 0;
-	int enable = 0;
+	int enable = OFF;
 	int brightness = rgb_to_brightness(state);
 
 	if(brightness > 0)
 		brightness = brightness_apply_gamma(brightness);
 
 	if ((state->brightnessMode == BRIGHTNESS_MODE_SENSOR) && (brightness > 0))
-		enable = 1;
+		enable = ON;
 
 	ALOGV("%s brightness = %d", __func__, brightness);
 	pthread_mutex_lock(&g_lock);
