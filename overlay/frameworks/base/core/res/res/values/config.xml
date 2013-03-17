@@ -171,9 +171,6 @@
         <item>0</item>
     </integer-array>
 
-    <!-- Minimum screen brightness allowed by the power manager. -->
-    <integer name="config_screenBrightnessDim">1</integer>
-
     <!-- The duration (in milliseconds) that the radio will scan for a signal
                   when there's no network connection. If the scan doesn't timeout, use zero -->
     <integer name="config_radioScanningTimeout">9000</integer>
