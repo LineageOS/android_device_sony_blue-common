@@ -111,6 +111,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     extract_elf_ramdisk
 
+# Sensors
+PRODUCT_PACKAGES += \
+    sensors.default
+
 # QCOM Display
 PRODUCT_PACKAGES += \
     copybit.msm8960 \
