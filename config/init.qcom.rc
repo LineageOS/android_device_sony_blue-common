@@ -256,6 +256,9 @@ on post-fs-data
     mkdir /data/system 0775 system system
     #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
 
+    #Create directories for gpsone_daemon services
+    mkdir /data/misc/gpsone_d 0770 system gps
+
     #Create directory used by sensor subsystem(dsps)
     chmod 665 /data/system/sensors
     write /data/system/sensors/settings 1
