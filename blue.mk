@@ -144,14 +144,6 @@ PRODUCT_PACKAGES += \
     libmmcamera_interface2 \
     libmmcamera_interface
 
-# GPS
-PRODUCT_PACKAGES += \
-    libloc_adapter \
-    libloc_eng \
-    libloc_api_v02 \
-    libgps.utils \
-    gps.msm8960
-
 # Light
 PRODUCT_PACKAGES += \
     lights.msm8960
