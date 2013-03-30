@@ -3238,8 +3238,8 @@ SectionDevice
 
 	EnableSequence
 		'SLIM_0_RX Channels':0:Two
-		'RX3 Digital Volume':1:75
-		'RX4 Digital Volume':1:75
+		'RX3 Digital Volume':1:71
+		'RX4 Digital Volume':1:71
 		'RX3 MIX1 INP1':0:RX1
 		'RX5 MIX1 INP1':0:RX2
 		'RX4 DSM MUX':0:DSM_INV
@@ -3277,12 +3277,12 @@ SectionDevice
 		'SLIM_0_RX Channels':0:Two
 		'RX1 MIX1 INP1':0:RX1
 		'RX2 MIX1 INP1':0:RX2
-		'RX1 Digital Volume':1:74
-		'RX2 Digital Volume':1:74
+		'RX1 Digital Volume':1:68
+		'RX2 Digital Volume':1:68
 		'HPHL DAC Switch':1:1
 		'HPHR DAC Switch':1:1
-		'HPHL Volume':1:98
-		'HPHR Volume':1:98
+		'HPHL Volume':1:80
+		'HPHR Volume':1:80
 	EndSequence
 
 	DisableSequence
