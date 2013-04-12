@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Xperia Settings</string>
+    <string name="app_name">Advanced settings</string>
 
     <!-- Haptic Preference -->
     <string name="category_haptic_title">Haptic</string>
