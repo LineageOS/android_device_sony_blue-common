@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Ajustes Xperia</string>
+    <string name="app_name">Ajustes avanzados</string>
     <string name="category_haptic_title">Háptica</string>
     <string name="vibrator_subcat_title">Vibración</string>
     <string name="vibrator_title">Intensidad de vibración</string>
