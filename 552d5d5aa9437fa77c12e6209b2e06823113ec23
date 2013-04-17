@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAen//5nE\u003d",
+        "filename": "combinedroot/init.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 404
+      },
+      "writtenOn": "2013-04-17T23:22:20Z",
+      "side": 1,
+      "message": "Remove \"then\", you have one on the next line too.",
+      "revId": "552d5d5aa9437fa77c12e6209b2e06823113ec23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
