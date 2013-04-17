@@ -42,7 +42,7 @@ busybox sleep 3
 load_image=/sbin/ramdisk.cpio
 
 # boot decision
-if [ -s /dev/keycheck -o -e /cache/recovery/boot ]
+if [ -s /dev/keycheck ] || [ busybox grep -q warmboot=0x77665502 /proc/cmdline ]; then
 then
 	busybox echo 'RECOVERY BOOT' >>boot.txt
 	busybox rm -fr /cache/recovery/boot
