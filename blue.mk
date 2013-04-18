@@ -160,8 +160,7 @@ PRODUCT_PACKAGES += \
 # Misc
 PRODUCT_PACKAGES += \
     librs_jni \
-    com.android.future.usb.accessory \
-    XperiaSettings
+    com.android.future.usb.accessory
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
@@ -196,6 +195,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.handset.mic=analog \
     persist.audio.hp=true \
     af.resampler.quality=4
+
+# Audio LPA
+PRODUCT_PROPERTY_OVERRIDES += \
+    lpa.decode=true
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
