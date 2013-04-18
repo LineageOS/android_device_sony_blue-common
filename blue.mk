@@ -201,6 +201,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.hp=true \
     af.resampler.quality=4
 
+# Audio LPA
+PRODUCT_PROPERTY_OVERRIDES += \
+    lpa.decode=true
+
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd
