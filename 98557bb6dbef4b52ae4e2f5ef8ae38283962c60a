@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAen//4Rg\u003d",
+        "filename": "config/thermald.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3559
+      },
+      "writtenOn": "2013-04-20T23:27:35Z",
+      "side": 1,
+      "message": "sys/devices/platform/msm_ssbi.0/pm8921-core/pm8xxx-adc/pa_therm0\n\nsys/devices/platform/msm_ssbi.0/pm8921-core/pm8xxx-adc/pa_therm1",
+      "revId": "98557bb6dbef4b52ae4e2f5ef8ae38283962c60a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAen//4Rc\u003d",
+        "filename": "config/thermald.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3559
+      },
+      "writtenOn": "2013-04-20T23:27:35Z",
+      "side": 1,
+      "message": "find /sys/ | grep tsens_tz_sensor0\n\n^^ no results",
+      "revId": "98557bb6dbef4b52ae4e2f5ef8ae38283962c60a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
