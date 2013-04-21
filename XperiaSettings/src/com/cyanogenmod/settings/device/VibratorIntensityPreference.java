@@ -44,13 +44,11 @@ public class VibratorIntensityPreference extends DialogPreference {
             R.id.vibrator_value
     };
 
-    private static final String[] FILE_PATH = new String[] {
-            "/sys/devices/i2c-12/12-0049/intensity",
-    };
+    private static String[] FILE_PATH = null;
 
     private vibratorSeekBar mSeekBars[] = new vibratorSeekBar[1];
-    private static final int MAX_VALUE = 8;
-    private static final int OFFSET_VALUE = 0;
+    private int MAX_VALUE;
+    private int OFFSET_VALUE;
 
     // Track instances to know when to restore original color
     // (when the orientation changes, a new dialog is created before the old one
@@ -59,6 +57,9 @@ public class VibratorIntensityPreference extends DialogPreference {
 
     public VibratorIntensityPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
+        FILE_PATH = context.getResources().getStringArray(R.array.vibrator_sysfs_file);
+        MAX_VALUE = Integer.valueOf(context.getResources().getString(R.string.max_intensity_value));
+        OFFSET_VALUE = Integer.valueOf(context.getResources().getString(R.string.intensity_value_offset));
 
         setDialogLayoutResource(R.layout.preference_dialog_vibrator_intensity);
     }
