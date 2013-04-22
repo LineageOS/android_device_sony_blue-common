@@ -50,6 +50,24 @@
       "revId": "f95309dc5b57fc4cf01a6bbfb575dc70f55e0fcb",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAen//3RU\u003d",
+        "filename": "XperiaSettings/src/com/cyanogenmod/settings/device/VibratorIntensityPreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 3559
+      },
+      "writtenOn": "2013-04-22T18:30:48Z",
+      "side": 1,
+      "message": "it\u0027s code taken from maguro most prolly and thus this mess :P\n\neven I was wondering why we have an array and not just one seekbar",
+      "parentUuid": "AAAAen//3cI\u003d",
+      "revId": "f95309dc5b57fc4cf01a6bbfb575dc70f55e0fcb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
