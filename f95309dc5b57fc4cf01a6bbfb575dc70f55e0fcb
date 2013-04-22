@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAen//3cE\u003d",
+        "filename": "XperiaSettings/res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 523
+      },
+      "writtenOn": "2013-04-22T10:39:51Z",
+      "side": 1,
+      "message": "whitespace errors",
+      "revId": "f95309dc5b57fc4cf01a6bbfb575dc70f55e0fcb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAen//3cI\u003d",
+        "filename": "XperiaSettings/src/com/cyanogenmod/settings/device/VibratorIntensityPreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 523
+      },
+      "writtenOn": "2013-04-22T10:39:51Z",
+      "side": 1,
+      "message": "code should be cleaned up.\nwe\u0027ve only one seekbar to handle.",
+      "revId": "f95309dc5b57fc4cf01a6bbfb575dc70f55e0fcb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
