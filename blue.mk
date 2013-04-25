@@ -43,15 +43,21 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/prebuilt/mr:root/sbin/mr \
-    $(COMMON_PATH)/config/init.qcom.rc:root/init.qcom.rc \
-    $(COMMON_PATH)/config/fstab.sony:root/fstab.sony \
-    $(COMMON_PATH)/config/init.sony.bt.sh:system/etc/init.sony.bt.sh \
-    $(COMMON_PATH)/config/ueventd.qcom.rc:root/ueventd.qcom.rc
+    $(COMMON_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
+    $(COMMON_PATH)/rootdir/fstab.sony:root/fstab.sony \
+    $(COMMON_PATH)/rootdir/system/etc/init.sony.bt.sh:system/etc/init.sony.bt.sh \
+    $(COMMON_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
+
+# Key and touchscreen files
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/system/usr/idc/sensor00_f11_sensor0.idc:system/usr/idc/sensor00_f11_sensor0.idc \
+    $(COMMON_PATH)/rootdir/system/usr/keylayout/Button_Jack.kl:system/usr/keylayout/Button_Jack.kl \
+    $(COMMON_PATH)/rootdir/system/usr/keylayout/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
+    $(COMMON_PATH)/rootdir/system/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 # FM Radio
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/config/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
+    $(COMMON_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
     frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml
 
 PRODUCT_PACKAGES += \
@@ -59,21 +65,24 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/config/audio_policy.conf:system/etc/audio_policy.conf \
-    $(COMMON_PATH)/config/audio_effects.conf:system/etc/audio_effects.conf \
-    $(COMMON_PATH)/config/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x
+    $(COMMON_PATH)/rootdir/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    $(COMMON_PATH)/rootdir/system/etc/snd_soc_msm/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x
+
+# Media
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml
 
 # GPS
 PRODUCT_COPY_FILES += \
-   $(COMMON_PATH)/config/gps.conf:system/etc/gps.conf
+   $(COMMON_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
 
 # WPA supplicant config
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/config/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+    $(COMMON_PATH)/rootdir/system/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 # Vold
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/config/vold.fstab:system/etc/vold.fstab
+    $(COMMON_PATH)/rootdir/system/etc/vold.fstab:system/etc/vold.fstab
 
 # Script for fixing perms on internal sdcard
 PRODUCT_COPY_FILES += \
@@ -83,14 +92,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
-# CNE config
-PRODUCT_COPY_FILES += \
-   $(COMMON_PATH)/config/OperatorPolicy.xml:system/etc/OperatorPolicy.xml \
-   $(COMMON_PATH)/config/UserPolicy.xml:system/etc/UserPolicy.xml
-
 # Thermal monitor configuration
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/config/thermald.conf:system/etc/thermald.conf
+    $(COMMON_PATH)/rootdir/system/etc/thermald.conf:system/etc/thermald.conf
 
 # NFC Support
 PRODUCT_PACKAGES += \
@@ -109,9 +113,9 @@ PRODUCT_COPY_FILES += \
 
 # NFCEE access control
 ifeq ($(TARGET_BUILD_VARIANT),user)
-    NFCEE_ACCESS_PATH := $(COMMON_PATH)/config/nfcee_access.xml
+    NFCEE_ACCESS_PATH := $(COMMON_PATH)/rootdir/system/etc/nfcee_access.xml
 else
-    NFCEE_ACCESS_PATH := $(COMMON_PATH)/config/nfcee_access_debug.xml
+    NFCEE_ACCESS_PATH := $(COMMON_PATH)/rootdir/system/etc/nfcee_access_debug.xml
 endif
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
