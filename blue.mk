@@ -86,7 +86,7 @@ PRODUCT_COPY_FILES += \
 
 # Script for fixing perms on internal sdcard
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/prebuilt/fix_storage_permissions.sh:system/bin/fix_storage_permissions.sh
+    $(COMMON_PATH)/rootdir/system/bin/fix_storage_permissions.sh:system/bin/fix_storage_permissions.sh
 
 # Post recovery script
 PRODUCT_COPY_FILES += \
