@@ -152,7 +152,7 @@ static int set_light_backlight (struct light_device_t *dev, struct light_state_t
 	if ((state->brightnessMode == BRIGHTNESS_MODE_SENSOR) && (brightness > 0))
 		enable = 1;
 
-	ALOGD("%s brightness = %d", __func__, brightness);
+	ALOGV("%s brightness = %d", __func__, brightness);
 	pthread_mutex_lock(&g_lock);
 	err = write_int (ALS_FILE, enable);
 	err |= write_int (LCD_BACKLIGHT_FILE, brightness);
