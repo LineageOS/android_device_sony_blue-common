@@ -101,7 +101,7 @@
         -->
         <EncoderProfile quality="1080p" fileFormat="mp4" duration="60">
             <Video codec="h264"
-                   bitRate="20000000"
+                   bitRate="17500000"
                    width="1920"
                    height="1080"
                    frameRate="30" />
@@ -153,7 +153,7 @@
 
         <EncoderProfile quality="timelapse1080p" fileFormat="mp4" duration="60">
             <Video codec="h264"
-                   bitRate="20000000"
+                   bitRate="17500000"
                    width="1920"
                    height="1080"
                    frameRate="30" />
@@ -184,7 +184,7 @@
                    height="480"
                    frameRate="30" />
             <!-- audio setting is ignored -->
-           <Audio codec="aac"
+            <Audio codec="aac"
                    bitRate="128000"
                    sampleRate="48000"
                    channels="2" />
@@ -217,27 +217,15 @@
         <!--
         Profiles for the front camera
         -->
-        <EncoderProfile quality="720p" fileFormat="mp4" duration="60">
-            <Video codec="h264"
-                   bitRate="12000000"
-                   width="1280"
-                   height="720"
-                   frameRate="30" />
-
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="2" />
-        </EncoderProfile>
 
         <EncoderProfile quality="480p" fileFormat="mp4" duration="60">
             <Video codec="h264"
                    bitRate="4000000"
-                   width="720"
+                   width="640"
                    height="480"
                    frameRate="30" />
 
-           <Audio codec="aac"
+            <Audio codec="aac"
                    bitRate="128000"
                    sampleRate="48000"
                    channels="2" />
@@ -256,26 +244,13 @@
                    channels="1" />
         </EncoderProfile>
 
-        <EncoderProfile quality="timelapse720p" fileFormat="mp4" duration="60">
-            <Video codec="h264"
-                   bitRate="12000000"
-                   width="1280"
-                   height="720"
-                   frameRate="30" />
-            <!-- audio setting is ignored -->
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="2" />
-        </EncoderProfile>
-
         <EncoderProfile quality="timelapse480p" fileFormat="mp4" duration="60">
             <Video codec="h264"
                    bitRate="4000000"
-                   width="720"
+                   width="640"
                    height="480"
                    frameRate="30" />
-            <!-- audio setting is ignored -->
+
             <Audio codec="aac"
                    bitRate="128000"
                    sampleRate="48000"
@@ -336,6 +311,11 @@
         minSampleRate="8000" maxSampleRate="8000"
         minChannels="1" maxChannels="1" />
 
+    <AudioEncoderCap name="amrwb" enabled="true"
+        minBitRate="6600" maxBitRate="23050"
+        minSampleRate="16000" maxSampleRate="16000"
+        minChannels="1" maxChannels="1" />
+
     <AudioEncoderCap name="aac" enabled="true"
         minBitRate="5525" maxBitRate="128000"
         minSampleRate="8000" maxSampleRate="48000"
@@ -353,8 +333,8 @@
     <AudioDecoderCap name="wma" enabled="false"/>
 
     <VideoEditorCap maxInputFrameWidth="1920"
-        maxInputFrameHeight="1080" maxOutputFrameWidth="1920"
-        maxOutputFrameHeight="1080" maxPrefetchYUVFrames="3"/>
+        maxInputFrameHeight="1088" maxOutputFrameWidth="1920"
+        maxOutputFrameHeight="1088" maxPrefetchYUVFrames="3"/>
 
     <ExportVideoProfile name="h263" profile="1" level="1"/>
     <ExportVideoProfile name="h264" profile="1" level="1"/>
