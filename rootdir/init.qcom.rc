@@ -157,10 +157,6 @@ on boot
     chown system camera /sys/devices/i2c-10/10-0053/flash_current
     chown system camera /sys/devices/i2c-10/10-0053/status
 
-    # AS3676/Ambient Light Sensor
-    chown system system /sys/devices/i2c-10/10-0040/als_on
-    chmod 666 /sys/devices/i2c-10/10-0040/als_on
-
     # Panel backlight
     chown system system /sys/class/leds/lcd-backlight_1/brightness
     chmod 660 /sys/class/leds/lcd-backlight_1/brightness
@@ -180,8 +176,6 @@ on boot
     chmod 660 /sys/class/leds/pwr-blue/brightness
     chown system system /sys/class/leds/pwr-blue/use_pattern
     chmod 660 /sys/class/leds/pwr-blue/use_pattern
-    chown system system /sys/devices/i2c-10/10-0040/als_on
-    chmod 660 /sys/devices/i2c-10/10-0040/als_on
     chown system system /sys/devices/i2c-10/10-0040/pattern_data
     chmod 660 /sys/devices/i2c-10/10-0040/pattern_data
     chown system system /sys/devices/i2c-10/10-0040/pattern_delay
@@ -192,6 +186,10 @@ on boot
     chmod 660 /sys/devices/i2c-10/10-0040/pattern_use_softdim
     chown system system /sys/devices/i2c-10/10-0040/dim_time
     chmod 660 /sys/devices/i2c-10/10-0040/dim_time
+
+    # AS3676/Ambient Light Sensor
+    chown system system /sys/devices/i2c-10/10-0040/als_on
+    chmod 660 /sys/devices/i2c-10/10-0040/als_on
 
     # Enable DEBUG_SUSPEND, DEBUG_EXIT_SUSPEND, and DEBUG_WAKEUP
     write /sys/module/wakelock/parameters/debug_mask 7
