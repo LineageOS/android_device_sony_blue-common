@@ -40,7 +40,7 @@ on init
     symlink /dev/socket /tmp
 
 on fs
-    mount_all ./fstab.sony
+    mount_all ./fstab.qcom
 
     chmod 0775 /data/etc
     start tad
