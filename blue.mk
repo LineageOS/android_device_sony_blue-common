@@ -219,12 +219,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=0
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.prerotation.disable=1
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.egl.recordable.rgba8888=1
-
 # for bugmailer
 PRODUCT_PACKAGES += send_bug
 PRODUCT_COPY_FILES += \
