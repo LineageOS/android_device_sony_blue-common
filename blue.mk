@@ -201,11 +201,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.vr.enable=false \
     persist.audio.handset.mic=analog \
     persist.audio.hp=true \
-    af.resampler.quality=4
-
-# Audio LPA
-PRODUCT_PROPERTY_OVERRIDES += \
-    lpa.decode=true
+    af.resampler.quality=4 \
+    lpa.decode=false \
+    tunnel.decode=true \
+    tunnel.audiovideo.decode=true
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
