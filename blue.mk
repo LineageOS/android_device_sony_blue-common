@@ -198,10 +198,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.mode=endfire \
-    persist.audio.vr.enable=false \
     persist.audio.handset.mic=analog \
-    persist.audio.hp=true \
-    af.resampler.quality=4
+    persist.audio.lowlatency.rec=false \
+    af.resampler.quality=255 \
+    ro.qc.sdk.audio.fluencetype=none
 
 # Audio LPA
 PRODUCT_PROPERTY_OVERRIDES += \
