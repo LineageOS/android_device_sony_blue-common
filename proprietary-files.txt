@@ -1,0 +1,2 @@
+etc/firmware/wlan/prima/WCNSS_cfg.dat
+etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin

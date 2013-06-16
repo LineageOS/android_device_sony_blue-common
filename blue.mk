@@ -83,6 +83,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
+# Prima wifi config
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+
 # Vold
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/vold.fstab:system/etc/vold.fstab
