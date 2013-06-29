@@ -88,6 +88,9 @@ BOARD_CUSTOM_GRAPHICS := ../../../device/sony/blue-common/recovery/recovery.c
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/sony/blue-common/recovery/recovery-keys.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
+# Camera
+COMMON_GLOBAL_CFLAGS += -DQCOM_BSP_CAMERA_ABI_HACK -DMR0_CAMERA_BLOB
+
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 TARGET_USES_QCOM_MM_AUDIO := true
