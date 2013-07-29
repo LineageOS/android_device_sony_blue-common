@@ -53,6 +53,9 @@ BOARD_KERNEL_PAGESIZE := 2048
 SONY_FORCE_RAMDISK_ADDRESS := 0x81700000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01500000
 
+# Dumpstate
+BOARD_LIB_DUMPSTATE := libdumpstate.sony
+
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_WLAN_DEVICE                := qcwcn
@@ -72,6 +75,7 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # Camera
 COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB -DQCOM_BSP_CAMERA_ABI_HACK
+BOARD_CAMERA_USE_MM_HEAP := true
 
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
@@ -93,16 +97,12 @@ BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/sony/blue-common/recovery/recov
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
 TARGET_RECOVERY_FSTAB := device/sony/blue-common/rootdir/fstab.qcom
-# XXX: Set this by default in bootable/recovery/Android.mk
-RECOVERY_FSTAB_VERSION := 2
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 TARGET_USES_QCOM_MM_AUDIO := true
 BOARD_AUDIO_EXPECTS_MIN_BUFFERSIZE := true
 BOARD_AUDIO_CAF_LEGACY_INPUT_BUFFERSIZE := true
-
-TARGET_HAS_OLD_QCOM_ION := true
 
 # FM radio
 #BOARD_USES_STE_FMRADIO := true
