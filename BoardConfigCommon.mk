@@ -53,6 +53,9 @@ BOARD_KERNEL_PAGESIZE := 2048
 SONY_FORCE_RAMDISK_ADDRESS := 0x81700000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01500000
 
+# Dumpstate
+BOARD_LIB_DUMPSTATE := libdumpstate.sony
+
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_WLAN_DEVICE                := qcwcn
