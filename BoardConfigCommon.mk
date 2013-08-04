@@ -95,6 +95,10 @@ BOARD_CUSTOM_GRAPHICS := ../../../device/sony/blue-common/recovery/recovery.c
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/sony/blue-common/recovery/recovery-keys.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
+TARGET_RECOVERY_FSTAB := device/sony/blue-common/rootdir/fstab.qcom
+# XXX: Set this by default in bootable/recovery/Android.mk
+RECOVERY_FSTAB_VERSION := 2
+
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 TARGET_USES_QCOM_MM_AUDIO := true
