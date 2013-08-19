@@ -16,6 +16,24 @@
       "revId": "eee777042b23781c80ab32f34d74b4ba71fbc441",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_16aa1c71",
+        "filename": "rootdir/fstab.qcom",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2013-08-19T01:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dae975fb_3f8dea7b",
+      "revId": "eee777042b23781c80ab32f34d74b4ba71fbc441",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
