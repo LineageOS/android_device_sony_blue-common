@@ -228,5 +228,9 @@ PRODUCT_COPY_FILES += \
     system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
     system/extras/bugmailer/send_bug:system/bin/send_bug
 
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/system/lib/libQSEEComAPI.so:system/lib/libQSEEComAPI.so \
+    $(COMMON_PATH)/rootdir/system/lib/libacdbloader.so:system/lib/libacdbloader.so
+
 # Include non-opensource parts
 $(call inherit-product, vendor/sony/blue-common/blue-common-vendor.mk)
