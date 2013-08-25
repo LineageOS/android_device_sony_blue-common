@@ -7,5 +7,3 @@
 /dev/block/platform/msm_sdcc.1/by-name/System    /system           ext4  ro,barrier=1                                                 wait
 /dev/block/platform/msm_sdcc.1/by-name/Cache     /cache            ext4  noatime,nosuid,nodev,barrier=1,data=ordered                  wait,check
 /dev/block/platform/msm_sdcc.1/by-name/Userdata  /data             ext4  noatime,nosuid,nodev,barrier=1,data=ordered,noauto_da_alloc  wait,check,encryptable=footer
-/dev/block/platform/msm_sdcc.1/by-name/SDCard /sdcard    auto    defaults    recoveryonly
-/dev/block/mmcblk1p1    /external_sd   auto    defaults    recoveryonly
