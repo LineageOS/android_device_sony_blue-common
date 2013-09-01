@@ -135,6 +135,10 @@ static int set_light_backlight (struct light_device_t *dev, struct light_state_t
 	err = write_int (ALS_FILE, enable);
 	err |= write_int (LCD_BACKLIGHT_FILE, brightness);
 	err |= write_int (LCD_BACKLIGHT2_FILE, brightness);
+#ifdef LOGO_BACKLIGHT
+	err |= write_int (LOGO_BACKLIGHT1_FILE, brightness);
+	err |= write_int (LOGO_BACKLIGHT2_FILE, brightness);
+#endif
 	pthread_mutex_unlock(&g_lock);
 
 	return err;
