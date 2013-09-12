@@ -96,7 +96,8 @@ PRODUCT_COPY_FILES += \
 
 # Thermal monitor configuration
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/thermald.conf:system/etc/thermald.conf
+    $(COMMON_PATH)/rootdir/system/etc/thermald.conf:system/etc/thermald.conf \
+    $(COMMON_PATH)/rootdir/system/etc/disable_msm_thermal.sh:system/etc/disable_msm_thermal.sh
 
 # NFC Support
 PRODUCT_PACKAGES += \
