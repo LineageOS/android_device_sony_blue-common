@@ -186,6 +186,12 @@ on boot
     chown system system /sys/devices/i2c-10/10-0040/dim_time
     chmod 660 /sys/devices/i2c-10/10-0040/dim_time
 
+    # Logo Backlight
+    chown system system /sys/class/leds/logo-backlight_1/brightness
+    chmod 660 /sys/class/leds/logo-backlight_1/brightness
+    chown system system /sys/class/leds/logo-backlight_2/brightness
+    chmod 660 /sys/class/leds/logo-backlight_2/brightness
+
     # AS3676/Ambient Light Sensor
     chown system system /sys/devices/i2c-10/10-0040/als_on
     chmod 660 /sys/devices/i2c-10/10-0040/als_on

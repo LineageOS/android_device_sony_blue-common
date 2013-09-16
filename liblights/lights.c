@@ -33,7 +33,12 @@
 #include <hardware/lights.h>
 
 char const*const LCD_BACKLIGHT_FILE	   = "/sys/class/leds/lcd-backlight_1/brightness";
-char const*const LCD_BACKLIGHT2_FILE   = "/sys/class/leds/lcd-backlight_2/brightness";
+char const*const LCD_BACKLIGHT2_FILE	   = "/sys/class/leds/lcd-backlight_2/brightness";
+#ifdef LOGO_BACKLIGHT
+char const*const LOGO_BACKLIGHT1_FILE      = "/sys/class/leds/logo-backlight_1/brightness";
+char const*const LOGO_BACKLIGHT2_FILE      = "/sys/class/leds/logo-backlight_2/brightness";
+#endif
+
 char const*const RED_LED_FILE		   = "/sys/class/leds/pwr-red/brightness";
 char const*const GREEN_LED_FILE		   = "/sys/class/leds/pwr-green/brightness";
 char const*const BLUE_LED_FILE		   = "/sys/class/leds/pwr-blue/brightness";
@@ -157,6 +162,10 @@ static int set_light_backlight (struct light_device_t *dev, struct light_state_t
 	err = write_int (ALS_FILE, enable);
 	err |= write_int (LCD_BACKLIGHT_FILE, brightness);
 	err |= write_int (LCD_BACKLIGHT2_FILE, brightness);
+#ifdef LOGO_BACKLIGHT
+	err |= write_int (LOGO_BACKLIGHT1_FILE, brightness);
+	err |= write_int (LOGO_BACKLIGHT2_FILE, brightness);
+#endif
 	pthread_mutex_unlock(&g_lock);
 
 	return err;
