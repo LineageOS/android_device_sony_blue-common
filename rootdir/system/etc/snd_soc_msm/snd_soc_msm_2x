@@ -3278,20 +3278,20 @@ SectionDevice
 
 	EnableSequence
 		'SLIM_0_TX Channels':0:One
-		'SLIM TX7 MUX':0:DEC6
-		'DEC6 MUX':0:ADC1
-		'DEC6 Volume':1:66
-		'ADC1 Volume':1:100
+		'SLIM TX7 MUX':0:DEC4
+		'DEC4 Volume':1:69
+		'DEC4 MUX':0:ADC3
+		'ADC3 Volume':1:100
 	EndSequence
 
 	DisableSequence
 		'SLIM TX7 MUX':0:ZERO
-		'DEC6 MUX':0:ZERO
-		'DEC6 Volume':1:0
-		'ADC1 Volume':1:0
+		'DEC4 MUX':0:ZERO
+		'DEC4 Volume':1:0
+		'ADC3 Volume':1:0
 	EndSequence
 
-	ACDBID	4:2
+	ACDBID 	4:2
 	EffectsMixerCTL "SRS TruMedia"
 
 EndSection
