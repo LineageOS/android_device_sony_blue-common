@@ -59,9 +59,6 @@ on early-boot
     chown system system /sys/class/compass/akm8972/single
     chown system system /sys/class/compass/akm8972/registers
 
-    # WTF
-    chmod 0666 /proc/cmdline
-
     #Run pre_hw_config.sh before entering charge only mode.
     exec /system/bin/sh /system/etc/pre_hw_config.sh
 
