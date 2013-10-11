@@ -160,30 +160,6 @@ on boot
     chown system system /sys/class/leds/lcd-backlight_2/brightness
     chmod 660 /sys/class/leds/lcd-backlight_2/brightness
 
-    # LED
-    chown system system /sys/class/leds/pwr-red/brightness
-    chmod 660 /sys/class/leds/pwr-red/brightness
-    chown system system /sys/class/leds/pwr-red/use_pattern
-    chmod 660 /sys/class/leds/pwr-red/use_pattern
-    chown system system /sys/class/leds/pwr-green/brightness
-    chmod 660 /sys/class/leds/pwr-green/brightness
-    chown system system /sys/class/leds/pwr-green/use_pattern
-    chmod 660 /sys/class/leds/pwr-green/use_pattern
-    chown system system /sys/class/leds/pwr-blue/brightness
-    chmod 660 /sys/class/leds/pwr-blue/brightness
-    chown system system /sys/class/leds/pwr-blue/use_pattern
-    chmod 660 /sys/class/leds/pwr-blue/use_pattern
-    chown system system /sys/devices/i2c-10/10-0040/pattern_data
-    chmod 660 /sys/devices/i2c-10/10-0040/pattern_data
-    chown system system /sys/devices/i2c-10/10-0040/pattern_delay
-    chmod 660 /sys/devices/i2c-10/10-0040/pattern_delay
-    chown system system /sys/devices/i2c-10/10-0040/pattern_duration_secs
-    chmod 660 /sys/devices/i2c-10/10-0040/pattern_duration_secs
-    chown system system /sys/devices/i2c-10/10-0040/pattern_use_softdim
-    chmod 660 /sys/devices/i2c-10/10-0040/pattern_use_softdim
-    chown system system /sys/devices/i2c-10/10-0040/dim_time
-    chmod 660 /sys/devices/i2c-10/10-0040/dim_time
-
     # AS3676/Ambient Light Sensor
     chown system system /sys/devices/i2c-10/10-0040/als_on
     chmod 660 /sys/devices/i2c-10/10-0040/als_on
@@ -495,3 +471,8 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
 service cnd /system/bin/cnd
     class late_start
     socket cnd stream 660 root inet
+
+service illumination /system/bin/illumination_service
+    socket illumination stream 0660 root system
+    class main
+    user root

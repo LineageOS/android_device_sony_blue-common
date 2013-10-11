@@ -150,10 +150,6 @@ PRODUCT_PACKAGES += \
     libmmcamera_interface2 \
     libmmcamera_interface
 
-# Light
-PRODUCT_PACKAGES += \
-    lights.msm8960
-
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.default
