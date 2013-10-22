@@ -89,8 +89,6 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/blue-common/custombootimg.mk
 TARGET_RELEASETOOLS_EXTENSIONS := device/sony/blue-common
-BOARD_CUSTOM_GRAPHICS := ../../../device/sony/blue-common/recovery/recovery.c
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/sony/blue-common/recovery/recovery-keys.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
 TARGET_RECOVERY_FSTAB := device/sony/blue-common/rootdir/fstab.qcom
