@@ -23,6 +23,9 @@ on early-init
 
 on init
     mkdir /storage 0775 system system
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
+    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
     mkdir /storage/sdcard0 0775 system system
     mkdir /storage/sdcard1 0775 system system
     mkdir /storage/usbdisk 0775 system system
@@ -295,6 +298,19 @@ on charger
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor 4
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
+
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 /storage/sdcard0 /mnt/media_rw/sdcard0
+    class late_start
+    disabled
+
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard1 /storage/sdcard1
+    class late_start
+    disabled
+
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk /storage/usbdisk
+    class late_start
+    disabled
+
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
