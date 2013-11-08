@@ -151,7 +151,7 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    sensors.default
+    sensors.msm8960
 
 # WLAN
 PRODUCT_PACKAGES += \
