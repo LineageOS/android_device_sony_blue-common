@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1b9901_4b2b1783",
+        "filename": "rootdir/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 605
+      },
+      "writtenOn": "2013-11-13T06:40:46Z",
+      "side": 1,
+      "message": "are u shure?",
+      "revId": "c0218df5b58ec166209e9f8286e429b8e91bc84e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
