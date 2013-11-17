@@ -83,6 +83,9 @@ TARGET_NO_RPC := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
 
+# Needed for blobs
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
