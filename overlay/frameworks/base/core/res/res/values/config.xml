@@ -204,4 +204,7 @@
 
     <bool name="config_ui_enableFadingMarquee">false</bool>
 
+    <!-- Enable lockscreen translucent decor -->
+    <bool name="config_enableLockScreenTranslucentDecor">true</bool>
+
 </resources>
