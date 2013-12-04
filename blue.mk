@@ -58,11 +58,7 @@ PRODUCT_COPY_FILES += \
 
 # FM Radio
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
-    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml
-
-PRODUCT_PACKAGES += \
-    FmRadio
+    $(COMMON_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh
 
 # Audio
 PRODUCT_COPY_FILES += \
