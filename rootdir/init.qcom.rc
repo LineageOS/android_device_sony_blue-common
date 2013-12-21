@@ -53,6 +53,14 @@ on fs
     exec /system/bin/taimport
     start ta_qmi_service
 
+    restorecon /data/etc/bluetooth_bdaddr
+    restorecon /data/etc/wlan_macaddr0
+    restorecon /data/etc/wlan_macaddr1
+    restorecon /data/etc/wlan_macaddr2
+    restorecon /data/etc/wlan_macaddr3
+    restorecon /data/misc/audio/mbhc.bin
+    restorecon /data/misc/audio/wcd9310_anc.bin
+
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
