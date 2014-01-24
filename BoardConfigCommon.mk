@@ -152,5 +152,36 @@ TW_BOARD_CUSTOM_GRAPHICS := ../../../device/sony/blue-common/recovery/twrpgraphi
 TW_MAX_BRIGHTNESS := 255
 TW_NO_USB_STORAGE := true
 
+BOARD_SEPOLICY_DIRS += \
+    device/sony/blue-common/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    file_contexts \
+    property_contexts \
+    te_macros \
+    bluetooth_loader.te \
+    bridge.te \
+    camera.te \
+    device.te \
+    dhcp.te \
+    domain.te \
+    drmserver.te \
+    file.te \
+    kickstart.te \
+    init.te \
+    mac_update.te \
+    mediaserver.te \
+    mpdecision.te \
+    netmgrd.te \
+    qmux.te \
+    rild.te \
+    rmt.te \
+    surfaceflinger.te \
+    system.te \
+    tee.te \
+    thermald.te \
+    ueventd.te \
+    wpa_supplicant.te
+
 # inherit from the proprietary version
 -include vendor/sony/blue-common/BoardConfigVendor.mk
