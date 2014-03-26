@@ -46,8 +46,12 @@ on init
 
 on fs
     chmod 0775 /data/etc
-    start tad
-    exec /system/bin/wait4tad
+
+    # SONY: Start the TrimArea Daemon. It must be started before fota-ua
+    class_start trimarea
+    exec /sbin/wait4tad_static
+
+    # SONY: Start early TA-users
     exec /system/bin/taimport
     start ta_qmi_service
 
@@ -174,12 +178,13 @@ service mac-update /system/bin/mac-update
     user wifi
     oneshot
 
-service tad /system/bin/tad /dev/block/mmcblk0 1,16
-    class core
+# Sony: TrimArea Daemon
+# last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb) /128(kb))
+service tad_static /sbin/tad_static /dev/block/mmcblk0 1,16
     user root
     group root
     socket tad stream 0660 system system
-    disabled
+    class trimarea
 
 service secchand /system/bin/secchand
     class core
