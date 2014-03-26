@@ -27,6 +27,9 @@ on fs
     restorecon /data/misc/audio/mbhc.bin
     restorecon /data/misc/audio/wcd9310_anc.bin
 
+on early-boot
+    exec /system/bin/sh /init.qcom.early_boot.sh ${ro.board.platform}
+
 on boot
     #Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
