@@ -169,6 +169,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     sensors.msm8960
 
+# Wifi service
+PRODUCT_PACKAGES += \
+    wcnss_service
+
 # WLAN
 PRODUCT_PACKAGES += \
     libwfcu \
