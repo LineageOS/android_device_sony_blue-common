@@ -116,9 +116,6 @@ on boot
     chown system system /sys/devices/i2c-10/10-0040/als_on
     chmod 660 /sys/devices/i2c-10/10-0040/als_on
 
-    # Enable DEBUG_SUSPEND, DEBUG_EXIT_SUSPEND, and DEBUG_WAKEUP
-    write /sys/module/wakelock/parameters/debug_mask 7
-
     #To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
@@ -170,14 +167,6 @@ service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk /s
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
-
-# Fast Dormancy
-service fast-dormancy /system/bin/fast-dormancy
-    class late_start
-    disabled
-
-on property:ro.semc.enable.fast_dormancy=false
-    stop fast-dormancy
 
 # Update WIFI MAC address
 service mac-update /system/bin/mac-update
