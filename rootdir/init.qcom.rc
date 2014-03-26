@@ -38,19 +38,8 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-    # Allow QMUX daemon to assign port open wait time
-    chown radio radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
-
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
-
-    #port-bridge
-    chmod 0660 /dev/smd0
-    chown system system /dev/smd0
-
-    #BT DUN port-bridge
-    chmod 0660 /dev/smd7
-    chown bluetooth bluetooth /dev/smd7
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
@@ -76,8 +65,6 @@ on boot
     chmod 660 /dev/rtc0
     chown system system /dev/rtc0
 
-    chown root system /proc/net/ip_conntrack
-
 # msm specific files that need to be created on /data
 on post-fs-data
     # Create the directories used by the Wireless subsystem
@@ -101,8 +88,6 @@ on post-fs-data
 
     write /dev/wcnss_wlan 1
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
-    write /sys/module/subsystem_restart/parameters/max_restarts 8
-    write /sys/module/subsystem_restart/parameters/max_history_time 1000
 
     # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
@@ -136,9 +121,6 @@ on post-fs-data
 
     #Create directories for gpsone_daemon services
     mkdir /data/misc/gpsone_d 0770 system gps
-
-    #Provide the access to hostapd.conf only to root and group
-    chmod 0660 /data/hostapd/hostapd.conf
 
     # Enable the setgid bit on the directory
     mkdir /data/audio 0770 media audio
