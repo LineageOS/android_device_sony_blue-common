@@ -103,6 +103,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
+# SEC Config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
+
 # Thermal monitor configuration
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/thermald.conf:system/etc/thermald.conf \
