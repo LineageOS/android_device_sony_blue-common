@@ -14,8 +14,9 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
+TARGET_PROVIDES_ADRENO_DRIVER := true
 # qcom common
-$(call inherit-product, device/sony/qcom-common/qcom-common-42.mk)
+$(call inherit-product, device/sony/qcom-common/qcom-common.mk)
 
 COMMON_PATH := device/sony/blue-common
 
@@ -219,6 +220,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=0
+
+# OpenGL ES 2.0
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=131072
 
 # Include non-opensource parts
 $(call inherit-product, vendor/sony/blue-common/blue-common-vendor.mk)
