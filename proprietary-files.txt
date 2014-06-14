@@ -1,4 +1,5 @@
 bin/system_monitor
+bin/time_daemon
 etc/firmware/a225p5_pm4.fw
 etc/firmware/a225_pfp.fw
 etc/firmware/a225_pm4.fw
@@ -8,11 +9,10 @@ etc/firmware/leia_pfp_470.fw
 etc/firmware/leia_pm4_470.fw
 etc/firmware/wlan/prima/WCNSS_cfg.dat
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
-etc/firmware/yamato_pfp.fw
-etc/firmware/yamato_pm4.fw
 lib/libsysmon_idd.so
 lib/libsysmon_jni.so
 lib/libsysmon.so
+lib/libtime_genoff.so:vendor/lib/libtime_genoff.so
 lib/sysmon/sysmon_batt_therm.so
 lib/sysmon/sysmon_camif.so
 lib/sysmon/sysmon_charge_current_limit_level.so
