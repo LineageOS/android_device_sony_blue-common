@@ -92,9 +92,6 @@ on post-fs-data
     write /dev/wcnss_wlan 1
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
 
-    # Create /data/time folder for time-services
-    mkdir /data/time/ 0700 system system
-
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
 

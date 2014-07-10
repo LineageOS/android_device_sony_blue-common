@@ -246,12 +246,6 @@ service illumination /system/bin/illumination_service
     class main
     user root
 
-# Time daemon
-service time_daemon /system/bin/time_daemon
-    class late_start
-    user root
-    group root
-
 # WCNSS WiFi Service
 service wcnss-service /system/bin/wcnss_service
     class late_start
