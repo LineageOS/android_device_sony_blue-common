@@ -249,13 +249,6 @@ service diag_mdlog /system/bin/logwrapper /system/bin/diag_mdlog -s 100
     class late_start
     disabled
 
-service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
-    class late_start
-    user root
-    group system qcom_oncrpc
-    disabled
-    oneshot
-
 service qcom-sh /system/bin/sh /init.qcom.sh
     class late_start
     user root
