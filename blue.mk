@@ -99,13 +99,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
-# QCOM Xtras
+# Sensors
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/izat.conf:system/etc/izat.conf \
-    $(LOCAL_PATH)/rootdir/system/etc/lowi.conf:system/etc/lowi.conf \
-    $(LOCAL_PATH)/rootdir/system/etc/quipc.conf:system/etc/quipc.conf \
-    $(LOCAL_PATH)/rootdir/system/etc/sap.conf:system/etc/sap.conf \
-    $(LOCAL_PATH)/rootdir/system/etc/xtwifi.conf:system/etc/xtwifi.conf
+    $(LOCAL_PATH)/rootdir/system/etc/sap.conf:system/etc/sap.conf
+
 
 # SEC Config
 PRODUCT_COPY_FILES += \
