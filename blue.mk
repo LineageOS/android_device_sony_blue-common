@@ -95,10 +95,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/bin/fix_storage_permissions.sh:system/bin/fix_storage_permissions.sh
 
-# Post recovery script
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
-
 # Sensors
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/sap.conf:system/etc/sap.conf
