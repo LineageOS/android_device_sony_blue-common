@@ -154,7 +154,7 @@ BOARD_SEPOLICY_UNION += \
     rild.te \
     rmt.te \
     surfaceflinger.te \
-    system.te \
+    system_server.te \
     tee.te \
     thermald.te \
     ueventd.te \
