@@ -52,7 +52,7 @@
 
 /dev/smd2                 0660   bluetooth  bluetooth
 /dev/smd3                 0660   bluetooth  bluetooth
-/dev/ttyHS0               0600   bluetooth  bluetooth
+/dev/ttyHSL0              0600   bluetooth  bluetooth
 /dev/uinput               0660   system     bluetooth
 
 /dev/smd4                 0660   system     system
