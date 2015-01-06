@@ -129,6 +129,10 @@ SOMC_CFG_SENSORS_COMPASS_AK8972 := yes
 TARGET_FUSE_SDCARD_UID := 2800
 TARGET_FUSE_SDCARD_GID := 2800
 
+# Include an expanded selection of fonts
+EXTENDED_FONT_FOOTPRINT := true
+
+# SELinux
 BOARD_SEPOLICY_DIRS += \
     device/sony/blue-common/sepolicy
 
