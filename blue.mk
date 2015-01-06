@@ -138,7 +138,6 @@ PRODUCT_PACKAGES += \
 # Audio
 PRODUCT_PACKAGES += \
     alsa.msm8960 \
-    audio_policy.msm8960 \
     audio.primary.msm8960 \
     audio.a2dp.default \
     audio.usb.default \
@@ -197,7 +196,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.mode=endfire \
     persist.audio.handset.mic=analog \
     persist.audio.lowlatency.rec=false \
-    af.resampler.quality=255 \
     ro.qc.sdk.audio.fluencetype=none \
     lpa.decode=true
 
