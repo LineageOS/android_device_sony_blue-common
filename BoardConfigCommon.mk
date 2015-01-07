@@ -138,11 +138,13 @@ BOARD_SEPOLICY_UNION += \
     bluetooth_loader.te \
     bridge.te \
     camera.te \
+    cnd.te \
     device.te \
     dhcp.te \
     domain.te \
     drmserver.te \
     file.te \
+    gsiff.te \
     kickstart.te \
     init.te \
     mac_update.te \
@@ -150,10 +152,9 @@ BOARD_SEPOLICY_UNION += \
     mpdecision.te \
     netmgrd.te \
     property.te \
-    property_contexts \
     qmux.te \
     rild.te \
-    rmt.te \
+    rmt_storage.te \
     surfaceflinger.te \
     system_server.te \
     tee.te \
