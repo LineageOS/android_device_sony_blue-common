@@ -1,0 +1,13 @@
+type system_monitor, domain;
+type system_monitor_exec, exec_type, file_type;
+
+init_daemon_domain(system_monitor)
+
+allow system_monitor socket_device:dir { write add_name remove_name };
+
+allow system_monitor socket_device:sock_file { create };
+
+allow system_monitor shared_log_device:chr_file { read write };
+
+allow system_monitor self:socket { create };
+allow system_monitor self:capability { dac_override dac_read_search };
