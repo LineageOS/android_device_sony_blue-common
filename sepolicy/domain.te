@@ -1,3 +1,23 @@
 allow domain kgsl_device:chr_file rw_file_perms;
+
 # libgsl is chatty about accessing /data/local/tmp
 dontaudit { surfaceflinger appdomain } shell_data_file:dir search;
+
+# Fix warnings about missing SELinux domains
+type gsiff, domain;
+type cnd, domain;
+type setup_fs, domain;
+type secchand, domain;
+type system_monitor, domain;
+type irsc_util, domain;
+type mac-update, domain;
+type updatemiscta, domain;
+type illumination, domain;
+type time_daemon, domain;
+type wcnss-service, domain;
+type quipc_igsn, domain;
+type quipc_main, domain;
+type location_mq, domain;
+type lowi-server, domain;
+type tad_static, domain;
+type ta_qmi_service, domain;

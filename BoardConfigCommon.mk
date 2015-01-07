@@ -153,10 +153,9 @@ BOARD_SEPOLICY_UNION += \
     mpdecision.te \
     netmgrd.te \
     property.te \
-    property_contexts \
     qmux.te \
     rild.te \
-    rmt.te \
+    rmt_storage.te \
     surfaceflinger.te \
     system_server.te \
     tee.te \

@@ -1,1 +1,10 @@
 allow init wpa_socket:unix_dgram_socket { bind create };
+
+# cal_data_manage
+allow init self:process { execmem };
+
+# property=sf.lcd_density
+allow init_shell default_prop:property_service set;
+
+# property=ctl.quipc_igsn
+allow init_shell ctl_default_prop:property_service set;
