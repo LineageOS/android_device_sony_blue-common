@@ -1,0 +1,5 @@
+type irsc_util, domain;
+type irsc_util_exec, exec_type, file_type;
+
+# Started by logwrapper in init
+domain_auto_trans(init, irsc_util_exec, irsc_util)

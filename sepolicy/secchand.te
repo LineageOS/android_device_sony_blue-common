@@ -1,0 +1,7 @@
+type secchand, domain;
+type secchand_exec, exec_type, file_type;
+
+init_daemon_domain(secchand)
+
+allow secchand shared_log_device:chr_file { read write };
+allow secchand self:socket { create };

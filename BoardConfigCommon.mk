@@ -144,28 +144,43 @@ BOARD_SEPOLICY_UNION += \
     bluetooth_loader.te \
     bridge.te \
     camera.te \
+    cnd.te \
     device.te \
     dhcp.te \
     domain.te \
     drmserver.te \
     file.te \
-    kickstart.te \
+    gsiff.te \
+    illumination_service.te \
     init.te \
+    irsc_util.te \
+    kickstart.te \
+    location_mq.te \
+    lowi_server.te \
     mac_update.te \
     mediaserver.te \
     mpdecision.te \
     netmgrd.te \
     property.te \
-    property_contexts \
     qmux.te \
+    quipc_igsn.te \
+    quipc_main.te \
     rild.te \
-    rmt.te \
+    rmt_storage.te \
+    secchand.te \
+    setup_fs.te \
     surfaceflinger.te \
+    system_monitor.te \
     system_server.te \
+    ta_qmi_service.te \
+    tad_static.te \
     tee.te \
+    time_daemon.te \
     thermald.te \
     ueventd.te \
+    updatemiscta.te \
     vold.te \
+    wcnss_service.te \
     wpa_supplicant.te
 
 # inherit from the proprietary version

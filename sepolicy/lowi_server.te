@@ -1,0 +1,4 @@
+type lowi_server, domain;
+type lowi_server_exec, exec_type, file_type;
+
+init_daemon_domain(lowi_server)
