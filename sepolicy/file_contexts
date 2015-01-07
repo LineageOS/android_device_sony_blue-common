@@ -58,6 +58,7 @@
 /dev/socket/mpdecision(/.*)?     u:object_r:mpdecision_socket:s0
 
 # Block labeling
+/dev/block/mmcblk0(.*)        u:object_r:mmc_block_device:s0
 /dev/block/mmcblk0p6          u:object_r:rmt_block_device:s0
 /dev/block/mmcblk0p7          u:object_r:rmt_block_device:s0
 /dev/block/mmcblk0p8          u:object_r:rmt_block_device:s0
@@ -87,3 +88,5 @@
 /system/etc/kickstart_checker.sh u:object_r:kickstart_exec:s0
 /system/bin/hci_qcomm_init       u:object_r:hci_attach_exec:s0
 /system/etc/init.qcom.bt.sh      u:object_r:bluetooth_loader_exec:s0
+/system/bin/gsiff_daemon         u:object_r:gsiff_exec:s0
+/system/bin/cnd                  u:object_r:cnd_exec:s0
