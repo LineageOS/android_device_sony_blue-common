@@ -1,1 +1,4 @@
 allow init wpa_socket:unix_dgram_socket { bind create };
+
+# cal_data_manage
+allow init self:process { execmem };
