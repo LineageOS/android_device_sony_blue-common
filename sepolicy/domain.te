@@ -1,3 +1,73 @@
 allow domain kgsl_device:chr_file rw_file_perms;
+
 # libgsl is chatty about accessing /data/local/tmp
 dontaudit { surfaceflinger appdomain } shell_data_file:dir search;
+
+# Fix warnings about missing SELinux domains
+type gsiff, domain;
+type gsiff_exec, exec_type, file_type;
+init_daemon_domain(gsiff)
+
+type cnd, domain;
+type gsiff_exec, exec_type, file_type;
+init_daemon_domain(cnd)
+
+type setup_fs, domain;
+type setup_fs_exec, exec_type, file_type;
+init_daemon_domain(setup_fs)
+
+type secchand, domain;
+type secchand_exec, exec_type, file_type;
+init_daemon_domain(secchand)
+
+type system_monitor, domain;
+type system_monitor_exec, exec_type, file_type;
+init_daemon_domain(system_monitor)
+
+type irsc_util, domain;
+type irsc_util_exec, exec_type, file_type;
+init_daemon_domain(irsc_util)
+
+type mac_update, domain;
+type mac_update_exec, exec_type, file_type;
+init_daemon_domain(mac_update)
+
+type updatemiscta, domain;
+type updatemiscta_exec, exec_type, file_type;
+init_daemon_domain(updatemiscta)
+
+type illumination_service, domain;
+type illumination_service_exec, exec_type, file_type;
+init_daemon_domain(illumination_service)
+
+type time_daemon, domain;
+type time_daemon_exec, exec_type, file_type;
+init_daemon_domain(time_daemon)
+
+type wcnss_service, domain;
+type wcnss_service_exec, exec_type, file_type;
+init_daemon_domain(wcnss_service)
+
+type quipc_igsn, domain;
+type quipc_igsn_exec, exec_type, file_type;
+init_daemon_domain(quipc_igsn)
+
+type quipc_main, domain;
+type quipc_main_exec, exec_type, file_type;
+init_daemon_domain(quipc_main)
+
+type location_mq, domain;
+type location_mq_exec, exec_type, file_type;
+init_daemon_domain(location_mq)
+
+type lowi_server, domain;
+type lowi_server_exec, exec_type, file_type;
+init_daemon_domain(lowi_server)
+
+type tad_static, domain;
+type tad_static_exec, exec_type, file_type;
+init_daemon_domain(tad_static)
+
+type ta_qmi_service, domain;
+type ta_qmi_service_exec, exec_type, file_type;
+init_daemon_domain(ta_qmi_service)
