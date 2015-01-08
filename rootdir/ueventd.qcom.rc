@@ -99,6 +99,10 @@
 /dev/hw_random            0660   system     system
 /dev/cpu_dma_latency      0660   system     system
 
+# Wifi
+/dev/wcnss_wlan           0660   system     system
+/dev/wcnss_ctrl           0660   system     system
+
 /sys/devices/virtual/input/input*          bma250_rate    0640  system   system
 /sys/devices/virtual/smdpkt/smdcntl*       open_timeout   0664  radio    radio
 
