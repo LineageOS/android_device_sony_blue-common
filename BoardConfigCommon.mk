@@ -53,8 +53,11 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01700000
 # Ueventd
 COMMON_GLOBAL_CFLAGS += -DQCOM_LEGACY_UIDS
 
-# Temporary fix for Adreno's INVAL
+# Use legacy MMAP for pre-lollipop blobs
 BOARD_USES_LEGACY_MMAP := true
+
+# Use dlmalloc instead of jemalloc for mallocs
+MALLOC_IMPL := dlmalloc
 
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
