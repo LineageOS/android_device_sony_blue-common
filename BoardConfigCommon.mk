@@ -154,6 +154,7 @@ BOARD_SEPOLICY_UNION += \
     secchand.te \
     setup_fs.te \
     surfaceflinger.te \
+    system_app.te \
     system_monitor.te \
     system_server.te \
     tad_static.te \
