@@ -145,18 +145,19 @@ BOARD_SEPOLICY_DIRS += \
     device/sony/blue-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-	file_contexts \
-	illumination.te \
-	init.te \
-	mac_update.te \
-	mediaserver.te \
-	rmt_storage.te \
-	secchand.te \
-	setup_fs.te \
-	system_monitor.te \
-	tad_static.te \
-	ta_qmi_service.te \
-	updatemiscta.te
+    file_contexts \
+    illumination.te \
+    init.te \
+    mac_update.te \
+    mediaserver.te \
+    rmt_storage.te \
+    secchand.te \
+    setup_fs.te \
+    system_monitor.te \
+    system_server.te \
+    tad_static.te \
+    ta_qmi_service.te \
+    updatemiscta.te
 
 # inherit from the proprietary version
 -include vendor/sony/blue-common/BoardConfigVendor.mk

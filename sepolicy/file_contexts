@@ -1,3 +1,6 @@
+# Wifi
+/data/etc/wlan_macaddr[0-3]         u:object_r:wifi_data_file:s0
+
 # System binaries
 /system/bin/setup_fs                u:object_r:setup_fs_exec:s0
 /system/bin/secchand                u:object_r:secchand_exec:s0
