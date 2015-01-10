@@ -78,6 +78,8 @@ WIFI_DRIVER_MODULE_NAME          := "wlan"
 WIFI_DRIVER_FW_PATH_STA          := "sta"
 WIFI_DRIVER_FW_PATH_AP           := "ap"
 
+BOARD_NO_WIFI_HAL := true
+
 BOARD_USE_SONY_MACUPDATE := true
 
 # Camera
