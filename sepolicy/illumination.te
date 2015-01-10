@@ -1,0 +1,9 @@
+type illumination_service, domain;
+type illumination_service_exec, exec_type, file_type;
+
+init_daemon_domain(illumination_service)
+
+allow illumination_service sysfs:file { write };
+allow illumination_service sysfs_wake_lock:file { open write };
+allow illumination_service self:capability { dac_override };
+allow illumination_service uhid_device:chr_file { open write ioctl };
