@@ -136,40 +136,25 @@ TARGET_FUSE_SDCARD_GID := 2800
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
 
-# SELinux
+# Include common SE policies
+-include device/qcom/sepolicy/sepolicy.mk
+
 BOARD_SEPOLICY_DIRS += \
     device/sony/blue-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-    file_contexts \
-    property_contexts \
-    te_macros \
-    bluetooth_loader.te \
-    bridge.te \
-    camera.te \
-    device.te \
-    dhcp.te \
-    domain.te \
-    drmserver.te \
-    file.te \
-    kickstart.te \
-    init.te \
-    mac_update.te \
-    mediaserver.te \
-    mpdecision.te \
-    netmgrd.te \
-    property.te \
-    property_contexts \
-    qmux.te \
-    rild.te \
-    rmt.te \
-    surfaceflinger.te \
-    system_server.te \
-    tee.te \
-    thermald.te \
-    ueventd.te \
-    vold.te \
-    wpa_supplicant.te
+	file_contexts \
+	illumination.te \
+	init.te \
+	mac_update.te \
+	mediaserver.te \
+	rmt_storage.te \
+	secchand.te \
+	setup_fs.te \
+	system_monitor.te \
+	tad_static.te \
+	ta_qmi_service.te \
+	updatemiscta.te
 
 # inherit from the proprietary version
 -include vendor/sony/blue-common/BoardConfigVendor.mk
