@@ -177,6 +177,7 @@ service rmt_storage /system/bin/rmt_storage
 service mac-update /system/bin/mac-update
     class main
     user wifi
+    seclabel u:r:mac_update:s0
     oneshot
 
 # Sony: TrimArea Daemon
@@ -221,9 +222,9 @@ service hw_config /system/bin/sh /system/etc/hw_config.sh
     oneshot
 
 service system_monitor /system/bin/system_monitor
-    socket sysmon stream 0660 root system
     class core
     user root
+    socket sysmon stream 0660 root system
 
 service dis_msm_therm /system/bin/sh /system/etc/disable_msm_thermal.sh
     class core
@@ -243,9 +244,9 @@ service cnd /system/bin/cnd
     socket cnd stream 660 root inet
 
 service illumination /system/bin/illumination_service
-    socket illumination stream 0660 root system
     class main
     user root
+    socket illumination stream 0660 root system
 
 # Time daemon
 service time_daemon /system/bin/time_daemon
