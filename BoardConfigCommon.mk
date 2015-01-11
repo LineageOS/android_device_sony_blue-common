@@ -18,7 +18,7 @@ include device/sony/common/BoardConfigCommon.mk
 # inherit from msm8960-common
 include device/sony/msm8960-common/BoardConfigCommon.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/sony/blue-common/include
+TARGET_SPECIFIC_HEADER_PATH += device/sony/blue-common/include
 
 # Kernel properties
 TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
