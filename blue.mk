@@ -88,7 +88,8 @@ PRODUCT_COPY_FILES += \
 
 # Prima wifi config
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+    $(COMMON_PATH)/rootdir/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
+    $(COMMON_PATH)/rootdir/system/etc/xtwifi.conf:system/etc/xtwifi.conf
 
 # Script for fixing perms on internal sdcard
 PRODUCT_COPY_FILES += \
