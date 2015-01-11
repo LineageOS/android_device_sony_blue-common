@@ -157,6 +157,10 @@ PRODUCT_PACKAGES += \
     libmmcamera_interface \
     libmmcamera_interface2
 
+# Force use old camera api
+PRODUCT_PROPERTY_OVERRIDES += \
+    camera2.portability.force_api=1
+
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.msm8960
