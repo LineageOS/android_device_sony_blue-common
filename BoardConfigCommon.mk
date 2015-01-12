@@ -150,7 +150,6 @@ BOARD_SEPOLICY_UNION += \
     mac_update.te \
     mediaserver.te \
     platform_app.te \
-    recovery.te \
     rmt_storage.te \
     secchand.te \
     setup_fs.te \
