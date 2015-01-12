@@ -1,0 +1,7 @@
+recovery_only(`
+
+allow recovery rootfs:dir { create };
+allow recovery sdcard_posix:dir { open read };
+allow vold rootfs:dir { write add_name };
+
+')
