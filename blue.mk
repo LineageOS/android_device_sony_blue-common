@@ -42,7 +42,7 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/init.qcom.early_boot.sh:root/init.qcom.early_boot.sh \
+    $(COMMON_PATH)/rootdir/init.qcom.early_boot.sh:root/init.qcom.early_boot.sh \
     $(COMMON_PATH)/rootdir/init.qcom.sh:root/init.qcom.sh \
     $(COMMON_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
     $(COMMON_PATH)/rootdir/init.sony.rc:root/init.sony.rc \
@@ -54,8 +54,8 @@ PRODUCT_COPY_FILES += \
 
 # Additional sbin stuff
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
-    $(LOCAL_PATH)/rootdir/system/bin/tad_static:system/bin/tad_static
+    $(COMMON_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
+    $(COMMON_PATH)/rootdir/system/bin/tad_static:system/bin/tad_static
 
 # Keys
 PRODUCT_COPY_FILES += \
@@ -97,11 +97,11 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/sap.conf:system/etc/sap.conf
+    $(COMMON_PATH)/rootdir/system/etc/sap.conf:system/etc/sap.conf
 
 # SEC Config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
+    $(COMMON_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
 
 # Thermal monitor configuration
 PRODUCT_COPY_FILES += \
