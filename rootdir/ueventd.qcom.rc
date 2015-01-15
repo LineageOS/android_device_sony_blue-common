@@ -41,7 +41,6 @@
 /dev/block/mmcblk0p12     0660   system     system
 /dev/block/mmcblk0p13     0660   system     system
 /dev/block/mmcblk0p15     0660   system     system
-/dev/oncrpc/*             0660   root       qcom_oncrpc
 
 /dev/genlock              0666   system     system
 /dev/ion                  0664   system     system
