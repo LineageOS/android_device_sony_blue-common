@@ -144,12 +144,14 @@ BOARD_SEPOLICY_DIRS += \
 
 BOARD_SEPOLICY_UNION += \
     file_contexts \
+    property_contexts \
     bootanim.te \
     illumination.te \
     init.te \
     mac_update.te \
     mediaserver.te \
     platform_app.te \
+    property.te \
     rmt_storage.te \
     secchand.te \
     setup_fs.te \
