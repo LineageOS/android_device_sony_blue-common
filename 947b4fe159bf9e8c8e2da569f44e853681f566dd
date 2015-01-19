@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a9d85d2_db17d652",
+        "filename": "sepolicy/init.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2015-01-19T10:51:12Z",
+      "side": 1,
+      "message": "Why is this needed?",
+      "revId": "947b4fe159bf9e8c8e2da569f44e853681f566dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a9d85d2_bb1c8a78",
+        "filename": "sepolicy/property_contexts",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2015-01-19T10:51:12Z",
+      "side": 1,
+      "message": "Not something device specific",
+      "revId": "947b4fe159bf9e8c8e2da569f44e853681f566dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a9d85d2_1b12fe62",
+        "filename": "sepolicy/property_contexts",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2015-01-19T10:51:12Z",
+      "side": 1,
+      "message": "Not this either.",
+      "revId": "947b4fe159bf9e8c8e2da569f44e853681f566dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
