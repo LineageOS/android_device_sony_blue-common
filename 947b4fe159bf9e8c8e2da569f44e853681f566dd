@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5a9d85d2_3e0fe7e2",
+        "filename": "sepolicy/init.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2015-01-19T19:23:27Z",
+      "side": 1,
+      "message": "We should get rid of that, we know exactly what our devices need.",
+      "parentUuid": "5a9d85d2_db86b564",
+      "revId": "947b4fe159bf9e8c8e2da569f44e853681f566dd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a9d85d2_bb1c8a78",
         "filename": "sepolicy/property_contexts",
         "patchSetId": 1
