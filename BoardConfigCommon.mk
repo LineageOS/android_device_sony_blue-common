@@ -148,7 +148,6 @@ BOARD_SEPOLICY_UNION += \
     property.te \
     rmt_storage.te \
     secchand.te \
-    setup_fs.te \
     surfaceflinger.te \
     system_app.te \
     system_monitor.te \
