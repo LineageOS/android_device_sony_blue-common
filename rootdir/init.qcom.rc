@@ -82,7 +82,6 @@ on post-fs-data
     mkdir /data/misc/wifi/prima 0775 wifi wifi
     exec /system/bin/mac-update
 
-    mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
