@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The CyanogenMod Project
+# Copyright (C) 2015 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -52,9 +52,6 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01700000
 
 # Use legacy MMAP for pre-lollipop blobs
 BOARD_USES_LEGACY_MMAP := true
-
-# Use dlmalloc instead of jemalloc for mallocs
-MALLOC_IMPL := dlmalloc
 
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
