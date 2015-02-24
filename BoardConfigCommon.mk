@@ -123,10 +123,6 @@ SOMC_CFG_SENSORS_PROXIMITY_APDS9702 := yes
 SOMC_CFG_SENSORS_ACCEL_BMA250NA_INPUT := yes
 SOMC_CFG_SENSORS_COMPASS_AK8972 := yes
 
-# Internal storage fuse daemon permissions
-TARGET_FUSE_SDCARD_UID := 2800
-TARGET_FUSE_SDCARD_GID := 2800
-
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
 
