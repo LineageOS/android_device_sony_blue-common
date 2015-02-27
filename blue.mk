@@ -89,9 +89,9 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
     $(COMMON_PATH)/rootdir/system/etc/xtwifi.conf:system/etc/xtwifi.conf
 
-# Script for fixing perms on internal sdcard
+# Script for fixing perms on internal sdcard during update
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/bin/fix_storage_permissions.sh:system/bin/fix_storage_permissions.sh
+    $(COMMON_PATH)/tools/fix_storage_permissions.sh:install/bin/fix_storage_permissions.sh
 
 # Sensors
 PRODUCT_COPY_FILES += \

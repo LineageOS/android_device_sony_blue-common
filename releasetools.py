@@ -16,6 +16,6 @@
 """Custom OTA Package commands for blue"""
 
 def FullOTA_InstallEnd(self):
-  self.script.AppendExtra('package_extract_file("system/bin/fix_storage_permissions.sh", "/tmp/fix_storage_permissions.sh");')
+  self.script.AppendExtra('package_extract_file("install/bin/fix_storage_permissions.sh", "/tmp/fix_storage_permissions.sh");')
   self.script.AppendExtra('set_metadata("/tmp/fix_storage_permissions.sh", "uid", 0, "gid", 0, "mode", 0755);')
   self.script.AppendExtra('run_program("/tmp/fix_storage_permissions.sh");')
