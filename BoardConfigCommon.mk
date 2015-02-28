@@ -142,6 +142,7 @@ BOARD_SEPOLICY_UNION += \
     mediaserver.te \
     platform_app.te \
     property.te \
+    recovery.te \
     rmt_storage.te \
     secchand.te \
     surfaceflinger.te \

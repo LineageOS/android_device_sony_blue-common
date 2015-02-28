@@ -1,0 +1,6 @@
+recovery_only(`
+
+# Mount internal sdcard
+allow recovery tmpfs:dir { mounton };
+
+')
