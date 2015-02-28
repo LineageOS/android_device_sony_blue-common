@@ -48,7 +48,8 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
     $(COMMON_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
     $(COMMON_PATH)/rootdir/system/etc/init.sony.bt.sh:system/etc/init.sony.bt.sh \
-    $(COMMON_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
+    $(COMMON_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
+    $(COMMON_PATH)/rootdir/fix_storage_permissions.sh:root/fix_storage_permissions.sh
 
 # Additional sbin stuff
 PRODUCT_COPY_FILES += \
@@ -88,10 +89,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
     $(COMMON_PATH)/rootdir/system/etc/xtwifi.conf:system/etc/xtwifi.conf
-
-# Script for fixing perms on internal sdcard during update
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/tools/fix_storage_permissions.sh:install/bin/fix_storage_permissions.sh
 
 # Sensors
 PRODUCT_COPY_FILES += \
