@@ -182,6 +182,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
+# USB OTG support
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.isUsbOtgEnabled=true
+
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
     telephony.lteOnCdmaDevice=0 \
