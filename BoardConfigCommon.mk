@@ -141,28 +141,7 @@ SOMC_CFG_SENSORS_COMPASS_AK8972 := yes
 # Include common SE policies
 include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += \
-    device/sony/blue-common/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    file_contexts \
-    property_contexts \
-    bootanim.te \
-    illumination.te \
-    init.te \
-    mac_update.te \
-    mediaserver.te \
-    platform_app.te \
-    property.te \
-    rmt_storage.te \
-    secchand.te \
-    surfaceflinger.te \
-    system_app.te \
-    system_monitor.te \
-    system_server.te \
-    tad_static.te \
-    ta_qmi_service.te \
-    updatemiscta.te
+BOARD_SEPOLICY_DIRS += device/sony/blue-common/sepolicy
 
 # inherit from the proprietary version
 -include vendor/sony/blue-common/BoardConfigVendor.mk
