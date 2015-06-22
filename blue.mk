@@ -76,7 +76,8 @@ PRODUCT_COPY_FILES += \
 
 # Media
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml
+    $(COMMON_PATH)/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    $(COMMON_PATH)/rootdir/system/etc/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 
 # GPS
 PRODUCT_COPY_FILES += \
