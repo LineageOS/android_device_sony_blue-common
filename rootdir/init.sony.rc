@@ -151,13 +151,14 @@ service mac-update /system/bin/mac-update
     user wifi
     oneshot
 
-# Sony: TrimArea Daemon
-# last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb) /128(kb))
-service tad_static /system/bin/tad_static /dev/block/mmcblk0 1,16
-    class trimarea
+# SONY: TrimArea Daemon
+# Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
+service tad_static /sbin/tad_static /dev/block/platform/msm_sdcc.1/by-name/TA 0,16
     user root
     group root
     socket tad stream 0660 system system
+    class core
+    seclabel u:r:tad:s0
 
 service secchand /system/bin/secchand
     class core

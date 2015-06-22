@@ -135,6 +135,8 @@ on post-fs-data
 
     exec /system/bin/cal_data_manager
 
+    chown system /dev/block/platform/msm_sdcc.1/by-name
+
     setprop vold.post_fs_data_done 1
 
     rm /data/local/tmp/adreno_config.txt
