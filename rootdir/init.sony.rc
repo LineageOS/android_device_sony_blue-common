@@ -227,14 +227,6 @@ service dis_msm_therm /system/bin/sh /system/etc/disable_msm_thermal.sh
     user root
     oneshot
 
-# bugreport is triggered by holding down volume down, volume up and power
-service bugreport /system/bin/dumpstate -d -p -B \
-    -o /data/data/com.android.shell/files/bugreports/bugreport
-    class main
-    disabled
-    oneshot
-    keycodes 114 115 116
-
 service cnd /system/bin/cnd
     class late_start
     socket cnd stream 660 root inet
