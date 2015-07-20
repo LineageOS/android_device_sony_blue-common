@@ -106,7 +106,6 @@ TARGET_NO_RPC := true
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
-BOARD_HAS_RIL_LEGACY_PAP := true
 BOARD_RIL_CLASS := ../../../device/sony/blue-common/ril/
 
 # Needed for blobs
