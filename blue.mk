@@ -161,6 +161,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     sensors.msm8960
 
+# Lights wrapper
+PRODUCT_PACKAGES += \
+    lights.msm8960
+
 # Wifi services
 PRODUCT_PACKAGES += \
     libwfcu \
