@@ -218,11 +218,6 @@ PRODUCT_PACKAGES += \
     mac-update \
     wcnss_service
 
-# Misc
-PRODUCT_PACKAGES += \
-    librs_jni \
-    com.android.future.usb.accessory
-
 # Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-swap=false
