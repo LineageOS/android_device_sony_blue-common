@@ -258,8 +258,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # WiFi
 PRODUCT_PROPERTY_OVERRIDES += \
-    wlan.driver.ath=0 \
-    wifi.interface=wlan0
+    ro.disableWifiApFirmwareReload=true \
+    wifi.interface=wlan0 \
+    wlan.driver.ath=0
 
 PRODUCT_PACKAGES += \
     libQWiFiSoftApCfg \
