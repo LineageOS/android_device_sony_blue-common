@@ -103,10 +103,11 @@ service ta_qmi_service /system/bin/ta_qmi_service
     class main
 
 # Wi-Fi and BT MAC addresses
-service mac-update /system/bin/mac-update
-    class main
-    user wifi
+service macaddrsetup /system/bin/macaddrsetup /sys/devices/platform/wcnss_wlan.0/wcnss_mac_addr
+    class late_start
+    user root
     oneshot
+    seclabel u:r:macaddrsetup:s0
 
 service hw_config /system/bin/sh /system/etc/hw_config.sh
     class main

@@ -12,9 +12,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
 
-# Sony MAC-Update package
+# Sony TrimArea library
 PRODUCT_PACKAGES += \
-    mac-update \
+    libta
+
+# Sony MACAddrSetup package
+PRODUCT_PACKAGES += \
+    macaddrsetup
 
 # Storage properties
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -76,3 +76,6 @@ lib/sysmon/sysmon_tsens_tz_sensor4.so
 lib/sysmon/sysmon_usb_current_limit_level.so
 lib/sysmon/sysmon_wlan_limit.so
 lib/sysmon/sysmon_xo_therm.so
+
+# TA
+-lib/libta.so
