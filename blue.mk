@@ -223,10 +223,6 @@ PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory
 
-# Set default USB interface
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
 # Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-swap=false
