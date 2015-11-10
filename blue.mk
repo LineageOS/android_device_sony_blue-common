@@ -109,9 +109,11 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/thermald.conf:system/etc/thermald.conf \
     $(COMMON_PATH)/rootdir/system/etc/disable_msm_thermal.sh:system/etc/disable_msm_thermal.sh
 
-# Camera wrapper
+# Camera
 PRODUCT_PACKAGES += \
-    camera.qcom
+    camera.qcom \
+    libshim_cald \
+    libshim_camera
 
 # Display
 PRODUCT_PACKAGES += \

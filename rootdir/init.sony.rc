@@ -22,6 +22,9 @@ on early-init
     symlink /data/tombstones /tombstones
 
 on init
+    # Symbols required for SONY blobs
+    export LD_SHIM_LIBS "/system/lib/libcald_pal.so|libshim_cald.so:/system/lib/hw/camera.vendor.qcom.so|libshim_camera.so"
+
     chmod 0701 /mnt/media_rw
     mkdir /storage 0775 system system
     mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
