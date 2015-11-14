@@ -78,9 +78,6 @@ BOARD_USES_QCOM_HARDWARE := true
 # Use legacy MMAP for pre-lollipop blobs
 BOARD_USES_LEGACY_MMAP := true
 
-# Time
-BOARD_USES_QC_TIME_SERVICES := true
-
 # Dumpstate
 BOARD_LIB_DUMPSTATE := libdumpstate.sony
 
