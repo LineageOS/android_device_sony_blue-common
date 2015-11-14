@@ -77,8 +77,6 @@ on boot
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
-    setprop ro.telephony.call_ring.multiple false
-
     # Owner for the proximity sensor
     chown system system /sys/devices/i2c-12/12-0054/threshold
     chown system system /sys/devices/i2c-12/12-0054/nburst
