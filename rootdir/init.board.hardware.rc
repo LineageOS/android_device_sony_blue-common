@@ -103,7 +103,7 @@ service ta_qmi_service /system/bin/ta_qmi_service
     class main
 
 # Wi-Fi and BT MAC addresses
-service macaddrsetup /system/bin/macaddrsetup /sys/devices/platform/wcnss_wlan.0/wcnss_mac_addr
+service macaddrsetup /system/bin/macaddrsetup
     class late_start
     user root
     oneshot
