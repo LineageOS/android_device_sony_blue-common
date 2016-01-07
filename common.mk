@@ -116,7 +116,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     camera.qcom \
     libshim_cald \
-    libshim_camera
+    libshim_camera \
+    Snap
 
 # Display
 PRODUCT_PACKAGES += \
