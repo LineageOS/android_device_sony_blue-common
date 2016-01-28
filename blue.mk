@@ -189,13 +189,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     hci_qcomm_init
 
-# Camera
-PRODUCT_PACKAGES += \
-    camera.sony \
-    camera.msm8960 \
-    libmmcamera_interface \
-    libmmcamera_interface2
-
 # Force use old camera api
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
