@@ -137,10 +137,6 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
-# Recovery
-PRODUCT_PACKAGES += \
-    extract_elf_ramdisk
-
 # Media
 PRODUCT_PACKAGES += \
     qcmediaplayer
