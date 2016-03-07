@@ -12,9 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit from Sony common
-include device/sony/common/BoardConfigCommon.mk
-
 TARGET_SPECIFIC_HEADER_PATH += device/sony/blue-common/include
 
 # Architecture
@@ -28,9 +25,10 @@ TARGET_CPU_VARIANT := krait
 TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
 
 # Platform
-TARGET_BOOTLOADER_BOARD_NAME := MSM8960
+BOARD_VENDOR := sony
 BOARD_VENDOR_PLATFORM := blue
 TARGET_BOARD_PLATFORM := msm8960
+TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
 # Kernel information
 BOARD_KERNEL_CMDLINE := # This is ignored by sony's bootloader
@@ -117,11 +115,13 @@ TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Custom boot
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/blue-common/custombootimg.mk
 TARGET_RELEASETOOLS_EXTENSIONS := device/sony/blue-common
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
+# Recovery
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 TARGET_RECOVERY_FSTAB := device/sony/blue-common/rootdir/fstab.qcom
 
 # Audio
