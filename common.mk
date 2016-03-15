@@ -194,6 +194,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     hci_qcomm_init
 
+# Gello
+PRODUCT_PACKAGES += \
+    Gello
+
 # Force use old camera api
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
