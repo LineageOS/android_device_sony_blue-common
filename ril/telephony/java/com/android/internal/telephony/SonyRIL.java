@@ -27,6 +27,5 @@ public class SonyRIL extends RIL implements CommandsInterface {
     public SonyRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
         super(context, preferredNetworkType, cdmaSubscription, instanceId);
-        mQANElements = SystemProperties.getInt("ro.ril.telephony.mqanelements", 5);
     }
 }

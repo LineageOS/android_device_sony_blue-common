@@ -219,8 +219,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
     telephony.lteOnCdmaDevice=0 \
-    ro.ril.transmitpower=true \
     persist.radio.add_power_save=1
+    ro.ril.telephony.mqanelements=5 \
+    ro.ril.transmitpower=true
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/lib/libril-qc-qmi-1.so
