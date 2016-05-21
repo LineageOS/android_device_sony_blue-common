@@ -215,5 +215,7 @@
     <!-- Enable lockscreen translucent decor -->
     <bool name="config_enableLockScreenTranslucentDecor">true</bool>
 
+    <!-- Show battery fully charged notification -->
+    <bool name="config_showBatteryFullyChargedNotification">true</bool>
 
 </resources>
