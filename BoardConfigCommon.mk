@@ -31,11 +31,20 @@ TARGET_BOARD_PLATFORM := msm8960
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
 # Kernel information
-BOARD_KERNEL_CMDLINE := # This is ignored by sony's bootloader
+BOARD_KERNEL_CMDLINE := # Ignored, see cmdline.txt
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_RECOVERY_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01700000
+
+# Partitions informations
+BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01400000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x01400000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1056964608
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
+
+# Partition settings
+BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Bionic
 MALLOC_IMPL := dlmalloc
@@ -55,9 +64,6 @@ TARGET_PROVIDES_CAMERA_HAL := true
 # Display HAL
 TARGET_USES_ION := true
 TARGET_USES_C2D_COMPOSITION := true
-
-# Font expansion
-EXTENDED_FONT_FOOTPRINT := true
 
 # Lights HAL
 TARGET_PROVIDES_LIBLIGHT := true
@@ -108,18 +114,15 @@ BOARD_RIL_CLASS := ../../../device/sony/blue-common/ril/
 # Needed for blobs
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
-# Vold
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
-
 # Custom boot
 BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/blue-common/custombootimg.mk
 TARGET_RELEASETOOLS_EXTENSIONS := device/sony/blue-common
 
 # Recovery
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
+BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_FSTAB := device/sony/blue-common/rootdir/fstab.qcom
+TARGET_USERIMAGES_USE_EXT4 := true
 
 # Audio
 AUDIO_FEATURE_ENABLED_INCALL_MUSIC := false

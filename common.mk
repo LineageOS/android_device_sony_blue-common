@@ -12,9 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
+
 COMMON_PATH := device/sony/blue-common
 
-DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -32,7 +34,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
 # Media profile
 PRODUCT_COPY_FILES += \
@@ -258,6 +261,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.disableWifiApFirmwareReload=true \
     wifi.interface=wlan0 \
     wlan.driver.ath=0
+
+# Graphics
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sf.lcd_density=320
+
+# Storage
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vold.primary_physical=1
 
 PRODUCT_PACKAGES += \
     libQWiFiSoftApCfg \
