@@ -63,7 +63,3 @@ lib/sysmon/sysmon_tsens_tz_sensor4.so
 lib/sysmon/sysmon_usb_current_limit_level.so
 lib/sysmon/sysmon_wlan_limit.so
 lib/sysmon/sysmon_xo_therm.so
-
-# WiFi Firmware
-etc/firmware/wlan/prima/WCNSS_cfg.dat
-etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
