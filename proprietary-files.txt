@@ -1,3 +1,12 @@
+# Camera
+lib/libmmcamera_wavelet_lib.so
+
+# CPU
+bin/mpdecision
+
+# FM Radio
+bin/fm_qsoc_patches
+
 # Graphics
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
@@ -27,8 +36,12 @@ etc/firmware/a300_pm4.fw
 etc/firmware/leia_pfp_470.fw
 etc/firmware/leia_pm4_470.fw
 
+# Perf
+vendor/lib/libqti-perfd-client.so
+
 # Radio
-lib/libtime_genoff.so:vendor/lib/libtime_genoff.so
+bin/rmt_storage
+vendor/lib/libtime_genoff.so
 
 # Sysmon
 bin/system_monitor
