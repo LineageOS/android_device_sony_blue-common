@@ -1,11 +1,11 @@
 LOCAL_PATH := $(call my-dir)
 
-DEVICE_ROOTDIR := device/sony/blue-common/rootdir
-DEVICE_CMDLINE := $(DEVICE_ROOTDIR)/cmdline.txt
-DEVICE_LOGORLE := $(DEVICE_ROOTDIR)/logo.rle
+DEVICE_BOOTDIR := device/sony/blue-common/boot
+DEVICE_CMDLINE := $(DEVICE_BOOTDIR)/cmdline.txt
+DEVICE_LOGORLE := $(DEVICE_BOOTDIR)/logo.rle
 DEVICE_RPMBIN := vendor/sony/blue-common/proprietary/boot/RPM.bin
 INITSONY := $(PRODUCT_OUT)/utilities/init_sony
-MKELF := device/sony/blue-common/tools/mkelf.py
+MKELF := $(DEVICE_BOOTDIR)/mkelf.py
 
 uncompressed_ramdisk := $(PRODUCT_OUT)/ramdisk.cpio
 $(uncompressed_ramdisk): $(INSTALLED_RAMDISK_TARGET)
