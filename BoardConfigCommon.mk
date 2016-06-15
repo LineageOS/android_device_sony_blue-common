@@ -124,6 +124,7 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/sony/blue-common
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_FSTAB := device/sony/blue-common/rootdir/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 # Audio
 AUDIO_FEATURE_ENABLED_INCALL_MUSIC := false
