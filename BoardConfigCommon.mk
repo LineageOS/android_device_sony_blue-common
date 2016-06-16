@@ -21,6 +21,7 @@ COMMON_PATH := device/sony/blue-common
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 
 # Common board elements
+include $(COMMON_PATH)/PlatformConfig.mk
 include $(COMMON_PATH)/board/*.mk
 
 # Common vendor board
