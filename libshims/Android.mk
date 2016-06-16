@@ -67,3 +67,24 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 
 include $(BUILD_SHARED_LIBRARY)
+
+# libshim_MPU3050
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := \
+    utils/VectorImpl.cpp
+
+LOCAL_C_INCLUDES := \
+    $(LOCAL_PATH)/include \
+    external/safe-iop/include
+
+LOCAL_SHARED_LIBRARIES := \
+    liblog \
+    libutils
+
+LOCAL_MODULE := libshim_MPU3050
+
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+
+include $(BUILD_SHARED_LIBRARY)
