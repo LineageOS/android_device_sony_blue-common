@@ -1,0 +1,7 @@
+on boot
+    write /sys/class/leds/lcd-backlight_1/brightness 63
+    write /sys/class/leds/lcd-backlight_2/brightness 63
+
+on property:sys.boot_from_charger_mode=1
+    write /sys/class/leds/lcd-backlight_1/brightness 63
+    write /sys/class/leds/lcd-backlight_2/brightness 63

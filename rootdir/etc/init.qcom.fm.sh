@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Copyright (c) 2009-2011, Code Aurora Forum. All rights reserved.
+# Copyright (c) 2009-2011, 2015, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -8,7 +8,7 @@
 #     * Redistributions in binary form must reproduce the above copyright
 #       notice, this list of conditions and the following disclaimer in the
 #       documentation and/or other materials provided with the distribution.
-#     * Neither the name of Code Aurora nor
+#     * Neither the name of The Linux Foundation nor
 #       the names of its contributors may be used to endorse or promote
 #       products derived from this software without specific prior written
 #       permission.
@@ -29,11 +29,7 @@
 setprop hw.fm.init 0
 
 mode=`getprop hw.fm.mode`
-version=`getprop hw.fm.version`
-isAnalog=`getprop hw.fm.isAnalog`
-
-#find the transport type
-TRANSPORT=`getprop ro.qualcomm.bt.hci_transport`
+version=199217
 
 LOG_TAG="qcom-fm"
 LOG_NAME="${0}:"
@@ -56,23 +52,14 @@ failed ()
 
 logi "In FM shell Script"
 logi "mode: $mode"
-logi "isAnalog: $isAnalog"
-logi "Transport : $TRANSPORT"
 logi "Version : $version"
 
 #$fm_qsoc_patches <fm_chipVersion> <enable/disable WCM>
 #
 case $mode in
   "normal")
-    case $TRANSPORT in
-    "smd")
         logi "inserting the radio transport module"
-        insmod /system/lib/modules/radio-iris-transport.ko
-     ;;
-     *)
-        logi "default transport case "
-     ;;
-    esac
+        echo 1 > /sys/module/radio_iris_transport/parameters/fmsmd_set
         /system/bin/fm_qsoc_patches $version 0
      ;;
   "wa_enable")
@@ -80,9 +67,6 @@ case $mode in
      ;;
   "wa_disable")
    /system/bin/fm_qsoc_patches $version 2
-     ;;
-  "config_dac")
-   /system/bin/fm_qsoc_patches $version 3 $isAnalog
      ;;
    *)
     logi "Shell: Default case"

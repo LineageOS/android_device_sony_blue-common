@@ -10,8 +10,7 @@ PRODUCT_COPY_FILES += \
 
 # Thermal configuration
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/thermald.conf:system/etc/thermald.conf \
-    $(COMMON_PATH)/rootdir/etc/disable_msm_thermal.sh:system/etc/disable_msm_thermal.sh
+    $(COMMON_PATH)/configs/thermald.conf:system/etc/thermald.conf
 
 # Sensors packages
 PRODUCT_PACKAGES += \

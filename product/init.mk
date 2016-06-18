@@ -1,7 +1,13 @@
-# Init configurations
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/init.qcom.early_boot.sh:root/init.qcom.early_boot.sh \
-    $(COMMON_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
-    $(COMMON_PATH)/rootdir/init.qcom.sh:root/init.qcom.sh \
-    $(COMMON_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
-    $(COMMON_PATH)/rootdir/init.sony.rc:root/init.sony.rc
+# Init packages
+PRODUCT_PACKAGES += \
+    init.board.bluetooth.rc \
+    init.board.charger.rc \
+    init.board.fm.rc \
+    init.board.hardware.rc \
+    init.board.led.rc \
+    init.board.perf.rc \
+    init.board.radio.rc \
+    init.board.target.rc \
+    init.board.wifi.rc \
+    init.recovery.qcom.rc \
+    init.target.rc
