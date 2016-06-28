@@ -12,3 +12,6 @@ allow system_server app_data_file:file unlink;
 
 # Hardware tunables.
 allow system_server sysfs_vibrator:file rw_file_perms;
+
+# System Server sensors files access.
+allow system_server system_file:file execmod;

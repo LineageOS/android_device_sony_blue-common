@@ -6,3 +6,6 @@ allow qti_init_shell hci_attach_exec:file { execute execute_no_trans open read }
 allow qti_init_shell socket_device:sock_file write;
 allow qti_init_shell tad:unix_stream_socket connectto;
 allow qti_init_shell tad_socket:sock_file write;
+
+# QTI init shell rmi4_fwloader access.
+allow qti_init_shell sysfs_wake_lock:file { write open };
