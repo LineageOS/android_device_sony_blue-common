@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2015-2016 The CyanogenMod Project
+# Copyright (C) 2013-2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,15 +14,15 @@
 # limitations under the License.
 #
 
-# Common path
+# Board common path
 COMMON_PATH := device/sony/blue-common
 
-# Common headers
-TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
+# Board common headers
+TARGET_SPECIFIC_HEADER_PATH += $(COMMON_PATH)/include
 
-# Common board elements
+# Board common elements
 include $(COMMON_PATH)/PlatformConfig.mk
 include $(COMMON_PATH)/board/*.mk
 
-# Common vendor board
+# Board common vendor
 -include vendor/sony/blue-common/BoardConfigVendor.mk

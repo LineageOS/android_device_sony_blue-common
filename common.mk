@@ -17,17 +17,17 @@
 # Common path
 COMMON_PATH := device/sony/blue-common
 
-# Device specific overlays
+# Common specific overlays
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
-
-# Device product elements
-include $(COMMON_PATH)/product/*.mk
-
-# Dalvik heap configurations
-$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 # Product common configurations
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Vendor common product configurations
+# Dalvik heap configurations
+$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+
+# Common product elements
+include $(COMMON_PATH)/product/*.mk
+
+# Vendor common configurations
 $(call inherit-product, vendor/sony/blue-common/blue-common-vendor.mk)

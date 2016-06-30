@@ -1,8 +1,3 @@
-# WiFi permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
-
 # WiFi WCNSS configurations
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
@@ -18,19 +13,6 @@ PRODUCT_COPY_FILES += \
 # Hostapd configurations
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/wifi/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf
-
-# WiFi packages
-PRODUCT_PACKAGES += \
-    dhcpcd.conf \
-    hostapd \
-    libqsap_sdk \
-    libQWiFiSoftApCfg \
-    libwpa_client \
-    libwfcu \
-    mac-update \
-    wcnss_service \
-    wpa_supplicant \
-    wpa_supplicant.conf
 
 # WiFi properties
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -1,7 +1,3 @@
-# Platform permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
-
 # Ramdisk packages
 PRODUCT_PACKAGES += \
     fstab.qcom \
@@ -12,9 +8,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/releasetools/fix_storage_permissions.sh:install/bin/fix_storage_permissions.sh
 
-# TrimAreaDaemon package
+# Sony TrimArea package
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
+
+# Sony MAC-Update package
+PRODUCT_PACKAGES += \
+    mac-update \
 
 # Storage properties
 PRODUCT_PROPERTY_OVERRIDES += \

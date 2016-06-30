@@ -1,9 +1,3 @@
-# Sensors permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml
-
 # Sensors configurations
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/sap.conf:system/etc/sap.conf
@@ -14,5 +8,8 @@ PRODUCT_COPY_FILES += \
 
 # Sensors packages
 PRODUCT_PACKAGES += \
-    sensors.msm8960 \
+    sensors.msm8960
+
+# Sensors SHIM packages
+PRODUCT_PACKAGES += \
     libshim_MPU3050
