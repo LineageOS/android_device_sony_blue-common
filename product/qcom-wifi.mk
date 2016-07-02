@@ -10,7 +10,6 @@ PRODUCT_PACKAGES += \
     libqsap_sdk \
     libQWiFiSoftApCfg \
     libwpa_client \
-    libwfcu \
     wcnss_service \
     wpa_supplicant \
     wpa_supplicant.conf
