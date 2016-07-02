@@ -8,6 +8,7 @@ PRODUCT_PACKAGES += \
     init.board.perf.rc \
     init.board.radio.rc \
     init.board.target.rc \
+    init.board.usb.rc \
     init.board.wifi.rc \
     init.recovery.qcom.rc \
     init.target.rc
