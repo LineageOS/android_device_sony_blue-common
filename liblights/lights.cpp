@@ -15,136 +15,132 @@
  * limitations under the License.
  */
 
+/* === Module Debug === */
+#define LOG_NDEBUG 0
+#define LOG_PARAM
+// #define LOG_BRIGHTNESS
+#define LOG_TAG "lights.blue"
 
-//#define LOG_NDEBUG 0
-//#define LOG_PARAM
-//#define LOG_BRIGHTNESS
-#define LOG_TAG "Sony Lights HAL Opensource"
-
+/* === Module Libraries === */
 #include <cutils/log.h>
-
 #include <stdint.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <pthread.h>
-
 #ifdef ENABLE_GAMMA_CORRECTION
 #include <math.h>
 #endif
-
 #include <sys/ioctl.h>
 #include <sys/types.h>
-
 #include <hardware/lights.h>
 
+/* === Module Header === */
 #include "sony_lights.h"
 
-#ifndef CUSTOM_AS3676_SYSFS_PATH
-char const*const PWR_RED_USE_PATTERN_FILE = "/sys/class/leds/pwr-red/use_pattern";
-char const*const PWR_GREEN_USE_PATTERN_FILE = "/sys/class/leds/pwr-green/use_pattern";
-char const*const PWR_BLUE_USE_PATTERN_FILE = "/sys/class/leds/pwr-blue/use_pattern";
-char const*const PWR_RED_BRIGHTNESS_FILE = "/sys/class/leds/pwr-red/brightness";
-char const*const PWR_GREEN_BRIGHTNESS_FILE = "/sys/class/leds/pwr-green/brightness";
-char const*const PWR_BLUE_BRIGHTNESS_FILE = "/sys/class/leds/pwr-blue/brightness";
+/* === Module Paths === */
+char const*const PWR_RED_USE_PATTERN_FILE = "/sys/devices/i2c-10/10-0040/leds/pwr-red/use_pattern";
+char const*const PWR_GREEN_USE_PATTERN_FILE = "/sys/devices/i2c-10/10-0040/leds/pwr-green/use_pattern";
+char const*const PWR_BLUE_USE_PATTERN_FILE = "/sys/devices/i2c-10/10-0040/leds/pwr-blue/use_pattern";
+char const*const PWR_RED_BRIGHTNESS_FILE = "/sys/devices/i2c-10/10-0040/leds/pwr-red/brightness";
+char const*const PWR_GREEN_BRIGHTNESS_FILE = "/sys/devices/i2c-10/10-0040/leds/pwr-green/brightness";
+char const*const PWR_BLUE_BRIGHTNESS_FILE = "/sys/devices/i2c-10/10-0040/leds/pwr-blue/brightness";
 char const*const PATTERN_DATA_FILE = "/sys/bus/i2c/devices/10-0040/pattern_data";
 char const*const PATTERN_USE_SOFTDIM_FILE = "/sys/bus/i2c/devices/10-0040/pattern_use_softdim";
 char const*const PATTERN_DURATION_SECS_FILE = "/sys/bus/i2c/devices/10-0040/pattern_duration_secs";
 char const*const PATTERN_DELAY_FILE = "/sys/bus/i2c/devices/10-0040/pattern_delay";
 char const*const DIM_TIME_FILE = "/sys/bus/i2c/devices/10-0040/dim_time";
-#endif
 
-/******************************************************************************/
-
+/* === Module Variables === */
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 static struct light_state_t g_notification;
 static struct light_state_t g_battery;
-static int g_attention = 0;
 #ifdef DEVICE_HAYABUSA
-// For sole use of controlling Xperia logo
-// Thus I added tricks to this variable
-// DUANG! if you use it elsewhere
+/* Needed for hayabusa logo lights */
 int last_screen_brightness = 0;
 #endif
 
-/**
- * device methods
- */
-
-void init_globals(void)
-{
-    // init the mutex
+/* === Module init_globals === */
+void
+init_globals(void) {
+    /* Device mutex */
     pthread_mutex_init(&g_lock, NULL);
 }
 
+/* === Module write_int === */
 static int
-write_int(char const* path, int value)
-{
-    int fd;
-    static int already_warned = 0;
+write_int(char const* path, int value) {
 
+    int fd, amt, bytes;
+    char buffer[20];
+
+    /* Int output to path */
     fd = open(path, O_RDWR);
     if (fd >= 0) {
-        char buffer[20];
-        int bytes = sprintf(buffer, "%d\n", value);
-        int amt = write(fd, buffer, bytes);
+        bytes = snprintf(buffer, sizeof(buffer), "%d\n", value);
+        amt = write(fd, buffer, bytes);
         close(fd);
-        return amt == -1 ? -errno : 0;
-    } else {
-        if (already_warned == 0) {
-            ALOGE("write_int failed to open %s\n", path);
-            already_warned = 1;
-        }
+        return (amt == -1 ? -errno : 0);
+    }
+    else {
+        ALOGE("write_int failed to open %s\n", path);
         return -errno;
     }
 }
 
+/* === Module write_string === */
 static int
-write_string (const char *path, const char *value) {
-    int fd;
-    static int already_warned = 0;
+write_string(char const* path, const char *value) {
 
-    fd = open(path, O_RDWR);
-    if (fd < 0) {
-        if (already_warned == 0) {
-            ALOGE("write_string failed to open %s\n", path);
-                already_warned = 1;
-        }
-        return -errno;
-    }
-
+    int fd, amt, bytes;
     char buffer[20];
-    int bytes = snprintf(buffer, sizeof(buffer), "%s\n", value);
-    int written = write (fd, buffer, bytes);
-    close(fd);
 
-    return written == -1 ? -errno : 0;
+    /* String output to path */
+    fd = open(path, O_RDWR);
+    if (fd >= 0) {
+        bytes = snprintf(buffer, sizeof(buffer), "%s\n", value);
+        amt = write(fd, buffer, bytes);
+        close(fd);
+        return (amt == -1 ? -errno : 0);
+    }
+    else {
+        ALOGE("write_string failed to open %s\n", path);
+        return -errno;
+    }
 }
 
+/* === Module is_lit === */
 static int
-is_lit(struct light_state_t const* state)
-{
+is_lit(struct light_state_t const* state) {
     return state->color & 0x00ffffff;
 }
 
-static int
-rgb_to_brightness(struct light_state_t const* state)
-{
-    int color = state->color & 0x00ffffff;
+/* === Module rgb_to_brightness === */
+static unsigned int
+rgb_to_brightness(struct light_state_t const* state) {
+
+    /* LCD brightness calculation */
+    unsigned int color = state->color & 0x00ffffff;
     return ((77*((color>>16)&0x00ff))
-            + (150*((color>>8)&0x00ff)) + (29*(color&0x00ff))) >> 8;
+            + (150*((color>>8)&0x00ff))
+            + (29*(color&0x00ff))) >> 8;
 }
 
+/* === Module brightness_apply_gamma === */
 #ifdef ENABLE_GAMMA_CORRECTION
 static int
-brightness_apply_gamma (int brightness) {
+brightness_apply_gamma(int brightness) {
+
     double floatbrt = (double) brightness;
+
+    /* Brightness to corrected brightness */
     floatbrt /= 255.0;
 #ifdef LOG_BRIGHTNESS
-    ALOGV("%s: brightness = %d, floatbrt = %f", __FUNCTION__, brightness, floatbrt);
+    ALOGV("%s: brightness = %d, floatbrt = %f", __FUNCTION__, brightness,
+            floatbrt);
 #endif
     floatbrt = pow(floatbrt, 2.2);
 #ifdef LOG_BRIGHTNESS
@@ -159,51 +155,60 @@ brightness_apply_gamma (int brightness) {
 }
 #endif
 
+/* === Module get_light_lcd_max_backlight === */
 static int
-get_max_brightness() {
+get_light_lcd_max_backlight() {
+
     char value[6];
     int fd, len, max_brightness;
 
+    /* Open the max brightness file */
     if ((fd = open(MAX_BRIGHTNESS_FILE, O_RDONLY)) < 0) {
         ALOGE("[%s]: Could not open max brightness file %s: %s", __FUNCTION__,
-                     MAX_BRIGHTNESS_FILE, strerror(errno));
+                MAX_BRIGHTNESS_FILE, strerror(errno));
         ALOGE("[%s]: Assume max brightness 255", __FUNCTION__);
         return 255;
     }
 
+    /* Read the max brightness file */
     if ((len = read(fd, value, sizeof(value))) <= 1) {
         ALOGE("[%s]: Could not read max brightness file %s: %s", __FUNCTION__,
-                     MAX_BRIGHTNESS_FILE, strerror(errno));
+                MAX_BRIGHTNESS_FILE, strerror(errno));
         ALOGE("[%s]: Assume max brightness 255", __FUNCTION__);
         close(fd);
         return 255;
     }
 
+    /* Extract the max brightness value */
     max_brightness = strtol(value, NULL, 10);
     close(fd);
 
     return (unsigned int) max_brightness;
 }
 
+/* === Module set_light_lcd_backlight === */
 static int
-set_light_backlight(struct light_device_t* dev,
-        struct light_state_t const* state)
-{
+set_light_lcd_backlight(struct light_device_t* dev,
+        struct light_state_t const* state) {
+
     int err = 0;
     int brightness = rgb_to_brightness(state);
-    int max_brightness = get_max_brightness();
+    int max_brightness = get_light_lcd_max_backlight();
 
+    /* Process the brightness value */
     if (brightness > 0) {
 #ifdef ENABLE_GAMMA_CORRECTION
         brightness = brightness_apply_gamma(brightness);
 #endif
-        brightness = max_brightness * brightness / 255;
-        if (brightness < LCD_BRIGHTNESS_MIN)
+        brightness = (max_brightness * brightness) / 255;
+        if (brightness < LCD_BRIGHTNESS_MIN) {
             brightness = LCD_BRIGHTNESS_MIN;
+        }
     }
 
 #ifdef LOG_BRIGHTNESS
-    ALOGV("[%s] brightness %d max_brightness %d", __FUNCTION__, brightness, max_brightness);
+    ALOGV("[%s] brightness %d max_brightness %d", __FUNCTION__, brightness,
+            max_brightness);
 #endif
 
     pthread_mutex_lock(&g_lock);
@@ -211,10 +216,7 @@ set_light_backlight(struct light_device_t* dev,
     err |= write_int (LCD_BACKLIGHT2_FILE, brightness);
 #ifdef DEVICE_HAYABUSA
     if (brightness == 0 && is_lit(&g_notification)) {
-        // Applies when turning off screen in lockscreen while there's notif
-        // We don't want to write 0 (which will stop the logo from blinking)
-        // Pattern file is taken care of in set_speaker_light_locked
-        // Only brightness is needed here
+        /* Apply logo brightness on display off */
         write_int(LOGO_BACKLIGHT_FILE, max_brightness);
         write_int(LOGO_BACKLIGHT2_FILE, max_brightness);
     } else {
@@ -226,12 +228,15 @@ set_light_backlight(struct light_device_t* dev,
 #endif
     pthread_mutex_unlock(&g_lock);
 
+    (void)dev;
     return err;
 }
 
+/* === Module clear_lights_locked === */
 static void
-clear_lights_locked()
-{
+clear_lights_locked() {
+
+    /* Clear all LEDs */
     write_string(PATTERN_DATA_FILE, "0");
     write_int(PATTERN_USE_SOFTDIM_FILE, 0);
     write_int(PATTERN_DURATION_SECS_FILE, 1);
@@ -251,9 +256,11 @@ clear_lights_locked()
 #endif
 }
 
+/* === Module get_light_leds_dim_time === */
 static int
-get_dim_time(int offMS)
-{
+get_light_leds_dim_time(int offMS) {
+
+    /* Get diming time from offMS */
     if (offMS > 500) return 500;
     else if (offMS > 190) return 190;
     else if (offMS > 95) return 95;
@@ -261,38 +268,56 @@ get_dim_time(int offMS)
     else return 50;
 }
 
+/* === Module pattern_data_on_bit === */
 static void
-pattern_data_on_bit(double duration, int onMS, int offMS, int *data)
-{
-    int cycle = (int)(duration / (onMS + offMS) + 0.5);
+pattern_data_on_bit(double duration, int onMS, int offMS, int *data) {
+
+    int bit, cycle, now_cycle, s;
+
+    bit = 0;
+    cycle = (int)(duration / (onMS + offMS) + 0.5);
     if (cycle == 0) cycle = 1;
+    now_cycle = 0;
+    s = 0;
 
-    int now_cycle = 0;
-    int s = 0;
-    int bit = 0;
-
+    /* Transform settings to pattern data */
     for (bit = 0; bit < 32; ++bit) {
         for (now_cycle = 0; now_cycle < cycle; ++now_cycle) {
             s = duration / 32 * bit - now_cycle * (onMS + offMS);
-            if (s >= 0 && s < onMS)
+            if (s >= 0 && s < onMS) {
                 *data |= 1 << bit;
+            }
         }
     }
 }
 
+/* === Module set_light_leds_locked === */
 static int
-set_speaker_light_locked(struct light_device_t* dev,
-        struct light_state_t const* state)
-{
+set_light_leds_locked(struct light_device_t* dev,
+        struct light_state_t const* state) {
+
     int alpha, red, green, blue;
-    int onMS, offMS;
+    int flashMode;
+    int onMS, offMS, totalMS;
     unsigned int colorRGB;
     int pattern_duration = 1, pattern_dim_time = 50, pattern_data_dec = 0,
             pattern_delay = 0, pattern_use_softdim = 0;
-
     char pattern_data[11];
 
-    switch (state->flashMode) {
+    colorRGB = state->color;
+
+    red = (colorRGB >> 16) & 0xFF;
+    green = (colorRGB >> 8) & 0xFF;
+    blue = colorRGB & 0xFF;
+    flashMode = state->flashMode;
+
+    /* Get the flashmode and disable it if always on */
+    if (state->flashOffMS == 0) {
+        flashMode = LIGHT_FLASH_NONE;
+    }
+
+    /* Set rendering values based on flashMode */
+    switch (flashMode) {
         case LIGHT_FLASH_TIMED:
             onMS = state->flashOnMS;
             offMS = state->flashOffMS;
@@ -306,61 +331,67 @@ set_speaker_light_locked(struct light_device_t* dev,
             break;
     }
 
-    colorRGB = state->color;
 
 #ifdef LOG_PARAM
-    ALOGD("set_speaker_light_locked mode %d, colorRGB=%08X, onMS=%d, offMS=%d\n",
+    ALOGD("set_light_leds_locked mode %d, colorRGB=%08X, onMS=%d, offMS=%d\n",
             state->flashMode, colorRGB, onMS, offMS);
 #endif
 
-    red = (colorRGB >> 16) & 0xFF;
-    green = (colorRGB >> 8) & 0xFF;
-    blue = colorRGB & 0xFF;
-
+    /* Render with timings */
     if (onMS > 0 && offMS > 0) {
         if (onMS + offMS > 15000) {
-            if (onMS > 8000) onMS = 8000;
-            if (offMS > 15000 - onMS) offMS = 15000 - onMS;
+            if (onMS > 8000) {
+                onMS = 8000;
+            }
+            if (offMS > 15000 - onMS) {
+                offMS = 15000 - onMS;
+            }
         }
 
-        int totalMS = onMS + offMS;
+        totalMS = onMS + offMS;
 
-        if (totalMS < 8000 && onMS <= 1000) {
+        if (totalMS < 8000 && onMS < 1000) {
             pattern_duration = 1;
-            pattern_dim_time = get_dim_time(offMS > onMS ? onMS : offMS);
+            pattern_dim_time = get_light_leds_dim_time(
+                    offMS > onMS ? onMS : offMS);
             pattern_data_on_bit(1000.0, onMS, offMS, &pattern_data_dec);
             pattern_delay = totalMS - 1000 < 1000 ?
                 (offMS > 3 * onMS ? 1 : 0) :
                 (totalMS - 1000) / 1000;
-            // When offMS is 3 times longer than onMS (eg on 300ms, off 1000ms)
-            // if we only use pattern_data to describe off time (700ms)
-            // it will appear too short.
-            // (although 700ms is more close to desired 1000ms than +1s delay)
-            // So we force 1s delay in such cases.
+            /* When offMS is 3 times longer than onMS (eg on 300ms, off 1000ms)
+               if we only use pattern_data to describe off time (700ms)
+               it will appear too short.
+               (although 700ms is more close to desired 1000ms than +1s delay)
+               So we force 1s delay in such cases. */
         } else {
             pattern_duration = 8;
-            pattern_dim_time = get_dim_time(offMS > onMS ? onMS : offMS);
+            pattern_dim_time = get_light_leds_dim_time(
+                    offMS > onMS ? onMS : offMS);
             pattern_data_on_bit(8000.0, onMS, offMS, &pattern_data_dec);
-            pattern_delay = totalMS - 8000 < 8000 ? 0 : (totalMS - 8000) / 1000;
-            // The above trick is not needed here
-            // since it won't make much visible difference
-            // when offMS > 3 * onMS here.
+            pattern_delay = (totalMS - 8000 < 8000 ?
+                    0 : (totalMS - 8000) / 1000);
+            /* The above trick is not needed here
+               since it won't make much visible difference
+               when offMS > 3 * onMS here. */
         }
-    } else {
+    }
+    /* Render without timings */
+    else {
         pattern_data_dec = 0;
     }
 
+    /* Write the pattern data and clear lights */
     snprintf(pattern_data, 11, "0x%X", pattern_data_dec);
-
     clear_lights_locked();
 
 #ifdef LOG_PARAM
-    ALOGD("set_speaker_light_locked About to write: _data=%s, _usesoftdim=%d,"
+    ALOGD("set_light_leds_locked About to write: _data=%s, _usesoftdim=%d,"
             " _duration=%d, _delay=%d, _dimtime=%d\n",
             pattern_data, pattern_use_softdim,
             pattern_duration, pattern_delay, pattern_dim_time);
 #endif
 
+    /* Using LED soft dimming */
     if (pattern_use_softdim) {
         write_string(PATTERN_DATA_FILE, pattern_data);
         write_int(PATTERN_USE_SOFTDIM_FILE, pattern_use_softdim);
@@ -374,124 +405,132 @@ set_speaker_light_locked(struct light_device_t* dev,
         write_int(PWR_BLUE_BRIGHTNESS_FILE, blue);
         write_int(PWR_BLUE_USE_PATTERN_FILE, 1);
 #ifdef DEVICE_HAYABUSA
-        // This 255 may be something like last_screen_brightness==0?255:l_s_b
-        // But since everything is working as expected
-        // (LED won't be triggered when screen is on,
-        // including new notif arriving in lockscreen)
-        // It's likely that I'll never visit this again...
+        /* This 255 may be something like last_screen_brightness==0?255:l_s_b
+           But since everything is working as expected
+           (LED won't be triggered when screen is on,
+           including new notif arriving in lockscreen)
+           It's likely that I'll never visit this again... */
         write_int(LOGO_BACKLIGHT_FILE, 255);
         write_int(LOGO_BACKLIGHT2_FILE, 255);
         write_int(LOGO_BACKLIGHT_PATTERN_FILE, 1);
         write_int(LOGO_BACKLIGHT2_PATTERN_FILE, 1);
 #endif
-    } else {
+    }
+    /* Using LED direct control */
+    else {
         write_int(PWR_RED_BRIGHTNESS_FILE, red);
         write_int(PWR_GREEN_BRIGHTNESS_FILE, green);
         write_int(PWR_BLUE_BRIGHTNESS_FILE, blue);
     }
 
+    (void)dev;
     return 0;
 }
 
+/* === Module handle_leds_battery_locked === */
 static void
-handle_speaker_battery_locked(struct light_device_t* dev)
-{
-    if (is_lit(&g_notification))
-        set_speaker_light_locked(dev, &g_notification);
-    else if(is_lit(&g_battery))
-        set_speaker_light_locked(dev, &g_battery);
-    else
-        // No light required. Clear everything.
+handle_leds_battery_locked(struct light_device_t* dev) {
+
+    /* LEDs notification mode */
+    if (is_lit(&g_notification)) {
+        set_light_leds_locked(dev, &g_notification);
+    }
+    else if (is_lit(&g_battery)) {
+        set_light_leds_locked(dev, &g_battery);
+    }
+    else {
         clear_lights_locked();
+    }
 }
 
+/* === Module set_light_leds_notifications === */
 static int
-set_light_notifications(struct light_device_t* dev,
-        struct light_state_t const* state)
-{
+set_light_leds_notifications(struct light_device_t* dev,
+        struct light_state_t const* state) {
+
+    /* LEDs notification event */
     pthread_mutex_lock(&g_lock);
     g_notification = *state;
-    handle_speaker_battery_locked(dev);
+    handle_leds_battery_locked(dev);
     pthread_mutex_unlock(&g_lock);
     return 0;
 }
 
+/* === Module set_light_leds_battery === */
 static int
-set_light_battery(struct light_device_t* dev,
-        struct light_state_t const* state)
-{
+set_light_leds_battery(struct light_device_t* dev,
+        struct light_state_t const* state) {
+
+    /* LEDs battery event */
     pthread_mutex_lock(&g_lock);
     g_battery = *state;
-    handle_speaker_battery_locked(dev);
+    handle_leds_battery_locked(dev);
     pthread_mutex_unlock(&g_lock);
     return 0;
 }
 
-
-/** Close the lights device */
+/* === Module close_lights === */
 static int
-close_lights(struct light_device_t *dev)
-{
+close_lights(struct light_device_t *dev) {
+
+    /* Module cleaning */
     if (dev) {
         free(dev);
     }
     return 0;
 }
 
+/* === Module open_lights === */
+static int
+open_lights(const struct hw_module_t* module, char const* name,
+        struct hw_device_t** device) {
 
-/******************************************************************************/
-
-/**
- * module methods
- */
-
-/** Open a new instance of a lights device using name */
-static int open_lights(const struct hw_module_t* module, char const* name,
-        struct hw_device_t** device)
-{
+    /* Adaptive set_light function */
     int (*set_light)(struct light_device_t* dev,
             struct light_state_t const* state);
 
-    // There are no attention LED or button backlight in Sony blue devices
+    /* Lights mode detection */
     if (0 == strcmp(LIGHT_ID_BACKLIGHT, name))
-        set_light = set_light_backlight;
-    else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name))
-        set_light = set_light_notifications;
+        set_light = set_light_lcd_backlight;
     else if (0 == strcmp(LIGHT_ID_BATTERY, name))
-        set_light = set_light_battery;
+        set_light = set_light_leds_battery;
+    else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name))
+        set_light = set_light_leds_notifications;
     else
         return -EINVAL;
 
+    /* Module & structure initialization */
     pthread_once(&g_init, init_globals);
-
-    struct light_device_t *dev = (light_device_t*)malloc(sizeof(struct light_device_t));
+    struct light_device_t* dev = (struct light_device_t*) malloc(sizeof(
+            struct light_device_t));
     memset(dev, 0, sizeof(*dev));
 
+    /* Device configuration */
     dev->common.tag = HARDWARE_DEVICE_TAG;
     dev->common.version = 0;
     dev->common.module = (struct hw_module_t*)module;
     dev->common.close = (int (*)(struct hw_device_t*))close_lights;
     dev->set_light = set_light;
 
+    /* Device assignation */
     *device = (struct hw_device_t*)dev;
     return 0;
 }
 
+/* === Module Methods === */
 static struct hw_module_methods_t lights_module_methods = {
     .open =  open_lights,
 };
 
-/*
- * The lights Module
- */
+/* === Module Informations === */
 struct hw_module_t HAL_MODULE_INFO_SYM = {
     .tag = HARDWARE_MODULE_TAG,
     .version_major = 1,
     .version_minor = 0,
     .id = LIGHTS_HARDWARE_MODULE_ID,
-    .name = "Sony Lights Module for AS3676",
-    .author = "Google, Hamster Tian",
+    .name = "Blue Lights Module",
+    .author = "Google, Hamster Tian, Adrian DC",
     .methods = &lights_module_methods,
-    .dso = NULL, /* remove compilation warnings */
-    .reserved = {0}, /* remove compilation warnings */
+    .dso = NULL,
+    .reserved = {0},
 };

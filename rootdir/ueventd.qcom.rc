@@ -173,6 +173,20 @@
 /sys/devices/i2c-12/12-*  enable  0664 system system
 /sys/devices/i2c-12/12-*  poll_delay 0664 system system
 
+# Light Sensor AS3676
+/sys/devices/i2c-10/10-0040            adc_als_value         0664 system system
+/sys/devices/i2c-10/10-0040            als_on                0664 system camera
+
+# Lights HAL AS3676
+/sys/devices/i2c-10/10-0040            dim_time              0660 system system
+/sys/devices/i2c-10/10-0040            pattern_data          0660 system system
+/sys/devices/i2c-10/10-0040            pattern_delay         0660 system system
+/sys/devices/i2c-10/10-0040            pattern_duration_secs 0660 system system
+/sys/devices/i2c-10/10-0040            pattern_use_softdim   0660 system system
+/sys/devices/i2c-10/10-0040/leds/*     brightness            0660 system system
+/sys/devices/i2c-10/10-0040/leds/*     max_brightness        0660 system system
+/sys/devices/i2c-10/10-0040/leds/*     use_pattern           0660 system system
+
 # BT
 /dev/hidraw0                                     0666  system  system
 /dev/hidraw1                                     0666  system  system
