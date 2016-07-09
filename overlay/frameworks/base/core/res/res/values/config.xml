@@ -146,14 +146,17 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>24</item>
-        <item>72</item>
-        <item>156</item>
-        <item>192</item>
-        <item>240</item>
-        <item>420</item>
-        <item>756</item>
-        <item>1024</item>
+        <item>10</item>
+        <item>50</item>
+        <item>100</item>
+        <item>200</item>
+        <item>400</item>
+        <item>500</item>
+        <item>800</item>
+        <item>1000</item>
+        <item>1600</item>
+        <item>3000</item>
+        <item>10000</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -162,15 +165,18 @@
          The brightness values must be between 0 and 255 and be non-decreasing.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>59</item>  <!--    0 -   24 -->
-        <item>110</item> <!--   24 -   72 -->
-        <item>142</item> <!--   72 -  156 -->
-        <item>159</item> <!--  156 -  192 -->
-        <item>174</item> <!--  192 -  240 -->
-        <item>200</item> <!--  240 -  420 -->
-        <item>228</item> <!--  420 -  756 -->
-        <item>250</item> <!--  756 - 1024 -->
-        <item>255</item> <!-- 1024+ -->
+        <item>14</item>   <!-- 0-10 -->
+        <item>28</item>   <!-- 10-50 -->
+        <item>37</item>   <!-- 50-100 -->
+        <item>51</item>   <!-- 100-200 -->
+        <item>71</item>   <!-- 200-400 -->
+        <item>80</item>   <!-- 400-500 -->
+        <item>96</item>   <!-- 500-800 -->
+        <item>108</item>  <!-- 800-1000 -->
+        <item>144</item>  <!-- 1000-1600 -->
+        <item>181</item>  <!-- 1600-3000 -->
+        <item>254</item>  <!-- 3000-10000 -->
+        <item>255</item>  <!-- 10000+ -->
     </integer-array>
 
     <!-- Disable buttons backlight configurations -->
