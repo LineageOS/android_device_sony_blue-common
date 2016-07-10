@@ -78,10 +78,10 @@ on boot
     chown system system /sys/class/mhl/sii8334/device_id
     symlink /dev/graphics/fb1 /dev/graphics/hdmi
 
-service system_monitor /system/bin/system_monitor
-    class core
+service thermanager /system/bin/thermanager /system/etc/thermanager.xml
+    class main
     user root
-    socket sysmon stream 0660 root system
+    group root
 
 service updatemiscta /system/bin/updatemiscta
     class main

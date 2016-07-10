@@ -16,6 +16,10 @@
     "target_path": "hardware/sony/DASH"
   },
   {
+    "repository": "android_hardware_sony_thermanager",
+    "target_path": "hardware/sony/thermanager"
+  },
+  {
     "repository": "android_external_stlport",
     "target_path": "external/stlport"
   }
