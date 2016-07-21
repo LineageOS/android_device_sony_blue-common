@@ -5,10 +5,6 @@
     <!--       we should have an initial mixer setting (default value) -->
     <ctl name="TTY Mode" value="OFF" />
     <ctl name="DAC1 Switch" value="0" />
-    <ctl name="LINEOUT1 DAC Switch" value="0" />
-    <ctl name="LINEOUT2 DAC Switch" value="0" />
-    <ctl name="LINEOUT3 DAC Switch" value="0" />
-    <ctl name="LINEOUT4 DAC Switch" value="0" />
     <ctl name="LINEOUT1 Volume" value="0" />
     <ctl name="LINEOUT2 Volume" value="0" />
     <ctl name="LINEOUT3 Volume" value="0" />
@@ -21,8 +17,6 @@
     <ctl name="ADC3 Volume" value="0" />
     <ctl name="ADC4 Volume" value="0" />
     <ctl name="EAR PA Gain" value="POS_6_DB" />
-    <ctl name="MICBIAS1 CAPLESS Switch" value="0" />
-    <ctl name="MICBIAS4 CAPLESS Switch" value="0" />
     <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="0" />
     <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5" value="0" />
@@ -75,7 +69,6 @@
     <ctl name="RX2 Digital Volume" value="0" />
     <ctl name="RX3 Digital Volume" value="0" />
     <ctl name="HPHL DAC Switch" value="0" />
-    <ctl name="HPHR DAC Switch" value="0" />
     <ctl name="Voice_Tx Mixer AFE_PCM_TX_Voice" value="0" />
     <ctl name="Voip_Tx Mixer SLIM_0_TX_Voip" value="0" />
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia1" value="0" />
@@ -317,7 +310,6 @@
         <ctl name="SLIM_0_RX Channels" value="Two" />
         <ctl name="RX3 MIX1 INP1" value="RX1" />
         <ctl name="RX3 MIX1 INP2" value="RX2" />
-        <ctl name="LINEOUT1 DAC Switch" value="1" />
         <ctl name="LINEOUT1 Volume" value="12" />
         <ctl name="RX3 Digital Volume" value="88" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
@@ -337,7 +329,6 @@
 
     <path name="speaker-mic">
         <path name="adc1" />
-        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
     </path>
 
     <path name="handset">
@@ -352,7 +343,6 @@
         <path name="adc1" />
         <ctl name="RX1 Digital Volume" value="91" />
         <ctl name="RX2 Digital Volume" value="91" />
-        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
     </path>
 
     <path name="headphones">
@@ -360,7 +350,6 @@
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
         <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="HPHR DAC Switch" value="1" />
         <ctl name="HPHL Volume" value="10" />
         <ctl name="HPHR Volume" value="10" />
         <ctl name="RX1 Digital Volume" value="91" />
@@ -412,7 +401,6 @@
         <path name="headphones" />
         <ctl name="RX3 MIX1 INP1" value="RX1" />
         <ctl name="RX3 MIX1 INP2" value="RX2" />
-        <ctl name="LINEOUT1 DAC Switch" value="1" />
         <ctl name="LINEOUT1 Volume" value="12" />
         <ctl name="RX1 Digital Volume" value="91" />
         <ctl name="RX2 Digital Volume" value="91" />
@@ -445,25 +433,21 @@
 
     <path name="voice-rec-mic">
         <path name="adc1" />
-        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
     </path>
 
     <path name="camcorder-mic">
         <ctl name="SLIM TX7 MUX" value="DEC4" />
         <ctl name="DEC4 MUX" value="ADC3" />
         <ctl name="ADC3 Volume" value="3" />
-        <ctl name="MICBIAS4 CAPLESS Switch" value="1" />
         <ctl name="SLIM TX8 MUX" value="DEC6" />
         <ctl name="DEC6 MUX" value="ADC1" />
         <ctl name="ADC1 Volume" value="3" />
-        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 
     <path name="hdmi-mic">
         <path name="dmic1" />
         <ctl name="ADC1 Volume" value="3" />
-        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
     </path>
 
     <path name="bt-sco-headset">
@@ -486,11 +470,9 @@
         <ctl name="SLIM TX7 MUX" value="DEC4" />
         <ctl name="DEC4 MUX" value="ADC3" />
         <ctl name="ADC3 Volume" value="3" />
-        <ctl name="MICBIAS4 CAPLESS Switch" value="1" />
         <ctl name="SLIM TX8 MUX" value="DEC6" />
         <ctl name="DEC6 MUX" value="ADC1" />
         <ctl name="ADC1 Volume" value="3" />
-        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 
@@ -502,11 +484,9 @@
         <ctl name="SLIM TX7 MUX" value="DEC7" />
         <ctl name="DEC7 MUX" value="ADC1" />
         <ctl name="ADC1 Volume" value="3" />
-        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
         <ctl name="SLIM TX8 MUX" value="DEC4" />
         <ctl name="DEC4 MUX" value="ADC3" />
         <ctl name="ADC3 Volume" value="3" />
-        <ctl name="MICBIAS4 CAPLESS Switch" value="1" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 
@@ -543,7 +523,6 @@
         <ctl name="DEC7 MUX" value="DMIC1" />
         <ctl name="SLIM TX8 MUX" value="DEC8" />
         <ctl name="DEC8 MUX" value="DMIC2" />
-        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 
@@ -552,7 +531,6 @@
         <ctl name="DEC7 MUX" value="DMIC1" />
         <ctl name="SLIM TX8 MUX" value="DEC8" />
         <ctl name="DEC8 MUX" value="DMIC2" />
-        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 
@@ -577,7 +555,6 @@
         <ctl name="SLIM_0_RX Channels" value="One" />
         <ctl name="RX2 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP2" value="RX6" />
-        <ctl name="HPHR DAC Switch" value="1" />
         <ctl name="HPHR Volume" value="8" />
     </path>
 
@@ -606,7 +583,6 @@
 
     <path name="voice-tty-vco-handset-mic">
         <path name="adc1" />
-        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
     </path>
 
     <path name="play-fm">
