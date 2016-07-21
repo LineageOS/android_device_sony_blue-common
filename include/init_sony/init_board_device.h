@@ -42,10 +42,10 @@ public:
             // Short vibration
             vibrate(50);
 
-		    // LED boot selection colors
-		    led_color(0, 255, 0);
+            // LED boot selection colors
+            led_color(0, 255, 0);
             msleep(1500);
-		    led_color(255, 0, 0);
+            led_color(255, 0, 0);
             msleep(1500);
             _exit(1);
         }
