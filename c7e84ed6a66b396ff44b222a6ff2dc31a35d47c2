@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3fa7e38b_35678150",
+        "filename": "rootdir/init.target.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 13589
+      },
+      "writtenOn": "2016-07-23T15:11:03Z",
+      "side": 1,
+      "message": "No longer required on Marshmallow ?\nIf so, I\u0027d need to remove it from Huashan",
+      "parentUuid": "3fa7e38b_95275513",
+      "revId": "c7e84ed6a66b396ff44b222a6ff2dc31a35d47c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fa7e38b_d582adc8",
         "filename": "rootdir/init.target.rc",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-07-23T15:07:17Z",
       "side": 1,
       "message": "# Support legacy paths\nsymlink /sdcard /mnt/sdcard\nsymlink /sdcard /storage/sdcard0",
+      "revId": "c7e84ed6a66b396ff44b222a6ff2dc31a35d47c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa7e38b_5576bd08",
+        "filename": "rootdir/init.target.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 13589
+      },
+      "writtenOn": "2016-07-23T15:11:03Z",
+      "side": 1,
+      "message": "You\u0027ll find them in init.qcom.rc like Huashan",
+      "parentUuid": "3fa7e38b_d582adc8",
       "revId": "c7e84ed6a66b396ff44b222a6ff2dc31a35d47c2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
