@@ -105,6 +105,24 @@
       "revId": "c7e84ed6a66b396ff44b222a6ff2dc31a35d47c2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa7e38b_9503d542",
+        "filename": "rootdir/init.target.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 13589
+      },
+      "writtenOn": "2016-07-23T15:42:41Z",
+      "side": 1,
+      "message": "Interesting for /storage/sdcard0, I might have a look at it.\nBut if it\u0027s the case, it means it\u0027s useless since Huashan never needed it to work.",
+      "parentUuid": "3fa7e38b_95551553",
+      "revId": "c7e84ed6a66b396ff44b222a6ff2dc31a35d47c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
