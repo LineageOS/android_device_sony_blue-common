@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3fa7e38b_f5600935",
+        "filename": "rootdir/init.target.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2016-07-23T15:15:32Z",
+      "side": 1,
+      "message": "Right, no longer required since Marshmallow",
+      "parentUuid": "3fa7e38b_35678150",
+      "revId": "c7e84ed6a66b396ff44b222a6ff2dc31a35d47c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fa7e38b_d582adc8",
         "filename": "rootdir/init.target.rc",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "You\u0027ll find them in init.qcom.rc like Huashan",
       "parentUuid": "3fa7e38b_d582adc8",
+      "revId": "c7e84ed6a66b396ff44b222a6ff2dc31a35d47c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa7e38b_95551553",
+        "filename": "rootdir/init.target.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2016-07-23T15:15:32Z",
+      "side": 1,
+      "message": "Ah, ok. But, you might want to check if those paths actually exist as you currently have them written. In my experience, they need to be delayed until \u0027on post-fs-data\u0027 because /storage is a mount point during \u0027on fs\u0027. (I haven\u0027t gotten around to fixing this on m7, but have on other devices)",
+      "parentUuid": "3fa7e38b_5576bd08",
       "revId": "c7e84ed6a66b396ff44b222a6ff2dc31a35d47c2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
