@@ -158,6 +158,9 @@ bin/ta_qmi_service
 -lib/libta.so
 lib/libmiscta.so
 
+# UI
+vendor/lib/libuiblur.so
+
 # Video Firmware
 etc/firmware/vidc.b00
 etc/firmware/vidc.b01
