@@ -33,6 +33,16 @@ if [ -e ${flag_partitions_changed} ]; then
 fi;
 
 #------------------------------------------------------------
+# Detect a MultiROM installation and ignore the unification
+if [ -e /tmp/mrom_fakebootpart ]; then
+  ui_print ' ';
+  ui_print 'Installation as a MultiROM detected';
+  ui_print 'Unified partitions layout validated';
+  ui_print ' ';
+  exit ${exec_success};
+fi;
+
+#------------------------------------------------------------
 # Handle the usage of an old dangerous TWRP version
 if [ -e /twres/twrp ] || [ -e /res/twrp ]; then
   if [ $(prop_default_date_timestamp) -lt ${twrp_timestamp_safe} ]; then
