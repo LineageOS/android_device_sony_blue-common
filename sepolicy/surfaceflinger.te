@@ -1,5 +1,2 @@
-# Surfaceflinger GPU access.
-allow surfaceflinger gpu_device:chr_file { open read write };
-
-# Surfaceflinger data accesses.
-allow surfaceflinger shell_data_file:dir search;
+#============= surfaceflinger ==============
+allow surfaceflinger debug_gralloc_prop:file { read getattr open };
