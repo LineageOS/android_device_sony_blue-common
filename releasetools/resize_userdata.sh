@@ -14,12 +14,21 @@ path=$(cd ${0%/*} && pwd -P);
 name=$(basename ${0%.sh})
 input=${path}/${name};
 reporoot=${path%%/device*};
-out="${reporoot}/out/target/product/${device}";
+repoout=${reporoot}/out;
+out="${repoout}/target/product/${device}";
 targetdir="${out}/${name}_temp";
 targetzip="${out}/${name}.zip";
 targettmpzip="${targetzip}.unsigned.zip";
 binary_updater="${out}/obj/EXECUTABLES/updater_intermediates/updater";
 binary_files="${out}/install/bin/resize2fs_static ${out}/utilities/e2fsck ${out}/utilities/toybox";
+
+# Host OS detection
+case $(uname -s) in
+  Darwin)
+    host_os='darwin';;
+  *)
+    host_os='linux';;
+esac;
 
 # Script introduction
 echo "";
@@ -59,8 +68,19 @@ done;
 # Package the zip output
 zip ${targettmpzip} * -r;
 
+# Find signapk.jar dependencies
+host_conscrypt_jni=$(ls -1 ${reporoot}/prebuilts/sdk/tools/${host_os}/lib64/libconscrypt_openjdk_jni* \
+                   | head -n 1);
+if [ -z "${host_conscrypt_jni}" ]; then
+  echo "";
+  echo -e "\e[0;33mPackage ${name}:\e[0m Missing libconscrypt_openjdk_jni dependency";
+  echo "";
+  exit 1;
+fi;
+
 # Sign the zip output
-java -jar ${reporoot}/prebuilts/sdk/tools/lib/signapk.jar \
+java -Djava.library.path="${LD_LIBRARY_PATH}:${host_conscrypt_jni%/*}" \
+     -jar ${reporoot}/prebuilts/sdk/tools/lib/signapk.jar \
      -w ${reporoot}/build/target/product/security/testkey.x509.pem \
      ${reporoot}/build/target/product/security/testkey.pk8 \
      ${targettmpzip} \
