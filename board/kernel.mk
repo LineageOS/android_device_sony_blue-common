@@ -6,7 +6,6 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01700000
 
 # Kernel properties
 TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
 
 # Custom boot
 BOARD_CUSTOM_BOOTIMG := true
