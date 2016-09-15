@@ -155,7 +155,7 @@ lib/libsensors_akm8972.so
 # TA
 bin/ta_param_loader
 bin/ta_qmi_service
--lib/libta.so
+lib/libta.so
 lib/libmiscta.so
 
 # UI

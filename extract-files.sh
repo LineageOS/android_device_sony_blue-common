@@ -12,3 +12,5 @@ export BOARD_VENDOR_PLATFORM=blue
 ../common/extract-files.sh $@
 
 ../common/setup-makefiles.sh
+
+./setup-makefiles.sh
