@@ -50,7 +50,10 @@ part_unmount()
 part_exists()
 {
   # Verify if a partition exists and matches a number
-  if [ ! -z "$(${sgdisk} --print ${mmc_block} | ${toybox} grep ${1}) | ${toybox} grep ' ${2}) ')" ]; then
+  local part_entry=$(${sgdisk} --print ${mmc_block} \
+                   | ${toybox} grep "${1}" \
+                   | ${toybox} grep " ${2} ");
+  if [ ! -z "${part_entry}" ]; then
     return 1;
   fi;
 

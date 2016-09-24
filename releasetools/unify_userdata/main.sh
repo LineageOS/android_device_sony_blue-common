@@ -164,7 +164,7 @@ part_unmount '/sdcard';
 # If identifiers of the Cache partition are missing, abort
 if [ ! -e ${parts_by_name}/${part_cache_name} ] || \
    [ ! -e ${mmc_block}p${part_cache_num} ] || \
-   [ ! part_exists ${part_cache_name} ${part_cache_num} ]; then
+   part_exists ${part_cache_name} ${part_cache_num}; then
   ui_print 'Device has issues with Cache partition';
   ui_print 'Please search for help on forums...';
   exit ${exec_failed};
@@ -174,7 +174,7 @@ fi;
 # If identifiers of the SDCard partition are missing, abort
 if [ ! -e ${parts_by_name}/${part_sdcard_name} ] || \
    [ ! -e ${mmc_block}p${part_sdcard_num} ] || \
-   [ ! part_exists ${part_sdcard_name} ${part_sdcard_num} ]; then
+   part_exists ${part_sdcard_name} ${part_sdcard_num}; then
   ui_print 'Device has issues with SDCard partition';
   ui_print 'Please search for help on forums...';
   exit ${exec_failed};
@@ -184,7 +184,7 @@ fi;
 # If identifiers of the UserData partition are missing, abort
 if [ ! -e ${parts_by_name}/${part_data_name} ] || \
    [ ! -e ${mmc_block}p${part_data_num} ] || \
-   [ ! part_exists ${part_data_name} ${part_data_num} ]; then
+   part_exists ${part_data_name} ${part_data_num}; then
   ui_print 'Device has issues with UserData partition';
   ui_print 'Please search for help on forums...';
   exit ${exec_failed};
