@@ -1,3 +1,4 @@
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 BOARD_RIL_CLASS := ../../../$(COMMON_PATH)/ril/
+TARGET_RIL_VARIANT := caf
