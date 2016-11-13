@@ -16,6 +16,8 @@
     <ctl name="ADC2 Volume" value="0" />
     <ctl name="ADC3 Volume" value="0" />
     <ctl name="ADC4 Volume" value="0" />
+    <ctl name="DEC4 Volume" value="84" />
+    <ctl name="DEC6 Volume" value="84" />
     <ctl name="EAR PA Gain" value="POS_6_DB" />
     <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="0" />
     <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1" value="0" />
@@ -433,9 +435,11 @@
         <ctl name="SLIM TX7 MUX" value="DEC4" />
         <ctl name="DEC4 MUX" value="ADC3" />
         <ctl name="ADC3 Volume" value="3" />
+        <ctl name="DEC4 Volume" value="95" />
         <ctl name="SLIM TX8 MUX" value="DEC6" />
         <ctl name="DEC6 MUX" value="ADC1" />
         <ctl name="ADC1 Volume" value="3" />
+        <ctl name="DEC6 Volume" value="95" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 
