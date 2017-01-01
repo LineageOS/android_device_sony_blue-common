@@ -3,7 +3,7 @@ LOCAL_PATH := $(call my-dir)
 DEVICE_BOOTDIR := device/sony/blue-common/boot
 DEVICE_CMDLINE := $(DEVICE_BOOTDIR)/cmdline.txt
 DEVICE_LOGORLE := $(DEVICE_BOOTDIR)/logo.rle
-DEVICE_RPMBIN := vendor/sony/blue-common/proprietary/boot/RPM.bin
+DEVICE_RPMBIN := $(DEVICE_BOOTDIR)/RPM.bin
 INITSONY := $(PRODUCT_OUT)/utilities/init_sony
 MKELF := $(DEVICE_BOOTDIR)/mkelf.py
 
