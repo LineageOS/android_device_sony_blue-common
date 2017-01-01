@@ -1,0 +1,40 @@
+# Camera
+lib/hw/camera.vendor.qcom.so
+lib/libcamera_clientsemc.so
+lib/libcameralight.so
+lib/libface.so
+lib/libmmcamera_3a_legacy.so
+lib/libmmcamera_faceproc.so
+lib/libmmcamera_frameproc.so
+lib/libmmcamera_imx091.so
+lib/libmmcamera_plugin.so
+lib/libmmcamera_statsproc31.so
+
+# MultiMedia
+lib/libimage-jpeg-dec-omx-comp.so
+lib/libimage-jpeg-enc-omx-comp.so
+
+# Q6 Firmware
+etc/firmware/q6.b00
+etc/firmware/q6.b01
+etc/firmware/q6.b03
+etc/firmware/q6.b04
+etc/firmware/q6.b05
+etc/firmware/q6.b06
+etc/firmware/q6.mdt
+
+# Sensors
+lib/liblights-core.so
+lib/libmllite.so
+lib/libmlplatform.so
+lib/libmpl.so
+-lib/libMPU3050.so
+lib/libnl.so
+-lib/libsensors_akm8972.so
+lib/libsys-utils.so
+
+# TA
+bin/ta_param_loader
+bin/ta_qmi_service
+lib/libmiscta.so
+-lib/libta.so
