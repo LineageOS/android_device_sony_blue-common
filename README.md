@@ -1,6 +1,8 @@
+Copyright 2016 - The CyanogenMod Project  
+Copyright 2017 - The LineageOS Project  
+
 Sony Xperia Blue-Common
 =======================
-
 
 Common board shared between following devices :
 
@@ -17,4 +19,4 @@ GPU     | Adreno 2xx
 Memory  | 1GB RAM
 Board   | Sony Blue
 
-This branch is for building CyanogenMod 13.0 (or Android Marshmallow 6.0 AOSP based roms) ROMS.
+This branch is for building LineageOS 14.1 (or Android Nougat 7.1 AOSP based roms) ROMS.
