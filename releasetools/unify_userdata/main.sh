@@ -348,6 +348,10 @@ if [ ! -e ${cache_recovery_command} ] || \
    [ ! -e ${cache_resize_userdata_zip} ]; then
   ui_print 'Failed starting a recovery script';
   ui_print 'Search for help on the ROM forums...';
+  ui_print ' ';
+  ui_print 'Reboot to recovery and manually flash';
+  ui_print "the ${cache_resize_userdata_name} file";
+  ui_print '';
   ${toybox} rm -f ${cache_recovery_command};
   ${toybox} rm -f ${cache_resize_userdata_zip};
   exit ${exec_failed};
