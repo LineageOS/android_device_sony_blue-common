@@ -4,6 +4,12 @@
 #           (C) 2017 The LineageOS Project
 #
 
+# Inherit resize_userdata.zip
+$(dirname ${0%.sh})/resize_userdata.sh ${1};
+if [ ${?} -ne 0 ]; then
+  exit 1;
+fi;
+
 # Device name
 device="${1#*_}";
 if [ -z "${device}" ]; then
@@ -18,10 +24,11 @@ reporoot=${path%%/device*};
 repoout=${reporoot}/out;
 out="${repoout}/target/product/${device}";
 targetdir="${out}/${name}_temp";
-targetzip="${out}/${name}.zip";
+targetzip="${out}/${name}-$(date +%Y%m%d).zip";
 targettmpzip="${targetzip}.unsigned.zip";
 binary_updater="${out}/obj/EXECUTABLES/updater_intermediates/updater";
-binary_files="${out}/install/bin/resize2fs_static ${out}/utilities/e2fsck ${out}/utilities/toybox";
+binary_files="${out}/install/bin/resize2fs_static ${out}/recovery/root/sbin/sgdisk ${out}/utilities/toybox";
+script_files="${out}/resize_userdata.zip";
 
 # Host OS detection
 case $(uname -s) in
@@ -38,7 +45,7 @@ echo "++++ ${name} ++++";
 echo '';
 
 # Verify if output files exist
-for file in ${binary_files} ${binary_updater}; do
+for file in ${binary_files} ${binary_updater} ${script_files}; do
   if [ ! -f ${file} ]; then
     echo " Full '${device}' build required for the package (${file#${out}/} not found)";
     echo '';
@@ -64,6 +71,9 @@ cp ${binary_updater} ./META-INF/com/google/android/update-binary;
 cp ${input}/*.sh ./install/${name}/;
 for file in ${binary_files}; do
   cp ${file} ./install/bin/;
+done;
+for file in ${script_files}; do
+  cp ${file} ./install/${name}/;
 done;
 
 # Package the zip output

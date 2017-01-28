@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Copyright (C) 2016 The CyanogenMod Project
+#           (C) 2017 The LineageOS Project
 #
 
 # Device name
@@ -11,13 +12,13 @@ fi;
 
 # Device variables
 path=$(cd ${0%/*} && pwd -P);
-name=$(basename ${0%.sh})
+name=$(basename ${0%.sh});
 input=${path}/${name};
 reporoot=${path%%/device*};
 repoout=${reporoot}/out;
 out="${repoout}/target/product/${device}";
 targetdir="${out}/${name}_temp";
-targetzip="${out}/${name}-$(date +%Y%m%d)-${device}.zip";
+targetzip="${out}/${name}-$(date +%Y%m%d).zip";
 targettmpzip="${targetzip}.unsigned.zip";
 binary_updater="${out}/obj/EXECUTABLES/updater_intermediates/updater";
 binary_files="${out}/recovery/root/sbin/make_ext4fs ${out}/recovery/root/sbin/sgdisk ${out}/utilities/toybox";
@@ -31,16 +32,16 @@ case $(uname -s) in
 esac;
 
 # Script introduction
-echo "";
-echo "";
+echo '';
+echo '';
 echo "++++ ${name} ++++";
-echo "";
+echo '';
 
 # Verify if output files exist
 for file in ${binary_files} ${binary_updater}; do
   if [ ! -f ${file} ]; then
     echo " Full '${device}' build required for the package (${file#${out}/} not found)";
-    echo "";
+    echo '';
     exit 1;
   fi;
 done;
@@ -72,9 +73,9 @@ zip ${targettmpzip} * -r;
 host_conscrypt_jni=$(ls -1 ${reporoot}/prebuilts/sdk/tools/${host_os}/lib64/libconscrypt_openjdk_jni* \
                    | head -n 1);
 if [ -z "${host_conscrypt_jni}" ]; then
-  echo "";
+  echo '';
   echo -e "\e[0;33mPackage ${name}:\e[0m Missing libconscrypt_openjdk_jni dependency";
-  echo "";
+  echo '';
   exit 1;
 fi;
 
@@ -94,6 +95,6 @@ rm -rf ${targetdir};
 rm -f ${targettmpzip};
 
 # Result flashable zip
-echo "";
+echo '';
 echo -e "\e[0;33mPackage ${name}:\e[0m ${targetzip}";
-echo "";
+echo '';
