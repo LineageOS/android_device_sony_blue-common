@@ -4,7 +4,7 @@ PRODUCT_COPY_FILES += \
 
 # SEC configurations
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/sec_config:system/etc/sec_config
+    $(COMMON_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
 # GPS properties
 PRODUCT_PROPERTY_OVERRIDES += \
