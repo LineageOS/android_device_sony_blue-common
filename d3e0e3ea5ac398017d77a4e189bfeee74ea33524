@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_08b131e1",
+        "filename": "board/twrp.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 13589
+      },
+      "writtenOn": "2017-03-04T23:01:14Z",
+      "side": 1,
+      "message": "Faulty with OpenGApps for the time being, \"unzip\" is missing.",
+      "revId": "d3e0e3ea5ac398017d77a4e189bfeee74ea33524",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
