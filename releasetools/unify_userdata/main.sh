@@ -105,14 +105,19 @@ if [ ! -e ${parts_by_name}/${part_sdcard_name} ]; then
     ui_print 'UserData could not be mounted (ext4/f2fs ?)';
     ui_print 'Please do a Factory Reset before continuing';
     exit ${exec_failed};
+  fi;
 
   # If the UserData is mountable, check the storage.xml file
-  elif ${toybox} grep -q 'primaryStorageUuid="primary_physical"' ${data_storage_xml}; then
-    ui_print ' ';
-    ui_print 'Finalize the migration, reset storages';
-    ui_print 'Deleting '${data_storage_xml};
-    ui_print ' ';
-    ${toybox} rm -f ${data_storage_xml};
+  if [ -f "${data_storage_xml}" ]; then
+
+    # Detect physical primary flag
+    if ${toybox} grep -q 'primaryStorageUuid="primary_physical"' ${data_storage_xml}; then
+      ui_print ' ';
+      ui_print 'Finalize the migration, reset storages';
+      ui_print 'Deleting '${data_storage_xml};
+      ui_print ' ';
+      ${toybox} rm -f ${data_storage_xml};
+    fi;
   fi;
 
   # If everything checks out for a ROM flash, return a success
