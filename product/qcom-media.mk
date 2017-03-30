@@ -17,3 +17,7 @@ PRODUCT_PACKAGES += \
     libdivxdrmdecrypt \
     libmm-omxcore \
     libstagefrighthw
+
+# OMX properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.media.treble_omx=false
