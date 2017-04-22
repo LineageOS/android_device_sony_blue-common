@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2013-2016 The CyanogenMod Project
+#           (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,6 +20,9 @@ COMMON_PATH := device/sony/blue-common
 
 # Common specific overlays
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
+ifeq ($(BOARD_AOSP_BASED),)
+DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay-lineage
+endif
 
 # Product common configurations
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
