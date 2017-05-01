@@ -8,7 +8,7 @@ on early-boot
     write /sys/module/pm8921_charger/parameters/enable_lowbatt_detect 1
 
     # Run pre_hw_config.sh before entering charge only mode.
-    exec /system/bin/sh /system/etc/pre_hw_config.sh
+    start pre_hw_config
 
 on boot
     # Clock
@@ -101,6 +101,7 @@ service tad_static /sbin/tad_static /dev/block/platform/msm_sdcc.1/by-name/TA 0,
 service ta_qmi_service /system/bin/ta_qmi_service
     user root
     class main
+    seclabel u:r:ta_qmi_service:s0
 
 # Wi-Fi and BT MAC addresses
 service macaddrsetup /system/bin/macaddrsetup
@@ -113,14 +114,23 @@ service hw_config /system/bin/sh /system/etc/hw_config.sh
     class main
     user root
     oneshot
+    seclabel u:r:hw_config:s0
+
+service pre_hw_config /system/bin/sh /system/etc/pre_hw_config.sh
+    class main
+    user root
+    oneshot
+    seclabel u:r:pre_hw_config:s0
 
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
+    seclabel u:r:irsc_util:s0
 
-service secchan /system/bin/secchand
+service secchand /system/bin/secchand
     user root
     group root
     class core
+    seclabel u:r:secchand:s0
 
