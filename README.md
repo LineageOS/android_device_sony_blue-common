@@ -19,4 +19,4 @@ GPU     | Adreno 2xx
 Memory  | 1GB RAM
 Board   | Sony Blue
 
-This branch is for building LineageOS 14.1 (or Android Nougat 7.1 AOSP based roms) ROMS.
+This branch is for building LineageOS 14.1 (or Android Nougat 7.1 AOSP based) ROMS.
