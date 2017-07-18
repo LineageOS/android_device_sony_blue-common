@@ -10,5 +10,5 @@ BLUE_LED_PATH := /sys/class/leds/pwr-blue/brightness
 # Healthd library extension
 ifneq ($(BOARD_AOSP_BASED),)
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.board
-BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(DEVICE_PATH)/charger/images
+BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(COMMON_PATH)/charger/images
 endif
