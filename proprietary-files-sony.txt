@@ -29,7 +29,6 @@ lib/libmllite.so
 lib/libmlplatform.so
 lib/libmpl.so
 -lib/libMPU3050.so
-lib/libnl.so
 -lib/libsensors_akm8972.so
 lib/libsys-utils.so
 
