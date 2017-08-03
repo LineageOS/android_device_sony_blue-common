@@ -6,13 +6,8 @@ lib/libface.so
 lib/libmmcamera_3a_legacy.so
 lib/libmmcamera_faceproc.so
 lib/libmmcamera_frameproc.so
-lib/libmmcamera_imx091.so
 lib/libmmcamera_plugin.so
 lib/libmmcamera_statsproc31.so
-
-# MultiMedia
-lib/libimage-jpeg-dec-omx-comp.so
-lib/libimage-jpeg-enc-omx-comp.so
 
 # Q6 Firmware
 etc/firmware/q6.b00
