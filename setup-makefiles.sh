@@ -33,9 +33,9 @@ export INITIAL_COPYRIGHT_YEAR=2014
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-ROM_ROOT="$MY_DIR"/../../..
+LINEAGE_ROOT="$MY_DIR"/../../..
 
-HELPER="$ROM_ROOT"/vendor/cm/build/tools/extract_utils.sh
+HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -43,7 +43,7 @@ fi
 . "$HELPER"
 
 # Initialize the helper for common device
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$ROM_ROOT" true
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true
 
 # Copyright headers and common guards
 write_headers "hayabusa mint tsubasa"
@@ -58,7 +58,7 @@ write_makefiles "$MY_DIR"/proprietary-files-qc.txt
 write_footers
 
 # Reinitialize the helper for device
-setup_vendor "$DEVICE" "$VENDOR" "$ROM_ROOT"
+setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT"
 
 # Copyright headers and guards
 write_headers
