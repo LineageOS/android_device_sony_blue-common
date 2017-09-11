@@ -71,6 +71,7 @@
 /sys/devices/i2c-10/10-0040/als_on                                                u:object_r:sysfs_als:s0
 /sys/devices/i2c-10/10-0040/debug                                                 u:object_r:sysfs_als:s0
 /sys/devices/i2c-10/10-0040/leds/lcd-backlight(.*/.*)?                            u:object_r:sysfs_leds:s0
+/sys/devices/i2c-10/10-0053(/.*)?                                                 u:object_r:sysfs_camera_torch:s0
 /sys/devices/i2c-12/12-0054(/.*)?                                                 u:object_r:sysfs_proximity_sensor:s0
 /sys/devices/platform/msm_ssbi\.0/pm8921-core/pm8921-charger/power_supply(/.*)?   u:object_r:sysfs_batteryinfo:s0
 /sys/devices/platform/msm_ssbi\.0/pm8921-core/pm8xxx-gpio/gpio(/.*)?              u:object_r:sysfs_gpio:s0
