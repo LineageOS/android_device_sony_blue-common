@@ -1,4 +1,5 @@
 # /sys
+type sysfs_als, fs_type, sysfs_type;
 type sysfs_mac_serial, fs_type, sysfs_type;
 type sysfs_smdcntl_open_timeout, sysfs_type, fs_type;
 type sysfs_surfaceflinger, sysfs_type, fs_type;
