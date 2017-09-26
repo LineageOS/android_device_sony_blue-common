@@ -56,6 +56,7 @@
 /system/bin/updatemiscta                                                          u:object_r:updatemiscta_exec:s0
 
 # /vendor
+/(vendor|system/vendor)/bin/hw/android\.hardware\.dumpstate@1\.0-service\.blue    u:object_r:hal_dumpstate_default_exec:s0
 /(vendor|system/vendor)/bin/thermanager                                           u:object_r:thermanager_exec:s0
 
 # /sys
