@@ -22,6 +22,30 @@
       "revId": "7dc351b6caf2e2b981da68ad8562b345a3955dcd",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8829d7_08a5910e",
+        "filename": "devicesettings/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 13589
+      },
+      "writtenOn": "2017-10-04T21:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04ca1177_27c68b13",
+      "range": {
+        "startLine": 42,
+        "startChar": 16,
+        "endLine": 42,
+        "endChar": 84
+      },
+      "revId": "7dc351b6caf2e2b981da68ad8562b345a3955dcd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
