@@ -4,7 +4,6 @@ PRODUCT_PACKAGES += \
     init.board.charger.rc \
     init.board.fm.rc \
     init.board.hardware.rc \
-    init.board.led.rc \
     init.board.perf.rc \
     init.board.radio.rc \
     init.board.target.rc \
