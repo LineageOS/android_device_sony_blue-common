@@ -16,9 +16,9 @@
  */
 
 /* === Module Debug === */
-#define LOG_NDEBUG 0
-#define LOG_PARAM
-// #define LOG_BRIGHTNESS
+/*#define LOG_NDEBUG 0*/
+/*#define LOG_PARAM*/
+/*#define LOG_BRIGHTNESS*/
 #define LOG_TAG "lights.blue"
 
 /* === Module Libraries === */
