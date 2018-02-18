@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6d01568_f99d508a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2018-02-18T03:53:30Z",
+      "side": 1,
+      "message": "audio_effects.conf \u003d)",
+      "revId": "3bc613523c960d1e4768aff18835c27e0c09f47f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
