@@ -1,6 +1,6 @@
 # Sensors configurations
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/sap.conf:system/etc/sap.conf
+    $(COMMON_PATH)/configs/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf
 
 # Sensors packages
 PRODUCT_PACKAGES += \
