@@ -136,7 +136,8 @@ brightness_apply_gamma(int brightness) {
 
     double floatbrt = (double) brightness;
 
-    /* Brightness to corrected brightness */
+    /* Regular gamma correction curve */
+#ifndef ENABLE_GAMMA_CORRECTION_SINE
     floatbrt /= 255.0;
 #ifdef LOG_BRIGHTNESS
     ALOGV("%s: brightness = %d, floatbrt = %f", __FUNCTION__, brightness,
@@ -147,6 +148,16 @@ brightness_apply_gamma(int brightness) {
     ALOGV("%s: gamma corrected floatbrt = %f", __FUNCTION__, floatbrt);
 #endif
     floatbrt *= 255.0;
+
+    /* Sine gamma correction curve */
+#else
+    floatbrt = 128 + 127 * sin(M_PI * (-0.5 + floatbrt / 255.0));
+#ifdef LOG_BRIGHTNESS
+    ALOGV("%s: brightness = %d, floatbrt = %f", __FUNCTION__, brightness,
+            floatbrt);
+#endif
+#endif
+
     brightness = (int) floatbrt;
 #ifdef LOG_BRIGHTNESS
     ALOGV("%s: gamma corrected brightness = %d", __FUNCTION__, brightness);
