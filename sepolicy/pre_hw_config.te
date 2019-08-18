@@ -1,4 +1,4 @@
-type pre_hw_config, domain;
+type pre_hw_config, domain, coredomain;
 type pre_hw_config_exec, exec_type, file_type;
 
 init_daemon_domain(pre_hw_config)
