@@ -24,6 +24,9 @@ ifeq ($(BOARD_AOSP_BASED),)
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay-lineage
 endif
 
+# Soong
+PRODUCT_SOONG_NAMESPACES += $(COMMON_PATH)
+
 # Provide AOSP APN configurations
 ifneq ($(BOARD_AOSP_BASED),)
 PRODUCT_COPY_FILES += device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
