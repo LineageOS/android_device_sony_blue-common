@@ -307,7 +307,7 @@ static int
 set_light_leds_locked(struct light_device_t* dev,
         struct light_state_t const* state) {
 
-    int alpha, red, green, blue;
+    int red, green, blue;
     int flashMode;
     int onMS, offMS, totalMS;
     unsigned int colorRGB;
