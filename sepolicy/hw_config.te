@@ -6,6 +6,8 @@ init_daemon_domain(hw_config)
 unix_socket_connect(hw_config, tad, tad)
 
 #============= hw_config ==============
+allow hw_config firmware_file:dir search;
+allow hw_config firmware_file:file { open read };
 allow hw_config shell_exec:file { entrypoint getattr read };
 allow hw_config sysfs:file { getattr open write };
 allow hw_config sysfs_als:file { open write };
