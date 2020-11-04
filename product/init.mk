@@ -6,6 +6,7 @@ PRODUCT_PACKAGES += \
     init.board.hardware.rc \
     init.board.perf.rc \
     init.board.radio.rc \
+    init.board.services.rc \
     init.board.target.rc \
     init.board.usb.rc \
     init.board.wifi.rc \
