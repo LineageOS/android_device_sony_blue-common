@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cd53316_6ffc11f8",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 27776
+      },
+      "writtenOn": "2021-01-02T20:53:09Z",
+      "side": 1,
+      "message": "Would this not potentially override anything coming from the settings string?",
+      "revId": "c3a46bd3d1ca4b8874dfdb634ed465ab606a5db4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
