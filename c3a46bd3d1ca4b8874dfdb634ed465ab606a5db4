@@ -16,6 +16,24 @@
       "revId": "c3a46bd3d1ca4b8874dfdb634ed465ab606a5db4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "febbd9de_c5a08934",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 13589
+      },
+      "writtenOn": "2021-01-02T20:58:31Z",
+      "side": 1,
+      "message": "It could, but as our legacy camera stack does not report the value, I now apply the original values used for the preview rendering (which is not the captured / configured resolution).\n\nOther devices defined it for a while but it was not needed on Sony 8960 until now.",
+      "parentUuid": "1cd53316_6ffc11f8",
+      "revId": "c3a46bd3d1ca4b8874dfdb634ed465ab606a5db4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
